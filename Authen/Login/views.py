@@ -13,4 +13,9 @@ class LoginClass(View):
         return render(request, 'Login/login.html')
     
     def post(self, request):
-        return HttpResponse('Bạn vừa bấm đăng nhập')
+        tendangnhap = request.POST.get('username')
+        matkhau = request.POST.get('password')
+        my_user = authenticate(username=tendangnhap, password=matkhau)
+        if my_user is None:
+            return HttpResponse('User không tồn tại')
+        return HttpResponse('Bạn vừa bấm đăng nhập %s %s'%(tendangnhap, matkhau))
