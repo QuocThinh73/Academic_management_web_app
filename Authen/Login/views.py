@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 # Create your views here.
 class IndexClass(View):
     def get(self, request):
-        return HttpResponse('<h1>Xin chào</h1>')
+        return render(request, 'Home/index.html')
     
 class LoginClass(View):
     def get(self, request):
@@ -18,7 +18,7 @@ class LoginClass(View):
         matkhau = request.POST.get('password')
         my_user = authenticate(username=tendangnhap, password=matkhau)
         if my_user is None:
-            return HttpResponse('User không tồn tại')
+            return render(request, 'Login/login_fail.html')
         login(request, my_user)
         return render(request, 'Student/student.html')
     
