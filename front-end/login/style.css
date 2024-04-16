@@ -87,3 +87,8 @@ section {
 .login-form a {
     color: #000;
 }
+
+#fail a {
+    color: red;
+    text-align: center;
+}
