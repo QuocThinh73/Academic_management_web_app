@@ -78,6 +78,7 @@ section {
     color: #fff;
     margin-top: 10px;
     cursor: pointer;
+    transition: opacity 0.5s;
 
 }
 .login-form button:hover{
