@@ -77,7 +77,12 @@ section {
     background-color: #000;
     color: #fff;
     margin-top: 10px;
+    cursor: pointer;
+
 }
+.login-form button:hover{
+    opacity: 0.8;
+  }
 
 .login-form p {
     text-align: right;
