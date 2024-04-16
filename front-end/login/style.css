@@ -70,7 +70,7 @@ section {
 }
 
 .login-form button {
-    width: 100%;
+    width: 105%;
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 5px;
@@ -95,7 +95,10 @@ section {
 }
 
 #fail a {
-    font-size: 80%;
+    font-size: 100%;
     color: red;
     text-decoration: none;
+    margin-right: 100px;
 }
+
+
