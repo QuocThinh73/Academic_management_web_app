@@ -89,6 +89,7 @@ section {
 }
 
 #fail a {
+    font-size: 80%;
     color: red;
-    text-align: center;
+    text-decoration: none;
 }
