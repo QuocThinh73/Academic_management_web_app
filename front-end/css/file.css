@@ -143,6 +143,7 @@ nav a:hover {
 /*Styling the table*/
 table {
     border-collapse: collapse;
+    counter-reset: section;
 }
 
 table th, table td {
@@ -178,6 +179,11 @@ table th {
     display: flex;
     display: nowrap;
 }
+.count:before {
+  counter-increment: section;
+  content: counter(section);
+}
+/*Styling the table*/
 
 /*filter*/
 #myInput {
