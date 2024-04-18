@@ -1,20 +1,24 @@
 nav {
 	background-color: #023A3C;
 	overflow: hidden;
+    font-size:21px;
+    text-align:center;
+    padding-top: 20px;
 }
-
 nav a {
 	color: white;
 	padding: 14px 20px;
+    padding-bottom:21px;
 	text-align: center;
 	text-decoration: none;
-	display: block;
+	padding-top: 20px;
 }
 
 nav a:hover {
 	background-color: #CAD4CB;
 	color: black;
 }
+
 
 #menu_text {
 	text-align: center;
