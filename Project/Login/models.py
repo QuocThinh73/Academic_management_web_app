@@ -3,13 +3,12 @@ from django.contrib.auth.models import AbstractUser
 # Create your models here.
 
 class MyUser(AbstractUser):
-    is_student = models.BooleanField(default=False)
-    is_teacher = models.BooleanField(default=False)
+    pass
 
 class StudentUser(MyUser):
     student_id = models.CharField(max_length=30)
-    is_student = True
+    user_type = "Student"
 
 class TeacherUser(MyUser):
     teacher_id = models.CharField(max_length=30)
-    is_teacher = True
+    user_type = "Teacher"
