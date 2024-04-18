@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views import View
 from django.contrib.auth import authenticate, login
 
@@ -20,7 +20,11 @@ class LoginView(View):
             return render(request, 'Login/login_fail.html')
         else:
             login(request, myUser)
-            if myUser.user_type == "Student":
-                return render(request, "login/home.html")
-            elif myUser.user_type == "Teacher":
-                return render(request, "login/home.html")
+            if hasattr(myUser, "user_type"):
+                if myUser.user_type == "Student":
+                    return render(request, "login/home.html")
+                elif myUser.user_type == "Teacher":
+                    return render(request, "login/home.html")
+            else:
+                return redirect("admin:index")
+
