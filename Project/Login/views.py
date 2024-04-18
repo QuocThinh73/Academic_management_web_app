@@ -20,11 +20,11 @@ class LoginView(View):
             return render(request, 'login/login_fail.html')
         else:
             login(request, myUser)
-            if hasattr(myUser, "user_type"):
-                if myUser.user_type == "Student":
-                    return render(request, "login/home.html")
-                elif myUser.user_type == "Teacher":
-                    return render(request, "login/home.html")
-            else:
-                return redirect("admin:index")
+            #if hasattr(myUser, "user_type"):
+            #    if myUser.user_type == "Student":
+            return render(request, "login/home.html")
+            #    elif myUser.user_type == "Teacher":
+            #        return render(request, "login/home.html")
+            #else:
+            #    return redirect("admin:index")
 

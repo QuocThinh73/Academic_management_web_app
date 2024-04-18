@@ -3,11 +3,12 @@ from django.contrib.auth.models import AbstractUser
 # Create your models here.
 
 class MyUser(AbstractUser):
-     USER_TYPE_CHOICES = [
+    USER_TYPE_CHOICES = [
          ('Student', "Student"),
          ('Teacher', 'Teacher'),
      ] 
-     user_type = models.CharField(max_length = 20, choices = USER_TYPE_CHOICES, default = "Student")
+    user_type = models.CharField(max_length = 20, choices = USER_TYPE_CHOICES, default = "Student")
+    
 
 class StudentUser(MyUser):
     student_id = models.CharField(max_length=30)
