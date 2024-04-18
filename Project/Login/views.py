@@ -17,7 +17,7 @@ class LoginView(View):
         matKhau = request.POST.get('password')
         myUser = authenticate(username=tenDangNhap, password=matKhau)
         if myUser is None:
-            return render(request, 'Login/login_fail.html')
+            return render(request, 'login/login_fail.html')
         else:
             login(request, myUser)
             if hasattr(myUser, "user_type"):
