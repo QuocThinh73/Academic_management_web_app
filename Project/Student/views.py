@@ -4,4 +4,4 @@ from django.views import View
 
 class StudentView(View):
     def get(self, request):
-        return render(request, "student/student.html")
+        return render(request, "Student/student.html")

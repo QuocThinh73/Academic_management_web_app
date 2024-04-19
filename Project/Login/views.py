@@ -6,11 +6,11 @@ from django.contrib.auth import authenticate, login
 
 class HomeView(View):
     def get(self, request):
-        return render(request, "login/home.html")
+        return render(request, "Login/home.html")
     
 class LoginView(View):
     def get(self, request):
-        return render(request, "login/login.html")
+        return render(request, "Login/login.html")
     
     def post(self, request):
         tenDangNhap = request.POST.get('username')
@@ -20,11 +20,8 @@ class LoginView(View):
             return render(request, 'login/login_fail.html')
         else:
             login(request, myUser)
-            #if hasattr(myUser, "user_type"):
-            #    if myUser.user_type == "Student":
-            return render(request, "login/home.html")
-            #    elif myUser.user_type == "Teacher":
-            #        return render(request, "login/home.html")
-            #else:
-            #    return redirect("admin:index")
+            if myUser.user_type == "Student":
+                return render(request, "login/home.html")
+            elif myUser.user_type == "Teacher":
+                return render(request, "login/home.html")
 
