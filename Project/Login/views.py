@@ -1,6 +1,5 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, HttpResponse
 from django.views import View
-from django.http import HttpResponse
 from django.contrib.auth import authenticate, login
 
 # Create your views here.
@@ -18,7 +17,7 @@ class LoginView(View):
         matKhau = request.POST.get('password')
         myUser = authenticate(username=tenDangNhap, password=matKhau)
         if myUser is None:
-            return render(request, 'Login/login_fail.html')
+            return HttpResponse("Đăng nhập lỗi")
         else:
             login(request, myUser)
             if myUser.user_type == "Student":
