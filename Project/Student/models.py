@@ -10,7 +10,7 @@ class Student(models.Model):
     department = models.CharField(max_length = 50, null = True, default='')
     major = models.CharField(max_length = 50, null = True, default='')
     enrollment_date = models.DateField(null = True, default='')
-    user = models.OneToOneField(MyUser, on_delete=models.CASCADE)
 
+    
     def __str__(self):
         return self.name
