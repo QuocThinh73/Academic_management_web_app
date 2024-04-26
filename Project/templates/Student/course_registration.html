@@ -1,3 +1,6 @@
+<!-- Django -->
+{% load static %}
+
 <!DOCTYPE html>
 <html lang='vi'>
 <head>
@@ -6,16 +9,16 @@
 	<meta content="author" name="Nguyen Loc">
 	<meta content="country" name="Viet Nam">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="../css/file.css">
+	<link rel="stylesheet" href="{% static 'css/file.css' %}">
 	<title>Trang chủ</title>
 </head>
 <body>
 	<nav>
-		<a href="student.html" class="menu_left">Trang chủ</a>
-		<a href="my_course.html" class="menu_left">Khóa học của tôi</a>
-		<a href="course_registration.html" class="menu_left">Đăng ký môn học</a>
-		<a href="profile.html" class="menu_left">Hồ sơ và quản lý cá nhân</a>
-		<a href="../home/index.html" class="menu_right">Đăng xuất</a>
+		<a href="/student" class="menu_left">Trang chủ</a>
+		<a href="/student/my_course" class="menu_left">Khóa học của tôi</a>
+		<a href="/student/course_registration" class="menu_left">Đăng ký môn học</a>
+		<a href="/student/profile" class="menu_left">Hồ sơ và quản lý cá nhân</a>
+		<a href="/login" class="menu_right">Đăng xuất</a>
 	</nav>
 
 	<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
