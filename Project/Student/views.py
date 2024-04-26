@@ -5,3 +5,6 @@ from django.views import View
 class StudentView(View):
     def get(self, request):
         return render(request, "Student/student.html")
+class StudentCourse(View):
+    def get(self, request):
+        return render(request, "Student/my_course.html")
