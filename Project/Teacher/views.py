@@ -3,6 +3,6 @@ from django.views import View
 
 # Create your views here.
 
-class StudentView(View):
+class TeacherView(View):
     def get(self, request):
         return render(request, "Teacher/teacher.html")
