@@ -1,4 +1,4 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, redirect, HttpResponse
 from django.views import View
 from django.contrib.auth import authenticate, login
 
@@ -17,11 +17,11 @@ class LoginView(View):
         matKhau = request.POST.get('password')
         myUser = authenticate(username=tenDangNhap, password=matKhau)
         if myUser is None:
-            return HttpResponse("Đăng nhập lỗi")
+            return render(request, "Login/login_fail.html")
         else:
             login(request, myUser)
             if myUser.user_type == "Student":
-                return HttpResponse("Đây là trang student")
+                return redirect("Student:student")
             elif myUser.user_type == "Teacher":
                 return HttpResponse("Đây là trang teacher")
 
