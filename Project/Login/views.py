@@ -23,5 +23,5 @@ class LoginView(View):
             if myUser.user_type == "Student":
                 return redirect("Student:student")
             elif myUser.user_type == "Teacher":
-                return HttpResponse("Đây là trang teacher")
+                return redirect("Teacher:teacher")
 

@@ -1,3 +1,6 @@
+<!-- Django -->
+{% load static %}
+
 <!DOCTYPE html>
 <html lang='vi'>
 <head>
@@ -6,7 +9,7 @@
 	<meta content="author" name="Nguyen Loc">
 	<meta content="country" name="Viet Nam">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="../css/home.css">
+	<link rel="stylesheet" href="{% static 'css/home.css' %}">
 	<title>Trang chủ</title>
 </head>
 <body>
@@ -16,7 +19,7 @@
 		<a href="class_manage.html" class="menu_left">Quản lý danh sách lớp</a>
 		<a href="" class="menu_left">Đánh giá sinh viên</a>
 		<a href="" class="menu_left">Hồ sơ</a>
-		<a href="../home/index.html" class="menu_right">Đăng xuất</a>
+		<a href="/login" class="menu_right">Đăng xuất</a>
 	</nav>
 
 	<h1 id="menu_text">
