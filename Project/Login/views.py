@@ -8,6 +8,10 @@ class HomeView(View):
     def get(self, request):
         return render(request, "Login/home.html")
     
+class MainLoginView(View):
+    def get(self, request):
+        return render(request, "Login/main_login.html")
+
 class LoginView(View):
     def get(self, request):
         return render(request, "Login/login.html")
