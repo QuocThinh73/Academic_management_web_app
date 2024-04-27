@@ -185,22 +185,10 @@ main {
 }
 
 
-/*main_login*/
-.select {
-    background-color: white;
-    overflow: hidden;
-}
 
-.select a {
-    color: white;
-    padding: 14px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: block;
-}
 /*main_login*/
 
-.select_login {
+/*.select_login {
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 5px;
@@ -211,7 +199,7 @@ main {
 .select_login a {
     color: white;
     text-align: center;
-}
+}*/
 .accordion {
   background-color: #eee;
   color: #444;
@@ -225,13 +213,18 @@ main {
   transition: 0.4s;
 }
 
-.active, .accordion:hover {
-  background-color: #ccc; 
+.accordion a {
+   color: #eee;
 }
-.panel { 
+
+.active, .accordion:hover {
+  background-color: none; 
+}
+
+/*.panel { 
   padding: 0 18px;
   display: none;
   background-color: white;
   overflow: hidden;
-}
+}*/
 /*main_login*/
