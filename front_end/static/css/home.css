@@ -118,13 +118,13 @@ color:white;
     
 }
 .call{
+    
     padding-left:20px;
-    padding-left:10px;
     margin-top:0px;
 }
 .fa fa-phone{
     display:inline-block;
-    padding-left:100px;
+   
     padding-right:0px;
 }
 .call_us{
@@ -154,21 +154,39 @@ color:white;
 .Language{
     padding-top:20px;
     padding-bottom:20px;
-    vertical-align:right;
+    padding-right: 10px;
 }
 .login{
+    color:white;
     display: inline-block;
+    text-decoration: none;
     padding-top:20px;
     padding-bottom:20px;
     cursor: pointer;
-    transition: opacity 0.15s;    
+    
+    transition: text-decoration 0.3s;    
 }
 .login:hover{
-    opacity: 0.8;
+    
+    text-decoration: underline;
 }
 
 .Section2{
     background-color:White;
     color: black;
-    
+    display: flex;
+    flex-direction: row;
+}
+.Logo{
+    background-color: lightpink;
+    width:200px;
+
+}
+.Home1{
+    background-color: lightblue;
+    width:200px;
+}
+.course{
+    background-color: lightgreen;
+    width:200px;
 }
