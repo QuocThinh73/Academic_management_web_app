@@ -1,11 +1,22 @@
 from django.db import models
 from Login.models import MyUser
 # Create your models here.
+class Degrees(models.Model):
+    name = models.CharField(max_length=100)
+    university = models.CharField(max_length=100)
+    year_obtained = models.IntegerField(default=4)
 
+    def __str__(self):
+        return self.name
+    
 class Teacher(models.Model):
     name = models.CharField(max_length=30, null=True, blank=True)
     department = models.CharField(max_length = 30, null = True, blank = True)
     username = models.OneToOneField(MyUser, on_delete=models.CASCADE, null = True)
+    degrees = models.ManyToManyField(Degrees, blank=True)
+    teaching_schedule = models.TextField(null=True, blank=True)
 
     def __str__(self):
         return self.name
+    
+    
