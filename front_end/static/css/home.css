@@ -176,17 +176,26 @@ color:white;
     color: black;
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
+    height: 80px;
+    align-items: center;
 }
 .Logo{
     background-color: lightpink;
     width:200px;
+    padding-left:400px;
+    
 
 }
 .Home1{
     background-color: lightblue;
-    width:200px;
+    width:300px;
+}
+.Trangtru{
+ display: inline-block;
+ background-color:gray;
 }
 .course{
-    background-color: lightgreen;
-    width:200px;
+    display: inline-block;
+    background-color:yellowgreen;
 }
