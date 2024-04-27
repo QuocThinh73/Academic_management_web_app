@@ -184,5 +184,24 @@ main {
     opacity: 0.8;
 }
 
+.accordion {
+  background-color: #444;
+  color: #eee;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  transition: 0.4s;
+}
 
+.accordion a {
+   color: #eee;
+}
+
+.active, .accordion:hover {
+  background-color: none; 
+}
 
