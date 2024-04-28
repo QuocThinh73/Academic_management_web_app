@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views import View
 from .models import Student
 from Course.models import Course
@@ -28,7 +28,3 @@ class StudentProfile(View):
                 "student_email" : student_email,
         }
         return render(request, "Student/profile.html", context)
-    
-class StudentRegister(View):
-    def get(self, request):
-        return render(request, "Student/course_registration.html")
