@@ -5,21 +5,21 @@ from django.views import View
 
 class TeacherView(View):
     def get(self, request):
-        return render(request, "Teacher/teacher.html")
+        return render(request, "teacher/teacher.html")
 
 class AssessmentView(View):
     def get(self, request):
-        return render(request, "Teacher/assessment.html")
+        return render(request, "teacher/assessment.html")
 
 class ClassManageView(View):
     def get(self, request):
-        return render(request, "Teacher/class_manage.html")
+        return render(request, "teacher/class_manage.html")
     
 class ImportScoreView(View):
     def get(self, request):
-        return render(request, "Teacher/import_score.html")
+        return render(request, "teacher/import_score.html")
     
 class UploadView(View):
     def get(self, request):
-        return render(request, "Teacher/upload.html")
+        return render(request, "teacher/upload.html")
     
