@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     "Teacher",
     "Course",
     "Databases",
+    "Registration",
 ]
 
 MIDDLEWARE = [

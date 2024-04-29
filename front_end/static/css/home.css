@@ -181,21 +181,70 @@ color:white;
     align-items: center;
 }
 .Logo{
-    background-color: lightpink;
-    width:200px;
-    padding-left:400px;
     
+    width:150px;
+    padding-left:60px;
+    cursor: pointer;
 
 }
 .Home1{
-    background-color: lightblue;
+   
     width:300px;
+   
 }
 .Trangtru{
  display: inline-block;
- background-color:gray;
+ padding-left:15px;
+ font-size:17px;
+ 
+}
+.Trangtru a {
+    text-decoration: none;
+    padding-top:10px;
+    padding-bottom:10px;
+    color:black;
+    transition: background-color 0.15;
+}
+.Trangtru a:hover{
+    background-color:rgb(248, 249, 250); 
 }
 .course{
     display: inline-block;
-    background-color:yellowgreen;
+    
+    padding-left:10px;
+    padding-top:10px;
+    padding-bottom:10px;
+    font-size:17px;
+    cursor: pointer;
+    transition: background-color 0.15;
 }
+.course:hover{
+   background-color:rgb(248, 249, 250); 
+}
+#slideshow {
+    overflow: hidden;
+    height: 510px;
+    width: 1700px;
+    margin: 0 auto;
+  }
+  
+  .slide-wrapper {
+    width: 2912px;
+    -webkit-animation: slide 14s ease infinite;
+  }
+  
+  .slide {
+    float: left;
+    height: 510px;
+    width: 728px;
+  }
+
+  
+  @-webkit-keyframes slide {
+    20% {margin-left: 0px;}
+    30% {margin-left: -728px;}
+    50% {margin-left: -728px;}
+    60% {margin-left: -1456px;}
+    80% {margin-left: -1456px;}
+  }
+  

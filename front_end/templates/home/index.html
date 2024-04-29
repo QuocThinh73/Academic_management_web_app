@@ -10,6 +10,13 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 	<title>Trang chủ</title>
 </head>
+<script>
+    function reloadPage() {
+        location.reload();
+    }
+	
+</script>
+
 <body>
 	<div class="Menu">
 		<div class="Section1">
@@ -27,18 +34,20 @@
 		
 	    </div>
 		<div class="Section2">
-			<div class="Logo">Logo</div>
+			
+				<img class="Logo" src="../../static/assets/Logo.png" onclick="reloadPage()" >
+			
 			<div class="Home1">
-				<p class="Trangtru">Trang Trủ</p>
+				<p class="Trangtru"><a href="#" onclick="reloadPage()">Trang Trủ</a></p>
 				<p class="course">Danh sách khóa học</p>
 			</div>
 					
 		</div>
 	</div>
 
-	<h1 id="menu_text">
+	<!--<h1 id="menu_text">
 		Welcome to the ABC University
-	</h1>
+	</h1>-->
 
 	<!-- BackGround -->
 	<div id="back_ground_wave">
@@ -47,5 +56,14 @@
 	     <div class="wave"></div>
  	</div>
 	<!-- BackGround -->
+<div id="slideshow">
+  <div class="slide-wrapper">
+    <div class="slide"><img src="https://d1vcqlflm6aitx.cloudfront.net/images/800x100p/1700030207-how-to-choose-the-right-university.webp"></div>
+    <div class="slide"><img src="https://file1.dangcongsan.vn/data/0/images/2021/09/10/phammai/dh.jpg"></div>
+       <div class="slide"><img src="https://unizone.edu.vn/wp-content/uploads/2019/11/sinh-vien-dai-hoc-bach-khoa-tp-hcm.jpg"></div>
+	   <div class="slide"><img src="https://nld.mediacdn.vn/291774122806476800/2023/11/6/chip-16992368640541636297906-16992403001991280085782.jpg"></div>
+	</div>
+</div>
+
 
 </body>

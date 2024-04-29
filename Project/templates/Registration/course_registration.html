@@ -16,24 +16,19 @@
 	<nav>
 		<a href="/student" class="menu_left">Trang chủ</a>
 		<a href="/student/my_course" class="menu_left">Khóa học của tôi</a>
-		<a href="/student/course_registration" class="menu_left">Đăng ký môn học</a>
+		<a href="/registration" class="menu_left">Đăng ký môn học</a>
 		<a href="/student/profile" class="menu_left">Hồ sơ và quản lý cá nhân</a>
 		<a href="/login" class="menu_right">Đăng xuất</a>
 	</nav>
 
-	<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
-
-	<ul id="myUL">
-	  <li><a href="#">Khoa Khoa học và kỹ thuật máy tính</a></li>
-	  <li><a href="#">....</a></li>
-
-	  <li><a href="#">...</a></li>
-	  <li><a href="#">...</a></li>
-
-	  <li><a href="#">....</a></li>
-	  <li><a href="#">...</a></li>
-	  <li><a href="#">...</a></li>
-	</ul>
+	<h2>Đăng ký môn học</h2>
+    <form method="post">
+		{% csrf_token %}
+		{{ form.as_p }}
+		<button type="submit">Đăng ký</button>
+	</form>
+	
+	
 
 	<script>
 	function myFunction() {
