@@ -1,13 +1,11 @@
 from django.shortcuts import render, redirect
 from django.views import View
-from Databases.models import Subject
 from .forms import RegistrationForm
 from .models import RegistrationCourse
 # Create your views here.
 
 class RegistrationStudent(View):
     def get(self, request):
-        subjects = Subject.objects.all()
         form = RegistrationForm()
         context = {
             "form": form,

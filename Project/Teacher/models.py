@@ -1,5 +1,6 @@
 from django.db import models
 from Login.models import MyUser
+from Databases.models import Department
 # Create your models here.
 class Degrees(models.Model):
     name = models.CharField(max_length=100)
@@ -11,7 +12,7 @@ class Degrees(models.Model):
     
 class Teacher(models.Model):
     name = models.CharField(max_length=30, null=True, blank=True)
-    department = models.CharField(max_length = 30, null = True, blank = True)
+    department = models.ForeignKey(Department, on_delete=models.CASCADE, null=True)
     username = models.OneToOneField(MyUser, on_delete=models.CASCADE, null = True)
     degrees = models.ManyToManyField(Degrees, blank=True)
     teaching_schedule = models.TextField(null=True, blank=True)
