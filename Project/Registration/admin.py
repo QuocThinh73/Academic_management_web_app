@@ -3,27 +3,30 @@ from .models import RegistrationCourse
 from Course.models import Course
 
 def create_course(modeladmin, request, queryset):
-    # Lấy tất cả các đăng ký được chọn
     registrations = queryset.all()
 
-    # Lấy môn học của đăng ký đầu tiên để tạo lớp học mới
+    # Kiểm tra
+    unique_subjects = registrations.values_list('subject', flat=True).distinct()
+    if len(unique_subjects) > 1:
+        modeladmin.message_user(request, "Chỉ có thể chọn các đăng ký cùng một môn học để tạo lớp.", level='ERROR')
+        return
+    
     first_registration = registrations.first()
     subject = first_registration.subject
 
-    # Tạo một lớp học mới với môn học tương ứng
+    # Tạo lớp mới
     course = Course.objects.create(name=f"{subject.name} Class", subject=subject)
 
-    # Gắn các sinh viên từ các đăng ký đã chọn vào lớp học mới
+    # Thêm sinh viên đã đăng kí môn vào lớp
     for registration in registrations:
         course.students.add(registration.student)
 
-    # Lưu thay đổi
     course.save()
 
-create_course.short_description = "Create Course from Registrations"
+create_course.short_description = "Tạo lớp học"
 
 class RegistrationCourseAdmin(admin.ModelAdmin):
-    list_display = ['student', 'subject']
+    list_display = ['subject', 'student']
     actions = [create_course]
 
 admin.site.register(RegistrationCourse, RegistrationCourseAdmin)
