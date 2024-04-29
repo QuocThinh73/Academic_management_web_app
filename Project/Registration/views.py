@@ -23,7 +23,6 @@ class RegistrationStudent(View):
 
             # Kiểm tra xem sinh viên đã đăng kí môn học này chưa
             if not RegistrationCourse.objects.filter(student=student, subject_id=subject_id).exists():
-                # Nếu chưa đăng kí, lưu thông tin đăng kí vào database
                 registration = form.save(commit=False)
                 registration.student = student
                 registration.save()

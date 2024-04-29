@@ -7,4 +7,4 @@ class RegistrationCourse(models.Model):
     subject = models.ForeignKey(Subject, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.subject.name
+        return self.subject.name + " - " + self.student.name
