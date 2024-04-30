@@ -27,7 +27,7 @@ class ListOfStudent(View):
             "course": course,
             "students": students,
         }
-        return render(request, "Course/list_of_student.html", context)
+        return render(request, "Course/CourseTeacher/list_of_student.html", context)
 
 class ImportScore(View):
     def get(self, request, course_id):
