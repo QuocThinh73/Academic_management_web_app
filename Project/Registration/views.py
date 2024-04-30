@@ -2,11 +2,13 @@ from django.shortcuts import render, redirect
 from django.views import View
 from .forms import RegistrationForm
 from .models import RegistrationCourse
+from Databases.models import Semester
 # Create your views here.
 
 class RegistrationStudent(View):
     def get(self, request):
-        form = RegistrationForm()
+        current_semester = Semester.objects.filter(is_registration=True).first()
+        form = RegistrationForm(initial={'semester': current_semester})
         context = {
             "form": form,
         }
@@ -15,6 +17,12 @@ class RegistrationStudent(View):
     def post(self, request):
         form = RegistrationForm(request.POST)
         if form.is_valid():
+            # Kiểm tra xem kỳ đăng ký có đúng là kỳ hiện tại không
+            current_semester = Semester.objects.filter(is_registration=True).first()
+            if form.cleaned_data['semester'] != current_semester:
+                # Nếu không phải kỳ hiện tại, không cho phép đăng ký
+                return redirect("Registration:registration_student")
+            
             # Lấy dữ liệu từ form
             subject_id = form.cleaned_data['subject']
             student = request.user.student

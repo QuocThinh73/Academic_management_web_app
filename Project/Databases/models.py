@@ -24,5 +24,7 @@ class Major(models.Model):
     
 class Semester(models.Model):
     semester_id = models.CharField(max_length=10, null=True, default="")
+    is_registration = models.BooleanField(null=True, default=False)
+    
     def __str__(self):
         return self.semester_id

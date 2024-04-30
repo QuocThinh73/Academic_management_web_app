@@ -17,8 +17,9 @@ def create_course(modeladmin, request, queryset):
     first_registration = registrations.first()
     subject = first_registration.subject
     semester = first_registration.semester
+    num_courses = Course.count_courses_upon_subject(subject, semester)
     # Tạo lớp mới
-    course = Course.objects.create(subject=subject, semester=semester)
+    course = Course.objects.create(subject=subject, semester=semester, id_course=num_courses + 1)
 
     # Thêm sinh viên đã đăng kí môn vào lớp
     for registration in registrations:
