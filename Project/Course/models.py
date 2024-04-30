@@ -15,4 +15,5 @@ class Course(models.Model):
         return cls.objects.filter(subject=subject, semester=semester).count()
 
     def __str__(self):
-        return self.subject.name + " HK" + self.semester.semester_id + " " + self.id_course
+        name = self.subject.name + " HK" + self.semester.semester_id + " " + self.id_course
+        return name

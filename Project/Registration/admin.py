@@ -1,6 +1,7 @@
 from django.contrib import admin
 from .models import RegistrationCourse
 from Course.models import Course
+from Grade.models import Grade
 
 def create_course(modeladmin, request, queryset):
     registrations = queryset.all()
@@ -25,7 +26,13 @@ def create_course(modeladmin, request, queryset):
     for registration in registrations:
         course.students.add(registration.student)
 
+
     course.save()
+
+    # Tạo Grade để quản lý điểm
+    for registration in registrations:
+        grade = Grade.objects.create(student=registration.student, course=course)
+        grade.save()
 
     # Xóa các đơn đăng ký sau khi tạo lớp thành công
     registrations.delete()

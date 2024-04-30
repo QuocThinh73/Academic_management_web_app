@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     "Course",
     "Databases",
     "Registration",
+    "Grade",
 ]
 
 MIDDLEWARE = [
