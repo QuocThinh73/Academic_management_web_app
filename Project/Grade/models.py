@@ -10,7 +10,6 @@ class Grade(models.Model):
     assignment_score = models.DecimalField(max_digits=5, decimal_places=2, null=True, blank=True)
     midterm_score = models.DecimalField(max_digits=5, decimal_places=2, null=True, blank=True)
     final_score = models.DecimalField(max_digits=5, decimal_places=2, null=True, blank=True)
-    # Các trường khác tùy thuộc vào cách bạn muốn quản lý điểm
 
     def __str__(self):
         name = self.course.subject.name + " HK" + self.course.semester.semester_id
