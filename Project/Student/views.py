@@ -3,7 +3,6 @@ from django.views import View
 from .models import Student
 from Course.models import Course
 from Grade.models import Grade
-
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 class StudentView(View):

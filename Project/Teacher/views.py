@@ -1,25 +1,32 @@
 from django.shortcuts import render
 from django.views import View
+from django.contrib.auth.mixins import LoginRequiredMixin
+from Course.models import Course
 
 # Create your views here.
 
 class TeacherView(View):
     def get(self, request):
-        return render(request, "teacher/teacher.html")
+        return render(request, "Teacher/teacher.html")
 
 class AssessmentView(View):
     def get(self, request):
-        return render(request, "teacher/assessment.html")
+        return render(request, "Teacher/assessment.html")
 
 class ClassManageView(View):
     def get(self, request):
-        return render(request, "teacher/class_manage.html")
+        teacher = request.user.teacher
+        courses = Course.objects.filter(teacher=teacher)
+        context = {
+            "courses": courses
+        }
+        return render(request, "Teacher/class_manage.html", context)
     
 class ImportScoreView(View):
     def get(self, request):
-        return render(request, "teacher/import_score.html")
+        return render(request, "Teacher/import_score.html")
     
 class UploadView(View):
     def get(self, request):
-        return render(request, "teacher/upload.html")
+        return render(request, "Teacher/upload.html")
     
