@@ -55,22 +55,28 @@
 						<th>Bài tập</th>
 						<th>Giữa kì</th>
 						<th>Cuối kì</th>
+						<th>Tổng kết</th>
 					</tr>
 					{% for grade in grades %}
 						<tr>
 							<td>{{ grade.course.subject }}</td>
-							{% if grade.homework is not None %}
-            				<td>{{ grade.homework }}</td>
+							{% if grade.assignment_score is not None %}
+            				<td>{{ grade.assignment_score }}</td>
             				{% else %}
             				<td></td>
             				{% endif %}
-							{% if grade.midterm_exam is not None %}
-							<td>{{ grade.midterm_exam }}</td>
+							{% if grade.midterm_score is not None %}
+							<td>{{ grade.midterm_score }}</td>
 							{% else %}
 							<td></td>
 							{% endif %}
-							{% if grade.final_exam is not None %}
-							<td>{{ grade.final_exam }}</td>
+							{% if grade.final_score is not None %}
+							<td>{{ grade.final_score }}</td>
+							{% else %}
+							<td></td>
+							{% endif %}
+							{% if grade.assignment_score and grade.midterm_score and grade.final_score %}
+							<td>{{ grade.average_score }}</td>
 							{% else %}
 							<td></td>
 							{% endif %}
