@@ -34,6 +34,8 @@ nav a:hover {
     float: right;
 }
 
+
+
 #theme1 {
     background-color: #f1f1f1;
 }
@@ -104,6 +106,26 @@ nav a:hover {
     flex: 33%;
 }
 
+.course_img {
+    width:60%;
+    height:60%;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: opacity 0.5s;
+}
+
+.course_img:hover {
+    opacity: 0.85;
+}
+
+.course_title {
+    cursor: pointer;
+    transition: opacity 0.5s;
+}
+
+.course_title {
+    opacity: 0.85;
+}
 
 .course_math_img{
     width:80%;
@@ -227,13 +249,13 @@ table th {
 /*Styling the table*/
 
 #left_side {
-    flex: 30%;
+    flex: 40%;
     background-color: #f1f1f1;
     padding: 10px 20px;
 }
 
 #right_side {
-    flex: 70%;
+    flex: 60%;
     padding: 10px 20px;
 }
 
@@ -252,7 +274,7 @@ table th {
   background-image: url('../assets/search.png'); /* Add a search icon to input */
   background-position: 10px 12px; /* Position the search icon */
   background-repeat: no-repeat; /* Do not repeat the icon image */
-  width: 100%; /* Full-width */
+  width: 84%; /* Full-width */
   font-size: 16px; /* Increase font-size */
   padding: 12px 20px 12px 40px; /* Add some padding */
   border: 1px solid #ddd; /* Add a grey border */
@@ -321,3 +343,30 @@ table th {
   color: white;
 }
 /*class_manage*/
+
+/*accordion*/
+/*.accordion {
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  transition: 0.4s;
+}
+
+.active, .accordion:hover {
+  background-color: #ccc; 
+}
+
+.panel {
+  padding: 0 18px;
+  display: none;
+  background-color: white;
+  overflow: hidden;
+}*/
+/*accordion*/
+

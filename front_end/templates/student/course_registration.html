@@ -8,7 +8,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../../static/css/file.css">
 
-	<title>Trang chủ</title>
+	<title>Đăng ký môn học</title>
 </head>
 <body>
 	<nav>
@@ -19,29 +19,76 @@
 		<a href="../home/index.html" class="menu_right">Đăng xuất</a>
 	</nav>
 
-	<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
+	<div id="flex_container">
+		<div id="left_side">
+			<h2>Đăng ký môn học</h2>
+			<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Tìm kiếm tên môn học...">
 
-	<ul id="myUL">
-	  <li><a href="#">Khoa Khoa học máy tính</a></li>
-	  <li><a href="#">Kỹ thuật máy tính</a></li>
-	  <li><a href="#">Kỹ thuật dầu khí</a></li>
-
-	  <li><a href="#">Kỹ thuật hóa học</a></li>
-	  <li><a href="#">...</a></li>
-
-	  <li><a href="#">....</a></li>
-	  <li><a href="#">...</a></li>
-	  <li><a href="#">...</a></li>
-	  <li><a href="#">....</a></li>
-
-	  <li><a href="#">...</a></li>
-	  <li><a href="#">...</a></li>
-
-	  <li><a href="#">....</a></li>
-	  <li><a href="#">...</a></li>
-	  <li><a href="#">...</a></li>
-	</ul>
+			<ul id="myUL">
+			  <li><a href="#">MT1003 Giải tích 1</a></li>
+			  <li><a href="#">PH1003 Vật lý 1</a></li>
+			  <li><a href="#">CO1005 Nhập môn điện toán</a></li>
+			  <li><a href="#">CO1023 Hệ thống số</a></li>
+			  <li><a href="#">MT1005 Giải tích 2</a></li>
+			  <li><a href="#">MT1007 Đại số tuyến tính</a></li>
+			  <li><a href="#">CO1007 Cấu trúc rời rạc cho khoa học máy tính</a></li>
+			  <li><a href="#">CO1027 Kỹ thuật lập trình</a></li>
+			  <li><a href="#">PH1007 Thí nghiệm vật lý</a></li>
+			  <li><a href="#">SP1031 Triết học Mác - Lênin</a></li>
+			  <li><a href="#">CO2007 Kiến trúc máy tính</a></li>
+			  <li><a href="#">CO2011 Mô hình hóa toán học</a></li>
+			  <li><a href="#">CO2003 Cấu trúc dữ liệu và giải thuật</a></li>
+			  <li><a href="#">SP1033 Kinh tế chính trị Mác - Lênin</a></li>
+			  <li><a href="#">CO2017 Hệ điều hành</a></li>
+			  <li><a href="#">CO2039 Lập trình nâng cao</a></li>
+			  <li><a href="#">MT2013 Xác suất thống kê</a></li>
+			  <li><a href="#">SP1035 Chủ nghĩa xã hội khoa học</a></li>
+			  <li><a href="#">CO3093 Mạng máy tính</a></li>
+			  <li><a href="#">CH1003 Hóa đại cương</a></li>
+			  <li><a href="#">CO2013 Hệ cơ sở dữ liệu</a></li>
+			  <li><a href="#">CO3001 Công nghệ phần mềm</a></li>
+			  <li><a href="#">SP1039 Lịch sử đảng cộng sản Việt Nam</a></li>
+			  <li><a href="#">CO3029 Khai phá dữ liệu</a></li>
+			  <li><a href="#">CO3061 Nhập môn trí tuệ nhân tạo</a></li>
+			  <li><a href="#">SP1037 Tư tưởng Hồ Chí Minh</a></li>
+			  <li><a href="#">CO3005 Nguyên lý ngôn ngữ lập trình</a></li>
+			  <li><a href="#">SP1007 Pháp luật đại cương Việt Nam</a></li>
+			  <!-- <li><a href="#"></a></li> -->
+			</ul>
+		</div>
+		<div id="right_side">
+			<h2>Kết quả đăng ký</h2>
+			<div id="course_container">
+				<div class="course_item">
+					<img class="course_img" src="../../static/assets/course.png"/>
+					<div class="course_title">MT1003 Giải tích 1</div>
+					<div class="course_desc">Lớp: CN01 - Giảng viên: Nguyễn Xuân Anh</div>
+				</div>
+				<div class="course_item">
+					<img class="course_img" src="../../static/assets/course.png"/>
+					<div class="course_title">CO1005 Nhập môn điện toán</div>
+					<div class="course_desc">Lớp: CN01 - Giảng viên: Nguyễn Hứa Phùng</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
 	
 	<script src="../../static/js/course_registration.js"></script>
+	<script>
+		var acc = document.getElementsByClassName("accordion");
+		var i;
+
+		for (i = 0; i < acc.length; i++) {
+		  acc[i].addEventListener("click", function() {
+		    this.classList.toggle("active");
+		    var panel = this.nextElementSibling;
+		    if (panel.style.display === "block") {
+		      panel.style.display = "none";
+		    } else {
+		      panel.style.display = "block";
+		    }
+		  });
+		}
+	</script>
 </body>
