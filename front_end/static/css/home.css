@@ -1,4 +1,4 @@
-nav {
+/*nav {
 	background-color: #023A3C;
 	overflow: hidden;
     font-size:21px;
@@ -17,8 +17,32 @@ nav a {
 nav a:hover {
 	background-color: #CAD4CB;
 	color: black;
+}*/
+body {font-family: Arial, Helvetica, sans-serif;}
+
+* {box-sizing: border-box;}
+
+* {
+    margin: 0px;
 }
 
+nav {
+    background-color: #023A3C;
+    overflow: hidden;
+}
+
+nav a {
+    color: white;
+    padding: 24px 36px;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+}
+
+nav a:hover {
+    background-color: #CAD4CB;
+    color: black;
+}
 
 #menu_text {
 	text-align: center;
@@ -34,9 +58,13 @@ nav a:hover {
 	float: right;
 }
 
+#overview {
+    padding: 10px 20px;
+}
+
 
 /* BackGround*/
-body {
+/*body {
     margin: auto;
     font-family: -apple-system, BlinkMacSystemFont, sans-serif;
     overflow: auto;
@@ -104,7 +132,7 @@ body {
     100% {
         transform: translateX(1);
     }
-}
+}*/
 /* BackGround*/
 .Menu {
 background-color: #023A3C;
