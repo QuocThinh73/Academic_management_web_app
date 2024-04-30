@@ -45,17 +45,16 @@
   	<br>
   	<div id="theme2">
   	<h2 id="course"></h2>
+	  	{% for semester, courses in courses_by_semester.items %}
+			<h2 id="course">Học kỳ {{ semester }}</h2>
 			<div id="course_container">
 				{% for course in courses %}
-        		<div class="course_item">
-            	<!-- Hiển thị thông tin của từng khóa học -->
-            	<div class="course_title">{{ course.name }}</div>
-            	<!-- Hiển thị thông tin khác nếu cần -->
-            	<!-- Ví dụ: -->
-            	<!-- <div class="course_desc">{{ course.description }}</div> -->
-        		</div>
-        		{% endfor %}
+				<div class="course_item">
+					<div class="course_title">{{ course }}</div>
+				</div>
+				{% endfor %}
 			</div>
+		{% endfor %}
   	</div>
 	
 

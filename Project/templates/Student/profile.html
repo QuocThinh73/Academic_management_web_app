@@ -47,92 +47,36 @@
 		</div>
 		<div id="right_side">
 			<h3>Điểm số</h3>
-			<table>
-				<tr>
-					<th rowspan="2"></th>
-					<th rowspan="2">Môn học</th>
-					<th colspan="3">Điểm</th>
-				</tr>
-				<tr>
-					<th>KT</th>
-					<th>BTL</th>
-					<th>Thi</th>
-				</tr>
-				<tr>
-					<th rowspan="6">HK231</th>
-					<td>Tiếng nhật 3</td>
-					<td>0</td>
-					<td>N/a</td>
-					<td>10</td>
-				</tr>
-				<tr>
-					<td>Dsa</td>
-					<td>1</td>
-					<td>1</td>
-					<td>10</td>
-				</tr>
-				<tr>
-					<td>Giải tích 3</td>
-					<td>10</td>
-					<td>9</td>
-					<td>1.5</td>
-				</tr>
-				<tr>
-					<td>Giải tích 3</td>
-					<td>10</td>
-					<td>9</td>
-					<td>1.5</td>
-				</tr>
-				<tr>
-					<td>Giải tích 3</td>
-					<td>10</td>
-					<td>9</td>
-					<td>1.5</td>
-				</tr>
-				<tr>
-					<td>Giải tích 3</td>
-					<td>10</td>
-					<td>9</td>
-					<td>1.5</td>
-				</tr>
-				<tr>
-					<th rowspan="6">HK232</th>
-					<td>Tiếng nhật 3</td>
-					<td>0</td>
-					<td>N/a</td>
-					<td>10</td>
-				</tr>
-				<tr>
-					<td>Dsa</td>
-					<td>1</td>
-					<td>1</td>
-					<td>10</td>
-				</tr>
-				<tr>
-					<td>Giải tích 3</td>
-					<td>10</td>
-					<td>9</td>
-					<td>1.5</td>
-				</tr>
-				<tr>
-					<td>Giải tích 3</td>
-					<td>10</td>
-					<td>9</td>
-					<td>1.5</td>
-				</tr>
-				<tr>
-					<td>Giải tích 3</td>
-					<td>10</td>
-					<td>9</td>
-					<td>1.5</td>
-				</tr>
-				<tr>
-					<td>Giải tích 3</td>
-					<td>10</td>
-					<td>9</td>
-					<td>1.5</td>
-				</tr>
-			</table>
+			{% for semester_id, grades in grades_by_semester.items %}
+				<h3>HK{{ semester_id }}</h3>
+				<table>
+					<tr>
+						<th>Môn học</th>
+						<th>Bài tập</th>
+						<th>Giữa kì</th>
+						<th>Cuối kì</th>
+					</tr>
+					{% for grade in grades %}
+						<tr>
+							<td>{{ grade.course.subject }}</td>
+							{% if grade.homework is not None %}
+            				<td>{{ grade.homework }}</td>
+            				{% else %}
+            				<td></td>
+            				{% endif %}
+							{% if grade.midterm_exam is not None %}
+							<td>{{ grade.midterm_exam }}</td>
+							{% else %}
+							<td></td>
+							{% endif %}
+							{% if grade.final_exam is not None %}
+							<td>{{ grade.final_exam }}</td>
+							{% else %}
+							<td></td>
+							{% endif %}
+					{% endfor %}
+				</table>
+			{% endfor %}
 		</div>
 	</div>
 
