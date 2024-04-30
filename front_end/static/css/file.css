@@ -229,6 +229,7 @@ footer > a {
 
     #flex_container {
         flex-wrap: wrap;
+        background-color: #f1f1f1;
     }
 
     .course_item {
@@ -264,6 +265,7 @@ table {
   border-spacing: 0;
   width: 100%;
   border: 1px solid #ddd;
+  background-color: white;
 }
 th {
     background-color: #f2f2f2;
@@ -476,5 +478,77 @@ hr {
   .cancelbtn, .signupbtn {
      width: 100%;
   }
+}
+
+#regForm {
+  background-color: #ffffff;
+  margin: 100px auto;
+  font-family: Raleway;
+  padding: 40px;
+  width: 70%;
+  min-width: 300px;
+}
+
+/* Hide all steps by default: */
+.tab {
+  display: none;
+}
+
+button {
+  background-color: #04AA6D;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 17px;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+#prevBtn {
+  background-color: #bbbbbb;
+}
+
+/* Make circles that indicate the steps of the form: */
+.step {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbbbbb;
+  border: none;  
+  border-radius: 50%;
+  display: inline-block;
+  opacity: 0.5;
+}
+
+.step.active {
+  opacity: 1;
+}
+
+/* Mark the steps that are finished and valid: */
+.step.finish {
+  background-color: #04AA6D;
+}
+#subject_title {
+    background-color: #023A3C;
+    color: white;
+}
+#semester_font {
+  font-family: 'Arial', sans-serif;
+  color: #333333;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+#id_semester {
+  font-family: 'Verdana', sans-serif;
+  color: #555555;
+  font-size: 14px;  
+  padding: 5px;
+  margin: 10px 0;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
 }
 /*course_registration*/

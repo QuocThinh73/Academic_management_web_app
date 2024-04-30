@@ -20,114 +20,111 @@
 	</nav>
 
 	<div id="flex_container">
-		<div id="left_side">
-			<h2>Đăng ký môn học</h2>
+		<form1 id="regForm" action="/action_page.php">
+		  <h1 class="menu_text">Đăng ký môn học</h1>
+		  <!-- One "tab" for each step in the form: -->
+		  <div class="tab">
+		  	<h2>Chọn đợt đăng ký </h2>
+		    <p>
+		       <label id="semester_font" for="id_semester">Semester:</label>
+		       <select name="semester" required id="id_semester">
+		         <option value="">---------</option>
+		         <option value="1" selected>232</option>
+		         <option value="2">231</option>
+		         <option value="3">223</option>
+		         <option value="4">222</option>
+		         <option value="5">221</option>
+		    	</select>
+			</p>
+			<button type="submit">Chọn</button>
+		  </div>
+  		<div class="tab">
+		<!-- <div id="left_side"> -->
+			<h2>Chọn môn đăng ký</h2>
 			<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Tìm kiếm tên môn học...">
+			<!--Môn giải tích 1-->
 			<div onclick="document.getElementById('id01').style.display='block'" style="width:auto;">
 				<ul id="myUL">
-			 		 <li><a href="#giai_tich_1">MT1003 Giải tích 1</a></li>
+			 		 <li><a >MT1003 Giải tích 1</a></li>
 				</ul>
 			</div>
 			<div id="id01" class="modal">
-			 <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-			 <form class="modal-content" action="/action_page.php">
-			  <div class="container_box">
-			    <div>
-			    	<h3>MT1003 Giải tích 1</h3> 
-			        <h3>3</h3>
-			    </div>
-			    <table>
-			  <tr>
-			    <th>Nhóm lớp</th>
-			    <th colspan="2">Giảng viên</th>
-			    <th>#</th>
-			  </tr>
-			  <tr>
-			    <td>CN01</td>
-			    <td>Nguyễn Xuân Anh</td>
-			    <td></td>
-			    <td><button type="submit">Chọn</button></td>
-			  </tr>
-			  <tr>
-			    <td>Thứ</td>
-			    <td>Tiết</td>
-			    <td>Phòng</td>
-			    <td>Tuần học</td>
-			  </tr>
-			  <tr>
-			    <td>Thứ 2</td>
-			    <td>- - 3 4 - - - - - - - - - - - -</td>
-			    <td>A4 - 311</td>
-			    <td>1234-6789---------------------</td>
-			  </tr>
-			</table>
-			<hr>
-			<table>
-			  <tr>
-			    <th>Nhóm lớp</th>
-			    <th colspan="2">Giảng viên</th>
-			    <th>#</th>
-			  </tr>
-			  <tr>
-			    <td>CN02</td>
-			    <td>Nguyễn Hữu Hiệp</td>
-			    <td></td>
-			    <td><button type="submit">Chọn</button></td>
-			  </tr>
-			  <tr>
-			    <td>Thứ</td>
-			    <td>Tiết</td>
-			    <td>Phòng</td>
-			    <td>Tuần học</td>
-			  </tr>
-			  <tr>
-			    <td>Thứ 3</td>
-			    <td>- - 3 4 5 - - - - - - - - - - -</td>
-			    <td>B4 - 402</td>
-			    <td>1234-6789---------------------</td>
-			  </tr>
-			</table>
-      
-       	<div class="clearfix">
-        <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-        <button type="submit" class="okbtn">Ok</button>
-      </div>
-    </div>
-  </form>
-</div>
+				 <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+				 <form2 class="modal-content" action="/action_page.php">
+					 <div class="container_box">
+					    <div>
+					    	<h3 id="subject_title">MT1003 Giải tích 1</h3> 
+					        
+					    </div>
+						    <table>
+							  <tr>
+							    <th>Nhóm lớp</th>
+							    <th colspan="2">Giảng viên</th>
+							    <th>#</th>
+							  </tr>
+							  <tr>
+							    <td>CN01</td>
+							    <td>Nguyễn Xuân Anh</td>
+							    <td></td>
+							    <td><button type="submit">Chọn</button></td>
+							  </tr>
+							  <tr>
+							    <td>Thứ</td>
+							    <td>Tiết</td>
+							    <td>Phòng</td>
+							    <td>Tuần học</td>
+							  </tr>
+							  <tr>
+							    <td>Thứ 2</td>
+							    <td>- - 3 4 - - - - - - - - - - - -</td>
+							    <td>A4 - 311</td>
+							    <td>1234-6789---------------------</td>
+							  </tr>
+							</table>
 
-			<!-- <ul id="myUL">
-			  <li><a href="#">MT1003 Giải tích 1</a></li>
-			  <li><a href="#">CO1005 Nhập môn điện toán</a></li>
-			  <li><a href="#">CO1023 Hệ thống số</a></li>
-			  <li><a href="#">MT1005 Giải tích 2</a></li>
-			  <li><a href="#">MT1007 Đại số tuyến tính</a></li>
-			  <li><a href="#">CO1007 Cấu trúc rời rạc cho khoa học máy tính</a></li>
-			  <li><a href="#">CO1027 Kỹ thuật lập trình</a></li>
-			  <li><a href="#">PH1007 Thí nghiệm vật lý</a></li>
-			  <li><a href="#">SP1031 Triết học Mác - Lênin</a></li>
-			  <li><a href="#">CO2007 Kiến trúc máy tính</a></li>
-			  <li><a href="#">CO2011 Mô hình hóa toán học</a></li>
-			  <li><a href="#">CO2003 Cấu trúc dữ liệu và giải thuật</a></li>
-			  <li><a href="#">SP1033 Kinh tế chính trị Mác - Lênin</a></li>
-			  <li><a href="#">CO2017 Hệ điều hành</a></li>
-			  <li><a href="#">CO2039 Lập trình nâng cao</a></li>
-			  <li><a href="#">MT2013 Xác suất thống kê</a></li>
-			  <li><a href="#">SP1035 Chủ nghĩa xã hội khoa học</a></li>
-			  <li><a href="#">CO3093 Mạng máy tính</a></li>
-			  <li><a href="#">CH1003 Hóa đại cương</a></li>
-			  <li><a href="#">CO2013 Hệ cơ sở dữ liệu</a></li>
-			  <li><a href="#">CO3001 Công nghệ phần mềm</a></li>
-			  <li><a href="#">SP1039 Lịch sử đảng cộng sản Việt Nam</a></li>
-			  <li><a href="#">CO3029 Khai phá dữ liệu</a></li>
-			  <li><a href="#">CO3061 Nhập môn trí tuệ nhân tạo</a></li>
-			  <li><a href="#">SP1037 Tư tưởng Hồ Chí Minh</a></li>
-			  <li><a href="#">CO3005 Nguyên lý ngôn ngữ lập trình</a></li>
-			  <li><a href="#">SP1007 Pháp luật đại cương Việt Nam</a></li>
-			  <li><a href="#"></a></li>
-			</ul> -->
-		</div>
-		<div id="right_side">
+							<!-- <hr> -->
+
+							<table>
+							  <tr>
+							    <th>Nhóm lớp</th>
+							    <th colspan="2">Giảng viên</th>
+							    <th>#</th>
+							  </tr>
+							  <tr>
+							    <td>CN02</td>
+							    <td>Nguyễn Hữu Hiệp</td>
+							    <td></td>
+							    <td><button type="submit">Chọn</button></td>
+							  </tr>
+							  <tr>
+							    <td>Thứ</td>
+							    <td>Tiết</td>
+							    <td>Phòng</td>
+							    <td>Tuần học</td>
+							  </tr>
+							  <tr>
+							    <td>Thứ 3</td>
+							    <td>- - 3 4 5 - - - - - - - - - - -</td>
+							    <td>B4 - 402</td>
+							    <td>1234-6789---------------------</td>
+							  </tr>
+							</table>
+		      
+		       				<div class="clearfix">
+		        			<button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+		        			<button type="submit" class="okbtn">Ok</button>
+		      			</div>
+		    		</div>
+		  		</form2>
+			</div>
+			<!--Môn giải tích 1-->
+
+			
+		<!-- </div> -->
+ 		</div>
+  
+  		<div class="tab">
+		<!-- <div id="right_side"> -->
 			<h2>Kết quả đăng ký</h2>
 			<div id="course_container">
 				<div class="course_item">
@@ -141,7 +138,23 @@
 					<div class="course_desc">Lớp: CN01 - Giảng viên: Nguyễn Hứa Phùng</div>
 				</div>
 			</div>
-		</div>
+		<!-- </div> -->
+  		</div>
+  
+		  <div style="overflow:auto;">
+		    <div style="float:right;">
+		      <button type="button" id="prevBtn" onclick="nextPrev(-1)">Quay lại</button>
+		      <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+		    </div>
+		  </div>
+ 
+  		<!-- Circles which indicates the steps of the form: -->
+		  <div style="text-align:center;margin-top:40px;">
+		    <span class="step"></span>
+		    <span class="step"></span>
+		    <span class="step"></span>
+		  </div>
+		</form1>
 	</div>
 
 	
