@@ -1,13 +1,20 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Course Detail - Teacher View</title>
+    <link rel="stylesheet" href="{% static 'css/course.css' %}">
 </head>
 <body>
-    <h1>Course Detail - Teacher View</h1>=
+    <h1>{{ course }}</h1>
     <p>Môn học: {{ course.subject.name }}</p>
     <p>Học kì: {{ course.semester.semester_id }}</p>
+    <div>
+        <a href="{% url 'Course:ListOfStudent' course.id %}" class="btn">Xem danh sách sinh viên</a>
+        <a href="{% url 'Course:ImportScore' course.id %}" class="btn">Nhập điểm cho sinh viên</a>
+    </div>
 </body>
 </html>
