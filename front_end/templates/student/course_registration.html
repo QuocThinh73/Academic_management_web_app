@@ -23,10 +23,81 @@
 		<div id="left_side">
 			<h2>Đăng ký môn học</h2>
 			<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Tìm kiếm tên môn học...">
+			<div onclick="document.getElementById('id01').style.display='block'" style="width:auto;">
+				<ul id="myUL">
+			 		 <li><a href="#giai_tich_1">MT1003 Giải tích 1</a></li>
+				</ul>
+			</div>
+			<div id="id01" class="modal">
+			 <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+			 <form class="modal-content" action="/action_page.php">
+			  <div class="container_box">
+			    <div>
+			    	<h3>MT1003 Giải tích 1</h3> 
+			        <h3>3</h3>
+			    </div>
+			    <table>
+			  <tr>
+			    <th>Nhóm lớp</th>
+			    <th colspan="2">Giảng viên</th>
+			    <th>#</th>
+			  </tr>
+			  <tr>
+			    <td>CN01</td>
+			    <td>Nguyễn Xuân Anh</td>
+			    <td></td>
+			    <td><button type="submit">Chọn</button></td>
+			  </tr>
+			  <tr>
+			    <td>Thứ</td>
+			    <td>Tiết</td>
+			    <td>Phòng</td>
+			    <td>Tuần học</td>
+			  </tr>
+			  <tr>
+			    <td>Thứ 2</td>
+			    <td>- - 3 4 - - - - - - - - - - - -</td>
+			    <td>A4 - 311</td>
+			    <td>1234-6789---------------------</td>
+			  </tr>
+			</table>
+			<hr>
+			<table>
+			  <tr>
+			    <th>Nhóm lớp</th>
+			    <th colspan="2">Giảng viên</th>
+			    <th>#</th>
+			  </tr>
+			  <tr>
+			    <td>CN02</td>
+			    <td>Nguyễn Hữu Hiệp</td>
+			    <td></td>
+			    <td><button type="submit">Chọn</button></td>
+			  </tr>
+			  <tr>
+			    <td>Thứ</td>
+			    <td>Tiết</td>
+			    <td>Phòng</td>
+			    <td>Tuần học</td>
+			  </tr>
+			  <tr>
+			    <td>Thứ 3</td>
+			    <td>- - 3 4 5 - - - - - - - - - - -</td>
+			    <td>B4 - 402</td>
+			    <td>1234-6789---------------------</td>
+			  </tr>
+			</table>
+      
+       	<div class="clearfix">
+        <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+        <button type="submit" class="okbtn">Ok</button>
+      </div>
+    </div>
+  </form>
+</div>
 
-			<ul id="myUL">
+			<!-- <ul id="myUL">
 			  <li><a href="#">MT1003 Giải tích 1</a></li>
-			  <li><a href="#">PH1003 Vật lý 1</a></li>
 			  <li><a href="#">CO1005 Nhập môn điện toán</a></li>
 			  <li><a href="#">CO1023 Hệ thống số</a></li>
 			  <li><a href="#">MT1005 Giải tích 2</a></li>
@@ -53,8 +124,8 @@
 			  <li><a href="#">SP1037 Tư tưởng Hồ Chí Minh</a></li>
 			  <li><a href="#">CO3005 Nguyên lý ngôn ngữ lập trình</a></li>
 			  <li><a href="#">SP1007 Pháp luật đại cương Việt Nam</a></li>
-			  <!-- <li><a href="#"></a></li> -->
-			</ul>
+			  <li><a href="#"></a></li>
+			</ul> -->
 		</div>
 		<div id="right_side">
 			<h2>Kết quả đăng ký</h2>
@@ -75,20 +146,4 @@
 
 	
 	<script src="../../static/js/course_registration.js"></script>
-	<script>
-		var acc = document.getElementsByClassName("accordion");
-		var i;
-
-		for (i = 0; i < acc.length; i++) {
-		  acc[i].addEventListener("click", function() {
-		    this.classList.toggle("active");
-		    var panel = this.nextElementSibling;
-		    if (panel.style.display === "block") {
-		      panel.style.display = "none";
-		    } else {
-		      panel.style.display = "block";
-		    }
-		  });
-		}
-	</script>
 </body>
