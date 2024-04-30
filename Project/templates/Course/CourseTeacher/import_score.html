@@ -5,32 +5,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Danh sách sinh viên</title>
+    <title>Import Scores</title>
     <link rel="stylesheet" href="{% static 'css/course.css' %}">
 </head>
 <body>
-    <div class="container">
-        <h1>Danh sách sinh viên trong lớp học "{{ course.subject.name }}"</h1>
-        <table class="student-table">
+    <h1>Import Scores</h1>
+    <h2>{{ course.subject.name }} - HK{{ course.semester.semester_id }}</h2>
+    <form method="post">
+        {% csrf_token %}
+        <table>
             <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>Họ và tên</th>
-                    <th>Email</th>
-                    <th>Điểm</th>
+                    <th>Student Name</th>
+                    <th>Assignment Score</th>
+                    <th>Midterm Score</th>
+                    <th>Final Score</th>
                 </tr>
             </thead>
             <tbody>
                 {% for student in students %}
                 <tr>
-                    <td>{{ student.id }}</td>
-                    <td>{{ student.full_name }}</td>
-                    <td>{{ student.email }}</td>
-                    <td>{{ student.grade }}</td>
+                    <td>{{ student.name }}</td>
+                    <td><input type="number" name="assignment_{{ student.id }}" min="0" max="10" step="0.01"></td>
+                    <td><input type="number" name="midterm_{{ student.id }}" min="0" max="10" step="0.01"></td>
+                    <td><input type="number" name="final_{{ student.id }}" min="0" max="10" step="0.01"></td>
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
-    </div>
+        <button type="submit">Submit</button>
+    </form>
 </body>
 </html>

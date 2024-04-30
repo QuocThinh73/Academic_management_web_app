@@ -1,6 +1,5 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views import View
-from django.contrib.auth.mixins import LoginRequiredMixin
 from Course.models import Course
 
 # Create your views here.
@@ -24,7 +23,7 @@ class ClassManageView(View):
     
 class ImportScoreView(View):
     def get(self, request):
-        return render(request, "Teacher/import_score.html")
+        return redirect("Grade:")
     
 class UploadView(View):
     def get(self, request):
