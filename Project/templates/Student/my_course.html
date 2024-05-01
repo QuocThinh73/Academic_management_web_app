@@ -49,9 +49,9 @@
 			<h2 id="course">Học kỳ {{ semester }}</h2>
 			<div id="course_container">
 				{% for course in courses %}
-				<div class="course_item">
+				<a href="{% url 'Course:CourseStudent' course.id %}" class="course_item">
 					<div class="course_title">{{ course }}</div>
-				</div>
+				</a>
 				{% endfor %}
 			</div>
 		{% endfor %}
