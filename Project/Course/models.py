@@ -10,7 +10,6 @@ class Course(models.Model):
     semester = models.ForeignKey(Semester, on_delete=models.CASCADE, null=True)
     id_course = models.CharField(max_length=3, null=True)
     
-
     @classmethod
     def count_courses_upon_subject(cls, subject, semester):
         return cls.objects.filter(subject=subject, semester=semester).count()

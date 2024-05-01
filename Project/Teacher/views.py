@@ -21,10 +21,6 @@ class ClassManageView(View):
         }
         return render(request, "Teacher/class_manage.html", context)
     
-class ImportScoreView(View):
-    def get(self, request):
-        return redirect("Grade:")
-    
 class UploadView(View):
     def get(self, request):
         return render(request, "Teacher/upload.html")
