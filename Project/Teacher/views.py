@@ -13,13 +13,6 @@ class TeacherView(RoleRequiredMixin, View):
     def get(self, request):
         return render(request, "Teacher/teacher.html")
 
-class AssessmentView(RoleRequiredMixin, View):
-    def has_permission(self, user):
-        return user.user_type == 'Teacher'
-
-    def get(self, request):
-        return render(request, "Teacher/assessment.html")
-
 class ClassManageView(RoleRequiredMixin, View):
     def has_permission(self, user):
         return user.user_type == 'Teacher'

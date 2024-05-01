@@ -37,3 +37,10 @@ class ListOfStudent(RoleRequiredMixin, View):
             "students": students,
         }
         return render(request, "Course/CourseTeacher/list_of_student.html", context)
+    
+class Assessment(RoleRequiredMixin, View):
+    def has_permission(self, user):
+        return user.user_type == 'Teacher'
+
+    def get(self, request, course_id):
+        return render(request, "Course/CourseTeacher/assessment.html")
