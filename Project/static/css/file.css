@@ -1,3 +1,7 @@
+body {font-family: Arial, Helvetica, sans-serif;}
+
+* {box-sizing: border-box;}
+
 * {
     margin: 0px;
 }
@@ -8,7 +12,7 @@ nav {
 
 nav a {
     color: white;
-    padding: 14px 20px;
+    padding: 24px 36px;
     text-align: center;
     text-decoration: none;
     display: block;
@@ -19,10 +23,11 @@ nav a:hover {
     color: black;
 }
 
-#menu_text {
+.menu_text {
     text-align: center;
     padding: 30px;
     margin: 0;
+    font-size: 40px;
 }
 
 .menu_left {
@@ -31,6 +36,17 @@ nav a:hover {
 
 .menu_right {
     float: right;
+}
+
+footer {
+    background-color: #023A3C;
+    color: white;
+    padding: 20px 40px;
+    text-align: center;
+}
+
+footer > a {
+    color: white;
 }
 
 #theme1 {
@@ -50,7 +66,8 @@ nav a:hover {
 /*Search Bar*/
     .search-container {
 /*        float: left;*/
-          text-align: center;  
+          text-align: center;
+
 
     }
 
@@ -64,7 +81,7 @@ nav a:hover {
     .search-container button {
 /*        float: left;*/
         padding: 6px 10px;
-        margin: 8px;
+        margin: 10px;
 /*        margin-right: 16px;*/
         background: #ddd;
         font-size: 17px;
@@ -103,7 +120,87 @@ nav a:hover {
 }
 
 .course_img {
-    width: 90%;
+    width:60%;
+    height:60%;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: opacity 0.5s;
+}
+
+.course_img:hover {
+    opacity: 0.85;
+}
+
+.course_title {
+    cursor: pointer;
+    transition: opacity 0.5s;
+}
+
+.course_title {
+    opacity: 0.85;
+}
+
+.course_math_img{
+    width:80%;
+    height:80%;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: opacity 0.5s;
+
+}
+.course_math_img:hover{
+    opacity: 0.85;
+}
+.course_web_img{
+    width:80%;
+    height:80%;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: opacity 0.5s;
+}
+.course_web_img:hover{
+    opacity: 0.85;
+}
+.course_python_img{
+    width:80%;
+    height:80%;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: opacity 0.5s;
+}
+.course_python_img:hover{
+    opacity: 0.85;
+}
+.course_game_img{
+    width:80%;
+    height:80%;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: opacity 0.5s;
+}
+.course_game_img:hover{
+    opacity: 0.85;
+}
+
+.course_item_img{
+    width:80%;
+    height:80%;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: opacity 0.5s;
+}
+.course_item_img:hover{
+    opacity: 0.85;
+}
+.course_AI_img{
+    width:80%;
+    height:80%;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: opacity 0.5s;
+}
+.course_AI_img:hover{
+    opacity: 0.85;
 }
 
 .course_title {
@@ -132,6 +229,7 @@ nav a:hover {
 
     #flex_container {
         flex-wrap: wrap;
+        background-color: #f1f1f1;
     }
 
     .course_item {
@@ -141,7 +239,7 @@ nav a:hover {
 /*List of the subject*/
 
 /*Styling the table*/
-table {
+/*table {
     border-collapse: collapse;
     counter-reset: section;
 }
@@ -161,17 +259,31 @@ table th {
   text-align: left;
   background-color: #2B4B54;
   color: white;
+}*/
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  border: 1px solid #ddd;
+  background-color: white;
+}
+th {
+    background-color: #f2f2f2;
+}
+th, td {
+  text-align: left;
+  padding: 16px;
 }
 /*Styling the table*/
 
 #left_side {
-    flex: 30%;
+    flex: 40%;
     background-color: #f1f1f1;
     padding: 10px 20px;
 }
 
 #right_side {
-    flex: 70%;
+    flex: 60%;
     padding: 10px 20px;
 }
 
@@ -185,40 +297,7 @@ table th {
 }
 /*Styling the table*/
 
-/*filter*/
-#myInput {
-  background-image: url('../assets/search.png'); /* Add a search icon to input */
-  background-position: 10px 12px; /* Position the search icon */
-  background-repeat: no-repeat; /* Do not repeat the icon image */
-  width: 100%; /* Full-width */
-  font-size: 16px; /* Increase font-size */
-  padding: 12px 20px 12px 40px; /* Add some padding */
-  border: 1px solid #ddd; /* Add a grey border */
-  margin-bottom: 12px; /* Add some space below the input */
-}
 
-#myUL {
-  /* Remove default list styling */
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-}
-
-#myUL li a {
-  border: 1px solid #ddd; /* Add a border to all links */
-  margin-top: -1px; /* Prevent double borders */
-  background-color: #f6f6f6; /* Grey background color */
-  padding: 12px; /* Add some padding */
-  text-decoration: none; /* Remove default text underline */
-  font-size: 18px; /* Increase the font-size */
-  color: black; /* Add a black text color */
-  display: block; /* Make it into a block element to fill the whole list */
-}
-
-#myUL li a:hover:not(.header) {
-  background-color: #eee; /* Add a hover effect to all links, except for headers */
-}
-/*filter*/
 
 /*class_manage*/
 .filterDiv {
@@ -259,3 +338,217 @@ table th {
   color: white;
 }
 /*class_manage*/
+
+/*accordion*/
+/*.accordion {
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  transition: 0.4s;
+}
+
+.active, .accordion:hover {
+  background-color: #ccc; 
+}
+
+.panel {
+  padding: 0 18px;
+  display: none;
+  background-color: white;
+  overflow: hidden;
+}*/
+/*accordion*/
+
+/*course_registration*/
+/*filter*/
+#myInput {
+  background-image: url('../assets/search.png'); /* Add a search icon to input */
+  background-position: 10px 12px; /* Position the search icon */
+  background-repeat: no-repeat; /* Do not repeat the icon image */
+  width: 100%; /* Full-width */
+  font-size: 16px; /* Increase font-size */
+  padding: 12px 20px 12px 40px; /* Add some padding */
+  border: 1px solid #ddd; /* Add a grey border */
+  margin-bottom: 12px; /* Add some space below the input */
+}
+
+#myUL {
+  /* Remove default list styling */
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+#myUL li a {
+  border: 1px solid #ddd; /* Add a border to all links */
+  margin-top: -1px; /* Prevent double borders */
+  background-color: #f6f6f6; /* Grey background color */
+  padding: 12px; /* Add some padding */
+  text-decoration: none; /* Remove default text underline */
+  font-size: 18px; /* Increase the font-size */
+  color: black; /* Add a black text color */
+  display: block; /* Make it into a block element to fill the whole list */
+}
+
+#myUL li a:hover:not(.header) {
+  background-color: #eee; /* Add a hover effect to all links, except for headers */
+}
+/*filter*/
+/* Extra styles for the cancel button */
+.cancelbtn {
+  padding: 14px 20px;
+  background-color: #f44336;
+}
+
+.okbtn {
+    padding: 14px 20px;
+    background-color: #5f64f7;
+}
+
+/* Float cancel and signup buttons and add an equal width */
+.cancelbtn, .okbtn {
+  float: left;
+  width: 50%;
+}
+
+/* Add padding to container elements */
+.container_box {
+  padding: 16px;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: #474e5d;
+  padding-top: 50px;
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* Style the horizontal ruler */
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+ 
+/* The Close Button (x) */
+.close {
+  position: absolute;
+  right: 35px;
+  top: 15px;
+  font-size: 40px;
+  font-weight: bold;
+  color: #f1f1f1;
+}
+
+.close:hover,
+.close:focus {
+  color: #f44336;
+  cursor: pointer;
+}
+
+/* Clear floats */
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+/* Change styles for cancel button and signup button on extra small screens */
+@media screen and (max-width: 300px) {
+  .cancelbtn, .signupbtn {
+     width: 100%;
+  }
+}
+
+#regForm {
+  background-color: #ffffff;
+  margin: 100px auto;
+  font-family: Raleway;
+  padding: 40px;
+  width: 70%;
+  min-width: 300px;
+}
+
+/* Hide all steps by default: */
+.tab {
+  display: none;
+}
+
+button {
+  background-color: #04AA6D;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 17px;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+#prevBtn {
+  background-color: #bbbbbb;
+}
+
+/* Make circles that indicate the steps of the form: */
+.step {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbbbbb;
+  border: none;  
+  border-radius: 50%;
+  display: inline-block;
+  opacity: 0.5;
+}
+
+.step.active {
+  opacity: 1;
+}
+
+/* Mark the steps that are finished and valid: */
+.step.finish {
+  background-color: #04AA6D;
+}
+#subject_title {
+    background-color: #023A3C;
+    color: white;
+}
+#semester_font {
+  font-family: 'Arial', sans-serif;
+  color: #333333;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+#id_semester {
+  font-family: 'Verdana', sans-serif;
+  color: #555555;
+  font-size: 14px;  
+  padding: 5px;
+  margin: 10px 0;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+}
+/*course_registration*/

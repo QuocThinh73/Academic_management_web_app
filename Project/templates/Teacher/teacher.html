@@ -10,6 +10,8 @@
 	<meta content="country" name="Viet Nam">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="{% static 'css/home.css' %}">
+	<link rel="stylesheet" href="{% static 'css/reloadPage.css' %}">
+
 	<title>Trang chủ</title>
 </head>
 <body>
@@ -27,11 +29,30 @@
 	</h1>
 
 	<!-- BackGround -->
-	<div id="back_ground_wave">
+	{% comment %} <div id="back_ground_wave">
 	     <div class="wave"></div>
 	     <div class="wave"></div>
 	     <div class="wave"></div>
- 	</div>
+ 	</div> {% endcomment %}
 	<!-- BackGround -->
+	<div id="slideshow">
+		<div class="slide-wrapper">
+		  <div class="slide"><img src="https://d1vcqlflm6aitx.cloudfront.net/images/800x100p/1700030207-how-to-choose-the-right-university.webp"></div>
+		  <div class="slide"><img src="https://file1.dangcongsan.vn/data/0/images/2021/09/10/phammai/dh.jpg"></div>
+		  <div class="slide"><img src="https://unizone.edu.vn/wp-content/uploads/2019/11/sinh-vien-dai-hoc-bach-khoa-tp-hcm.jpg"></div>
+		  <div class="slide"><img src="https://nld.mediacdn.vn/291774122806476800/2023/11/6/chip-16992368640541636297906-16992403001991280085782.jpg"></div>
+	  </div>
+  </div>
 
+  <footer>
+	  <div class="call">
+		  <div class="fa fa-phone"></div>
+		  <p class="call_us">Liên hệ: 0123456789 </p>
+	  </div>
+	  <div class="contact">
+		  <div class="fa fa-envelope"></div>
+		  <p class="contact_us">E-mail:ABC@gmail.com</p>
+	  </div>
+  </footer>
+  <script src="{% static 'js/reloadPage.css' %}"></script>
 </body>
