@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     "Databases",
     "Registration",
     "Grade",
+    "Logout",
 ]
 
 MIDDLEWARE = [
