@@ -26,6 +26,23 @@ main {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    
+    
+    
+}
+.background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Đảm bảo nó ở phía sau các phần tử khác */
+}
+.blurred-image {
+    width: 100%;
+    height: 109%;
+    object-fit: cover; /* Đảm bảo hình ảnh vừa khít với kích thước của phần tử cha */
+    filter: blur(3px); /* Điều chỉnh độ mờ ở đây */
 }
 
 section {
