@@ -1,18 +1,8 @@
 from django.shortcuts import render
 from django.views import View
 from Course.models import Course
+from Grade.models import Grade
 from Login.mixins import RoleRequiredMixin
-
-class CourseStudent(RoleRequiredMixin, View):
-    def has_permission(self, user):
-        return user.user_type == 'Student'
-
-    def get(self, request, course_id):
-        course = Course.objects.get(pk=course_id)
-        context = {
-            "course": course
-        }
-        return render(request, "Course/course_student.html", context)
 
 class CourseTeacher(RoleRequiredMixin, View):
     def has_permission(self, user):
@@ -45,6 +35,20 @@ class Assessment(RoleRequiredMixin, View):
     def get(self, request, course_id):
         return render(request, "Course/CourseTeacher/assessment.html")
     
+<<<<<<< HEAD
+=======
+class CourseStudent(RoleRequiredMixin, View):
+    def has_permission(self, user):
+        return user.user_type == 'Student'
+
+    def get(self, request, course_id):
+        course = Course.objects.get(pk=course_id)
+        context = {
+            "course": course
+        }
+        return render(request, "Course/course_student.html", context)
+
+>>>>>>> 633c4d74cd88f5066f0024bcccfab65bf130dc1e
 class ScoreView(RoleRequiredMixin, View):
     def has_permission(self, user):
         return user.user_type == 'Student'
@@ -52,7 +56,27 @@ class ScoreView(RoleRequiredMixin, View):
     def get(self, request, course_id):
         course = Course.objects.get(pk=course_id)
         student = request.user.student
+<<<<<<< HEAD
         context = {
 
         }
         return render(request, "Course/CourseStudent/ScoreView.html", context)
+=======
+        grade = Grade.objects.filter(course=course, student=student).first()
+        context = {
+            "course": course,
+            "student": student,
+            "grade": grade,
+        }
+        return render(request, "Course/CourseStudent/ScoreView.html", context)
+    
+class DocumentView(RoleRequiredMixin, View):
+    def has_permission(self, user):
+        return user.user_type == 'Student'
+    
+    def get(self, request, course_id):
+        context = {
+
+        }
+        return render(request, "Course/CourseStudent/DocumentView.html", context)
+>>>>>>> 633c4d74cd88f5066f0024bcccfab65bf130dc1e
