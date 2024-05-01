@@ -267,11 +267,11 @@ table {
   border: 1px solid #ddd;
   background-color: white;
 }
-th {
+table th {
     background-color: #f2f2f2;
 }
-th, td {
-    border: 1px solid #ddd;
+table th, table td {
+  border: 1px solid #ddd;
   text-align: left;
   padding: 16px;
 }
