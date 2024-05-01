@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views import View
 from Course.models import Course
+from .models import *
 
 # Create your views here.
 
@@ -24,4 +25,27 @@ class ClassManageView(View):
 class UploadView(View):
     def get(self, request):
         return render(request, "Teacher/upload.html")
+    
+class TeacherProfile(View):
+    def get(self, request):
+        #Lay thong tin giao vien
+        teacher = request.user.teacher
+        teacher_mail = request.user.email
+        degrees = Degrees.objects.filter(teacher=teacher)
+        department = teacher.department
+        teaching_schedule = teacher.teaching_schedule
+
+        #Hien thi thong tin giao vien
+        context = {
+            'teacher': teacher,
+            'teacher_mail': teacher_mail,
+            'degrees': degrees,
+            'department': department,
+            'teaching_schedule': teaching_schedule,
+        }
+        return render(request, 'Teacher/teacher_profile.html', context)
+
+        
+
+
     
