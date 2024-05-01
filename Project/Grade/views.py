@@ -3,8 +3,12 @@ from .models import Grade
 from .forms import GradeForm
 from Course.models import Course
 from django.views import View
+from Login.mixins import RoleRequiredMixin
 
-class ImportScore(View):
+class ImportScore(RoleRequiredMixin, View):
+    def has_permission(self, user):
+        return user.user_type == 'Teacher'
+    
     def get(self, request, course_id):
         course = Course.objects.get(pk=course_id)
         students = course.students.all()

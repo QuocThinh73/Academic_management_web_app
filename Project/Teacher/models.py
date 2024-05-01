@@ -1,7 +1,7 @@
 from django.db import models
 from Login.models import MyUser
 from Databases.models import Department
-# Create your models here.
+
 class Degrees(models.Model):
     name = models.CharField(max_length=100)
     university = models.CharField(max_length=100)

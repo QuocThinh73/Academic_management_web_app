@@ -1,15 +1,20 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from django.views import View
-from .models import Student
 from Course.models import Course
 from Grade.models import Grade
-from django.contrib.auth.mixins import LoginRequiredMixin
+from Login.mixins import RoleRequiredMixin
 
-class StudentView(View):
+class StudentView(RoleRequiredMixin, View):
+    def has_permission(self, user):
+        return user.user_type == 'Student'
+    
     def get(self, request):
         return render(request, "Student/student.html")
     
-class StudentCourse(View):
+class StudentCourse(RoleRequiredMixin, View):
+    def has_permission(self, user):
+        return user.user_type == 'Student'
+    
     def get(self, request):
         # Lấy thông tin sinh viên
         student = request.user.student
@@ -29,7 +34,10 @@ class StudentCourse(View):
         }
         return render(request, "Student/my_course.html", context)
     
-class StudentProfile(View):
+class StudentProfile(RoleRequiredMixin, View):
+    def has_permission(self, user):
+        return user.user_type == 'Student'
+    
     def get(self, request):
         # Lấy thông tin của sinh viên
         student = request.user.student

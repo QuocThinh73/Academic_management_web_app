@@ -1,19 +1,29 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from django.views import View
 from Course.models import Course
 from .models import *
+from Login.mixins import RoleRequiredMixin
 
 # Create your views here.
 
-class TeacherView(View):
+class TeacherView(RoleRequiredMixin, View):
+    def has_permission(self, user):
+        return user.user_type == 'Teacher'
+    
     def get(self, request):
         return render(request, "Teacher/teacher.html")
 
-class AssessmentView(View):
+class AssessmentView(RoleRequiredMixin, View):
+    def has_permission(self, user):
+        return user.user_type == 'Teacher'
+
     def get(self, request):
         return render(request, "Teacher/assessment.html")
 
-class ClassManageView(View):
+class ClassManageView(RoleRequiredMixin, View):
+    def has_permission(self, user):
+        return user.user_type == 'Teacher'
+    
     def get(self, request):
         teacher = request.user.teacher
         courses = Course.objects.filter(teacher=teacher)
@@ -22,11 +32,17 @@ class ClassManageView(View):
         }
         return render(request, "Teacher/class_manage.html", context)
     
-class UploadView(View):
+class UploadView(RoleRequiredMixin, View):
+    def has_permission(self, user):
+        return user.user_type == 'Teacher'
+
     def get(self, request):
         return render(request, "Teacher/upload.html")
     
-class TeacherProfile(View):
+class TeacherProfile(RoleRequiredMixin, View):
+    def has_permission(self, user):
+        return user.user_type == 'Teacher'
+
     def get(self, request):
         #Lay thong tin giao vien
         teacher = request.user.teacher
