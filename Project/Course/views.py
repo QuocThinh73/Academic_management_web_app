@@ -35,6 +35,8 @@ class Assessment(RoleRequiredMixin, View):
     def get(self, request, course_id):
         return render(request, "Course/CourseTeacher/assessment.html")
     
+<<<<<<< HEAD
+=======
 class CourseStudent(RoleRequiredMixin, View):
     def has_permission(self, user):
         return user.user_type == 'Student'
@@ -46,6 +48,7 @@ class CourseStudent(RoleRequiredMixin, View):
         }
         return render(request, "Course/course_student.html", context)
 
+>>>>>>> 633c4d74cd88f5066f0024bcccfab65bf130dc1e
 class ScoreView(RoleRequiredMixin, View):
     def has_permission(self, user):
         return user.user_type == 'Student'
@@ -53,6 +56,12 @@ class ScoreView(RoleRequiredMixin, View):
     def get(self, request, course_id):
         course = Course.objects.get(pk=course_id)
         student = request.user.student
+<<<<<<< HEAD
+        context = {
+
+        }
+        return render(request, "Course/CourseStudent/ScoreView.html", context)
+=======
         grade = Grade.objects.filter(course=course, student=student).first()
         context = {
             "course": course,
@@ -70,3 +79,4 @@ class DocumentView(RoleRequiredMixin, View):
 
         }
         return render(request, "Course/CourseStudent/DocumentView.html", context)
+>>>>>>> 633c4d74cd88f5066f0024bcccfab65bf130dc1e
