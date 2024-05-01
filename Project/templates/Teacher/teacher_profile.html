@@ -1,0 +1,76 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Teacher Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        h2 {
+            color: #666;
+            margin-bottom: 10px;
+        }
+        p {
+            color: #999;
+            margin-bottom: 10px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 10px;
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+        }
+    </style>
+    <meta charset="utf-8">
+	<meta name="description" content="Academic management">
+	<meta content="author" name="Nguyen Loc">
+	<meta content="country" name="Viet Nam">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="{% static 'css/file.css' %}">
+	<title>Trang chủ</title>
+</head>
+<body>
+    <nav>
+		<a href="/teacher" class="menu_left">Trang chủ</a>
+		<a href="/teacher/upload" class="menu_left">Cập nhật nội dung khóa học</a>
+		<a href="/teacher/class_manage" class="menu_left">Quản lý danh sách lớp</a>
+		<a href="/teacher/assessment" class="menu_left">Đánh giá sinh viên</a>
+		<a href="/teacher/profile" class="menu_left">Hồ sơ</a>
+		<a href="/login" class="menu_right">Đăng xuất</a>
+	</nav>
+    <div class="container">
+        <h1>Teacher Profile</h1>
+        <h2>{{ teacher.name }}</h2>
+        <p>Email: {{ teacher_mail }}</p>
+        <p>Department: {{ department.name }}</p>
+        <p>Teaching Schedule: {{ teaching_schedule }}</p>
+
+        <h2>Degrees:</h2>
+        <ul>
+        {% for degree in degrees %}
+            <li>{{ degree.name }} from {{ degree.university }} ({{ degree.year_obtained }})</li>
+        {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>

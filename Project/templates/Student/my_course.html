@@ -23,11 +23,11 @@
 	<!-- BackGround -->
 
 	<nav>
-		<a href="/student" class="menu_left">Trang chủ</a>
-		<a href="/student/my_course" class="menu_left">Khóa học của tôi</a>
-		<a href="/registration" class="menu_left">Đăng ký môn học</a>
-		<a href="/student/profile" class="menu_left">Hồ sơ và quản lý cá nhân</a>
-		<a href="/login" class="menu_right">Đăng xuất</a>
+		<a href="{% url 'Student:student' %}" class="menu_left">Trang chủ</a>
+		<a href="{% url 'Student:student_course' %}" class="menu_left">Khóa học của tôi</a>
+		<a href="{% url 'Registration:registration_student' %}" class="menu_left">Đăng ký môn học</a>
+		<a href="{% url 'Student:student_profile' %}" class="menu_left">Hồ sơ và quản lý cá nhân</a>
+		<a href="{% url 'Logout:logout' %}" class="menu_right">Đăng xuất</a>
 	</nav>
 	<div id="theme1">
 		<h1 id="menu_text">

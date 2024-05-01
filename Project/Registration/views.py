@@ -3,9 +3,13 @@ from django.views import View
 from .forms import RegistrationForm
 from .models import RegistrationCourse
 from Databases.models import Semester
+from Login.mixins import RoleRequiredMixin
 # Create your views here.
 
-class RegistrationStudent(View):
+class RegistrationStudent(RoleRequiredMixin, View):
+    def has_permission(self, user):
+        return user.user_type == 'Student'
+    
     def get(self, request):
         current_semester = Semester.objects.filter(is_registration=True).first()
         form = RegistrationForm(initial={'semester': current_semester})

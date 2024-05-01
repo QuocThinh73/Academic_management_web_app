@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Course Detail - Teacher View</title>
+    <title>Teacher View</title>
     <link rel="stylesheet" href="{% static 'css/course.css' %}">
 </head>
 <body>
@@ -14,7 +14,7 @@
     <p>Học kì: {{ course.semester.semester_id }}</p>
     <div>
         <a href="{% url 'Course:ListOfStudent' course.id %}" class="btn">Xem danh sách sinh viên</a>
-        <a href="{% url 'Course:ImportScore' course.id %}" class="btn">Nhập điểm cho sinh viên</a>
+        <a href="{% url 'Grade:ImportScore' course.id %}" class="btn">Nhập điểm cho sinh viên</a>
     </div>
 </body>
 </html>
