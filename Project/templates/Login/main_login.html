@@ -20,10 +20,10 @@
         <section class="login-form">
             <h2>Hệ thống thông tin sinh viên</h2>
             <button class="accordion">
-                <a href="/login"> Cán bộ/Sinh viên</a>
+                <a href="{% url 'Login:login' %}"> Cán bộ/Sinh viên</a>
             </button>
             <button class="accordion">
-                <a href="/admin"> Quản trị viên</a>
+                <a href="{% url 'Login:main_login' %}"> Quản trị viên</a>
             </button>      
         </section>
     </main>
