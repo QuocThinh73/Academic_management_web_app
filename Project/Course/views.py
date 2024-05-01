@@ -44,3 +44,15 @@ class Assessment(RoleRequiredMixin, View):
 
     def get(self, request, course_id):
         return render(request, "Course/CourseTeacher/assessment.html")
+    
+class ScoreView(RoleRequiredMixin, View):
+    def has_permission(self, user):
+        return user.user_type == 'Student'
+    
+    def get(self, request, course_id):
+        course = Course.objects.get(pk=course_id)
+        student = request.user.student
+        context = {
+
+        }
+        return render(request, "Course/CourseStudent/ScoreView.html", context)
