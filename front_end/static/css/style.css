@@ -246,3 +246,15 @@ main {
   overflow: hidden;
 }*/
 /*main_login*/
+.panel {
+    display: none;
+}
+
+.panel.active {
+    display: block;
+}
+.login{
+    padding-top: 15px;
+   
+    width: 420px;
+}

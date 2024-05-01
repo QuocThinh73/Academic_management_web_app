@@ -52,10 +52,13 @@ nav a:hover {
 
 .menu_left {
 	float: left;
+    font-size: 20px;
+    cursor: pointer;
 }
 
 .menu_right {
 	float: right;
+    font-size: 20px;
 }
 
 #overview {
