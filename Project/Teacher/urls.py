@@ -8,4 +8,5 @@ urlpatterns = [
     path('import_score/', views.ImportScoreView.as_view(), name='Import Score'),
     path("assessment/", views.AssessmentView.as_view(), name='Assessment'),
     path('upload/', views.UploadView.as_view(), name='upload'),
+    path('profile/', views.TeacherProfile.as_view(), name='TeacherProfile'),
 ]
