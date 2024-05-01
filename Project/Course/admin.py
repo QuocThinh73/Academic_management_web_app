@@ -2,4 +2,7 @@ from django.contrib import admin
 from .models import *
 # Register your models here.
 
-admin.site.register(Course)
+class CourseAdmin(admin.ModelAdmin):
+    list_filter = ['semester__semester_id', 'subject__name']
+
+admin.site.register(Course, CourseAdmin)

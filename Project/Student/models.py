@@ -9,6 +9,6 @@ class Student(models.Model):
     department = models.ForeignKey(Department, on_delete=models.CASCADE, null=True)
     major = models.ForeignKey(Major, on_delete=models.CASCADE, null = True)
     username = models.OneToOneField(MyUser, on_delete=models.CASCADE,  null=True)
-    
+
     def __str__(self):
         return self.name
