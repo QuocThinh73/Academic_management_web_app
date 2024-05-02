@@ -73,7 +73,7 @@ footer > a {
 
     input[type=text] {
         padding: 6px;
-        margin-top: 8px;
+        margin: 8px;
         font-size: 17px;
         border: 1px solid black;
     }
@@ -116,7 +116,7 @@ footer > a {
 /*List of the subjects*/
 .course_item {
     text-align: center;
-    flex: 33%;
+    flex: 50%;
 }
 
 .course_img {
@@ -132,6 +132,9 @@ footer > a {
 }
 
 .course_title {
+    text-decoration: none;
+    display: block;
+    padding: 36px 48px;
     cursor: pointer;
     transition: opacity 0.5s;
 }
