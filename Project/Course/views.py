@@ -1,20 +1,12 @@
-<<<<<<< HEAD
-from typing import Any
-from django.db.models.query import QuerySet
-=======
->>>>>>> 8775de51e679517688a56f13765a14a84f0c0786
 from django.shortcuts import render, redirect
 from django.views import View
 from Course.models import Course
 from Grade.models import Grade
 from Login.mixins import RoleRequiredMixin
-<<<<<<< HEAD
 from .forms import TeacherAssessmentForm
 from django.views.generic.detail import DetailView
 from .models import TeacherAssessment
-=======
 from .forms import DocumentForm
->>>>>>> 8775de51e679517688a56f13765a14a84f0c0786
 
 class CourseTeacher(RoleRequiredMixin, View):
     def has_permission(self, user):
@@ -40,10 +32,8 @@ class ListOfStudent(RoleRequiredMixin, View):
         }
         return render(request, "Course/CourseTeacher/list_of_student.html", context)
     
-<<<<<<< HEAD
+
 #Hien trang danh gia sinh vien danh cho giao vien
-=======
-<<<<<<< HEAD
 class AddDescription(RoleRequiredMixin, View):
     def has_permission(self, user):
         return user.user_type == 'Teacher'
@@ -149,4 +139,4 @@ class DocumentView(RoleRequiredMixin, View):
         }
         return render(request, "Course/CourseStudent/DocumentView.html", context)
 
->>>>>>> 37ad29e0d6f58bd500e8b7ce7116c056aead57ab
+
