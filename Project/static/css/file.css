@@ -535,6 +535,14 @@ button:hover {
 .step.finish {
   background-color: #04AA6D;
 }
+#center_form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh; /* Chiều cao toàn màn hình */
+}
+
 #subject_title {
     background-color: #023A3C;
     color: white;
@@ -542,16 +550,16 @@ button:hover {
 #semester_font {
   font-family: 'Arial', sans-serif;
   color: #333333;
-  font-size: 16px;
+  font-size: 28px;
   font-weight: bold;
 }
 
 #id_semester {
   font-family: 'Verdana', sans-serif;
   color: #555555;
-  font-size: 14px;  
-  padding: 5px;
-  margin: 10px 0;
+  font-size: 26px;  
+  padding: 17px;
+  margin: 22px 0;
   border: 1px solid #cccccc;
   border-radius: 4px;
 }

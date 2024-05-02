@@ -21,9 +21,9 @@
 		<a href="{% url 'Logout:logout' %}" class="menu_right">Đăng xuất</a>
 	</nav>
 
-	<h2 id="menu_text">Đăng ký môn học</h2>
+	<h2 class="menu_text">Đăng ký môn học</h2>
 
-	<form method="post">
+	<form id="center_form" method="post">
 		<div id="semester_font">{% csrf_token %}</div>
 		<div id="id_semester">{{ form.as_p }}</div>
 		<button type="submit">Đăng ký</button>
