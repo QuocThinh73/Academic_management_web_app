@@ -13,7 +13,9 @@
     <h2>{{ course.subject.name }} - HK{{ course.semester.semester_id }}</h2>
     <form method="post">
         {% csrf_token %}
-        {{ form.as_p }}
+        <p>Description: {{ form.description}}</p>
+        <p>Syllabus: {{ form.syllabus }}</p>
+        <p>File: {{ form.course_file }}</p>
         <button type="submit">Submit</button>
     </form>
 </body>
