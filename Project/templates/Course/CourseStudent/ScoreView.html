@@ -24,10 +24,26 @@
         <h2>Sinh viên: {{ student.name }}</h2>
         <hr>
         <div class="list_form">
-            <p>Điểm bài tập: {{ grade.assignment_score }}</p>
-            <p>Điểm giữa kỳ: {{ grade.midterm_score }}</p>
-            <p>Điểm cuối kỳ: {{ grade.final_score }}</p>
-            <p class="hightlight_form">Điểm tổng kết: {{ grade.average_score }}</p>
+            {% if grade.assignment_score is not None %}
+                <p>Điểm bài tập: {{ grade.assignment_score }}</p>
+            {% else %}
+                <p>Điểm bài tập:</p>
+            {% endif %}
+            {% if grade.midterm_score is not None %}
+                <p>Điểm giữa kỳ: {{ grade.midterm_score }}</p>
+            {% else %}
+                <p>Điểm giữa kỳ:</p>
+            {% endif %}
+            {% if grade.final_score is not None %}
+                <p>Điểm cuối kỳ: {{ grade.final_score }}</p>
+            {% else %}
+                <p>Điểm cuối kỳ:</p>
+            {% endif %}
+            {% if grade.average_score is not None %}
+                <p class="hightlight_form">Điểm tổng kết: {{ grade.average_score }}</p>
+            {% else %}
+                <p class="hightlight_form">Điểm tổng kết:</p>
+            {% endif %}
         </div>
     </div>
 </body>
