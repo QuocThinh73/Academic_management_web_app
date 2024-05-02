@@ -14,7 +14,8 @@ class ImportScore(RoleRequiredMixin, View):
         students = course.students.all()
         forms = []
         for student in students:
-            form = GradeForm(prefix=student.id)
+            grade = Grade.objects.filter(student=student, course=course).first()
+            form = GradeForm(prefix=student.student_id, instance=grade)
             forms.append((student, form))
 
         context = {

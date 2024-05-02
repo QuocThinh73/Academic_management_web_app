@@ -5,6 +5,8 @@ from django.db import models
 class Subject(models.Model):
     name = models.CharField(max_length=50, null=True, default="")
     credit = models.IntegerField(default=0)
+    days = models.IntegerField(default=1)
+    hours = models.IntegerField(default=1)
 
     def __str__(self):
         return self.name
