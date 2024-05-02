@@ -6,7 +6,7 @@ from Grade.models import Grade
 class RegistrationCourseAdmin(admin.ModelAdmin):
     def create_course(modeladmin, request, queryset):
         registrations = queryset.all()
-        registrations = registrations[:40]
+        registrations = registrations[:15]
         
         # Kiểm tra
         unique_subjects = set()
@@ -37,13 +37,14 @@ class RegistrationCourseAdmin(admin.ModelAdmin):
             grade.save()
 
         # Xóa các đơn đăng ký sau khi tạo lớp thành công
-        registrations.delete()
+        for registration in registrations:
+            registration.delete()
         modeladmin.message_user(request, "Đã tạo lớp học thành công.", level='SUCCESS')
 
     create_course.short_description = "Tạo lớp học"
 
     list_display = ['subject', 'student', 'semester']
-    list_filter = ['semester__semester_id']
+    list_filter = ['semester__semester_id', 'subject']
     actions = [create_course]
 
 admin.site.register(RegistrationCourse, RegistrationCourseAdmin)

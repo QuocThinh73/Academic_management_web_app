@@ -21,7 +21,6 @@
 		<a href="{% url 'Logout:logout' %}" class="menu_right">Đăng xuất</a>
 	</nav>
 	<div id="myBtnContainer">
-		<button class="btn active" onclick="filterSelection('all')"> Hiển thị tất cả</button>
 		{% for course in courses %}
 			<a href="{% url 'Course:CourseTeacher' course.id %}" class="btn"> {{ course }}</a>
 	  	{% endfor %}
@@ -33,7 +32,5 @@
 	  <div class="filterDiv os">L01</div>
 	  <div class="filterDiv dsa os">CN02</div>
 	</div>
-
-<script src="../js/class_manage.js"></script>
 
 </body>

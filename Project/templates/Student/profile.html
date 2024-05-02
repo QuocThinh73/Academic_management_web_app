@@ -60,17 +60,39 @@
 					{% for grade_info in info.grades_info %}
 						<tr>
 							<td>{{ grade_info.subject }}</td>
-							<td>{{ grade_info.assignment_score }}</td>
-							<td>{{ grade_info.midterm_score }}</td>
-							<td>{{ grade_info.final_score }}</td>
-							<td>{{ grade_info.average_score }}</td>
+							{% if grade_info.assignment_score is not None %}
+								<td>{{ grade_info.assignment_score }}</td>
+							{% else %}
+								<td></td>
+							{% endif %}
+							{% if grade_info.midterm_score is not None %}
+								<td>{{ grade_info.midterm_score }}</td>
+							{% else %}
+								<td></td>
+							{% endif %}
+							{% if grade_info.final_score is not None %}
+								<td>{{ grade_info.final_score }}</td>
+							{% else %}
+								<td></td>
+							{% endif %}
+							{% if grade_info.average_score is not None %}
+								<td>{{ grade_info.average_score }}</td>
+							{% else %}
+								<td></td>
+							{% endif %}
 						</tr>
 					{% endfor %}
 					<tr>
-						<th colspan="5"> 
-							<p>Điểm trung bình học kỳ: {{ info.average_score_semester }}</p>
-							<p>Điểm trung bình tích lũy: {{ info.average_score_all }}</p>
-							<p>Số tín chỉ tích lũy: {{ info.credit }}</p>
+						<th colspan="5">
+							{% if info.average_score_semester is not None %}
+								<p>Điểm trung bình học kỳ: {{ info.average_score_semester }}</p>
+								<p>Điểm trung bình tích lũy: {{ info.average_score_all }}</p>
+								<p>Số tín chỉ tích lũy: {{ info.credit }}</p>
+							{% else %}
+								<p>Điểm trung bình học kỳ:</p>
+								<p>Điểm trung bình tích lũy:</p>
+								<p>Số tín chỉ tích lũy:</p>
+							{% endif %}
 						</th>
 					</tr>
 				</table>
