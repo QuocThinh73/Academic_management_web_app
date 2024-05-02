@@ -6,17 +6,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/file.css' %}">
     <title>Điểm môn học</title>
 </head>
 <body>
-    <div class="container">
-        <h1>Điểm môn học: {{ course }}</h1>
+    <nav>
+		<a href="{% url 'Student:student' %}" class="menu_left">Trang chủ</a>
+		<a href="{% url 'Student:student_course' %}" class="menu_left">Khóa học của tôi</a>
+		<a href="{% url 'Registration:registration_student' %}" class="menu_left">Đăng ký môn học</a>
+		<a href="{% url 'Student:student_profile' %}" class="menu_left">Hồ sơ và quản lý cá nhân</a>
+		<a href="{% url 'Logout:logout' %}" class="menu_right">Đăng xuất</a>
+	</nav>
+
+
+    <h1 class="menu_text">Điểm môn học: {{ course }}</h1>
+    <div class="center_form"> 
         <h2>Sinh viên: {{ student.name }}</h2>
-        <div>
+        <hr>
+        <div class="list_form">
             <p>Điểm bài tập: {{ grade.assignment_score }}</p>
             <p>Điểm giữa kỳ: {{ grade.midterm_score }}</p>
             <p>Điểm cuối kỳ: {{ grade.final_score }}</p>
-            <p>Điểm tổng kết: {{ grade.average_score }}</p>
+            <p class="hightlight_form">Điểm tổng kết: {{ grade.average_score }}</p>
         </div>
     </div>
 </body>
