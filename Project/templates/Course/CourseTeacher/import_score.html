@@ -5,17 +5,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Import Scores</title>
+    <title>Nhập điểm</title>
     <link rel="stylesheet" href="{% static 'css/course.css' %}">
 </head>
 <body>
-    <h1>Import Scores</h1>
+    <h1>Nhập điểm</h1>
     <h2>{{ course.subject.name }} - HK{{ course.semester.semester_id }}</h2>
     <form method="post">
         {% csrf_token %}
         {% for student, form in forms %}
-        <h3>{{ student.name }}</h3>
-        {{ form.as_p }}
+            <h3>{{ student.name }}</h3>
+            <p>Bài tập: {{ form.assignment_score }}</p>
+            <p>Giữa kì: {{ form.midterm_score }}</p>
+            <p>Cuối kì: {{ form.final_score }}</p>
         {% endfor %}
         <button type="submit">Submit</button>
     </form>

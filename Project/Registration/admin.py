@@ -6,7 +6,8 @@ from Grade.models import Grade
 class RegistrationCourseAdmin(admin.ModelAdmin):
     def create_course(modeladmin, request, queryset):
         registrations = queryset.all()
-    
+        registrations = registrations[:40]
+        
         # Kiểm tra
         unique_subjects = set()
         for registration in registrations:
@@ -42,6 +43,7 @@ class RegistrationCourseAdmin(admin.ModelAdmin):
     create_course.short_description = "Tạo lớp học"
 
     list_display = ['subject', 'student', 'semester']
+    list_filter = ['semester__semester_id']
     actions = [create_course]
 
 admin.site.register(RegistrationCourse, RegistrationCourseAdmin)

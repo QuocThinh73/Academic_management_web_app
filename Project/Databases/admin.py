@@ -5,10 +5,16 @@ from .models import *
 
 admin.site.register(Subject)
 admin.site.register(Department)
-admin.site.register(Major)
+
+class MajorAdmin(admin.ModelAdmin):
+    list_filter = ["department"]
+
+admin.site.register(Major, MajorAdmin)
 
 class SemesterAdmin(admin.ModelAdmin):
-    # Định nghĩa hành động tạo học kỳ mới
+
+    list_display = ["semester_id", "is_registration"]
+
     def create_new_semester(self, request, queryset):
         # Lấy ra số kì cuối cùng
         last_semester = Semester.objects.order_by('-semester_id').first()
@@ -26,12 +32,14 @@ class SemesterAdmin(admin.ModelAdmin):
             new_semester_id = "232"
 
         # Tạo học kỳ mới
-        new_semester = Semester.objects.create(semester_id=new_semester_id, is_registration=True)
+        Semester.objects.create(semester_id=new_semester_id, is_registration=True)
 
-    # Thiết lập metadata cho action
+    def set_registration(self, request, queryset):
+        queryset.update(is_registration=False)
+    
     create_new_semester.short_description = "Tạo học kỳ mới"
+    set_registration.short_description = "Kết thúc học kỳ"
 
-    # Đăng ký action vào trang admin
-    actions = [create_new_semester]
+    actions = [create_new_semester, set_registration]
 
 admin.site.register(Semester, SemesterAdmin)
