@@ -20,10 +20,12 @@
 		<a href="/teacher/profile" class="menu_left">Hồ sơ</a>
 		<a href="{% url 'Logout:logout' %}" class="menu_right">Đăng xuất</a>
 	</nav>
-	<div id="myBtnContainer">
-		<button class="btn active" onclick="filterSelection('all')"> Hiển thị tất cả</button>
+	<h1 class="menu_text">Quản lý danh sách lớp dạy<h1>
+	<div id="course_container">
 		{% for course in courses %}
-			<a href="{% url 'Course:CourseTeacher' course.id %}" class="btn"> {{ course }}</a>
+			<a href="{% url 'Course:CourseTeacher' course.id %}" class="course_item">
+				<div class="course_title">{{ course }}</div>
+			</a>
 	  	{% endfor %}
 	</div>
 
@@ -33,7 +35,5 @@
 	  <div class="filterDiv os">L01</div>
 	  <div class="filterDiv dsa os">CN02</div>
 	</div>
-
-<script src="../js/class_manage.js"></script>
 
 </body>

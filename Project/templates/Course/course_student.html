@@ -5,16 +5,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student View</title>
     <link rel="stylesheet" href="{% static 'css/course.css' %}">
+    <link rel="stylesheet" href="{% static 'css/file.css' %}">
+    <title>Student View</title>
+
 </head>
 <body>
-    <h1>{{ course }}</h1>
-    <p>Môn học: {{ course.subject.name }}</p>
-    <p>Học kì: {{ course.semester.semester_id }}</p>
-    <div>
-        <a href="{% url 'Course:ScoreView' course.id %}" class="btn">Xem điểm</a>
-        <a href="{% url 'Course:DocumentView' course.id %}" class="btn">Xem tài liệu</a>
+    <nav>
+		<a href="{% url 'Student:student' %}" class="menu_left">Trang chủ</a>
+		<a href="{% url 'Student:student_course' %}" class="menu_left">Khóa học của tôi</a>
+		<a href="{% url 'Registration:registration_student' %}" class="menu_left">Đăng ký môn học</a>
+		<a href="{% url 'Student:student_profile' %}" class="menu_left">Hồ sơ và quản lý cá nhân</a>
+		<a href="{% url 'Logout:logout' %}" class="menu_right">Đăng xuất</a>
+	</nav>
+
+    <h1 class="menu_text">{{ course }}</h1>
+    <div class="center_form">
+        <p class="overview">Môn học: {{ course.subject.name }}</p>
+        <p class="overview">Học kì: {{ course.semester.semester_id }}</p>
+        <div>
+            <a href="{% url 'Course:ScoreView' course.id %}" class="btn">Xem điểm</a>
+            <a href="{% url 'Course:DocumentView' course.id %}" class="btn">Xem tài liệu</a>
+        </div>
     </div>
-</body>
+</body> 
 </html>

@@ -7,10 +7,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Danh sách sinh viên</title>
     <link rel="stylesheet" href="{% static 'css/course.css' %}">
+    <link rel="stylesheet" href="{% static 'css/file.css' %}">
 </head>
 <body>
+    <nav>
+		<a href="/teacher" class="menu_left">Trang chủ</a>
+		<a href="/teacher/upload" class="menu_left">Cập nhật nội dung khóa học</a>
+		<a href="/teacher/class_manage" class="menu_left">Quản lý danh sách lớp</a>
+		<a href="/teacher/profile" class="menu_left">Hồ sơ</a>
+		<a href="{% url 'Logout:logout' %}" class="menu_right">Đăng xuất</a>
+	</nav>
+
     <div class="container">
-        <h1>Danh sách sinh viên trong lớp học {{ course.subject.name }}</h1>
+        <h1 class="menu_text">Danh sách sinh viên trong lớp học {{ course.subject.name }}</h1>
         <table class="student-table">
             <thead>
                 <tr>
@@ -22,7 +31,7 @@
             <tbody>
                 {% for student in students %}
                 <tr>
-                    <td>{{ student.id }}</td>
+                    <td>{{ student.student_id }}</td>
                     <td>{{ student.name }}</td>
                     <td>{{ student.username.email }}</td>
                 </tr>

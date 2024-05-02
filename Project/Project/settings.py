@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     "Registration",
     "Grade",
     "Logout",
+    "Schedule",
 ]
 
 MIDDLEWARE = [
@@ -138,3 +139,6 @@ STATICFILES_DIRS = [
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 AUTH_USER_MODEL = "Login.MyUser"
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

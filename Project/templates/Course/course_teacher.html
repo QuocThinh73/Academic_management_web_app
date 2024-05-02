@@ -7,15 +7,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Teacher View</title>
     <link rel="stylesheet" href="{% static 'css/course.css' %}">
+    <link rel="stylesheet" href="{% static 'css/file.css' %}">
 </head>
 <body>
-    <h1>{{ course }}</h1>
-    <p>Môn học: {{ course.subject.name }}</p>
-    <p>Học kì: {{ course.semester.semester_id }}</p>
-    <div>
-        <a href="{% url 'Course:ListOfStudent' course.id %}" class="btn">Xem danh sách sinh viên</a>
-        <a href="{% url 'Grade:ImportScore' course.id %}" class="btn">Nhập điểm cho sinh viên</a>
-        <a href="{% url 'Course:Assessment' course.id %}" class="btn">Đánh giá sinh viên</a>
+    <nav>
+        <a href="/teacher" class="menu_left">Trang chủ</a>
+        <a href="/teacher/upload" class="menu_left">Cập nhật nội dung khóa học</a>
+        <a href="/teacher/class_manage" class="menu_left">Quản lý danh sách lớp</a>
+        <a href="/teacher/profile" class="menu_left">Hồ sơ</a>
+        <a href="{% url 'Logout:logout' %}" class="menu_right">Đăng xuất</a>
+    </nav>
+    <h1 class="menu_text">{{ course }}</h1>
+    <div class="center_form">
+        <div class="list_form">
+            <p>Môn học: {{ course.subject.name }}</p>
+            <p>Học kì: {{ course.semester.semester_id }}</p>
+        </div>
+        <div>
+            <a href="{% url 'Course:ListOfStudent' course.id %}" class="btn">Xem danh sách sinh viên</a>
+            <a href="{% url 'Grade:ImportScore' course.id %}" class="btn">Nhập điểm cho sinh viên</a>
+            <a href="{% url 'Course:Assessment' course.id %}" class="btn">Đánh giá sinh viên</a>
+            <a href="{% url 'Course:AddDescription' course.id %}" class="btn">Add description</a>
+        </div>
     </div>
 </body>
 </html>

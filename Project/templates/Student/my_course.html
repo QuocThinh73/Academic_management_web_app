@@ -14,13 +14,6 @@
 	<title>Trang sinh viên</title>
 </head>
 <body>
-	<!-- BackGround -->
-	<div id="back_ground_wave">
-	     <div class="wave"></div>
-	     <div class="wave"></div>
-	     <div class="wave"></div>
- 	</div>
-	<!-- BackGround -->
 
 	<nav>
 		<a href="{% url 'Student:student' %}" class="menu_left">Trang chủ</a>
@@ -30,10 +23,10 @@
 		<a href="{% url 'Logout:logout' %}" class="menu_right">Đăng xuất</a>
 	</nav>
 	<div id="theme1">
-		<h1 id="menu_text">
+		<h1 class="menu_text">
 			Các khóa học của tôi
 		</h1>
-		<h2 id="overview">Tổng quan về khóa học</h2>
+		<h2 class="overview">Tổng quan về khóa học</h2>
 		<div class="search-container">
 	    	<form action="/action_page.php">
 	     		<input type="text" placeholder="Tìm kiếm..." name="search">
@@ -46,7 +39,7 @@
   	<div id="theme2">
   	<h2 id="course"></h2>
 	  	{% for semester, courses in courses_by_semester.items %}
-			<h2 id="course">Học kỳ {{ semester }}</h2>
+			<h2 class=overview id="course">Học kỳ {{ semester }}</h2>
 			<div id="course_container">
 				{% for course in courses %}
 				<a href="{% url 'Course:CourseStudent' course.id %}" class="course_item">
