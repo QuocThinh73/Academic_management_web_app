@@ -9,4 +9,10 @@ urlpatterns = [
     path("teacher/<int:course_id>/", views.CourseTeacher.as_view(), name="CourseTeacher"),
     path("teacher/<int:course_id>/list_of_student/", views.ListOfStudent.as_view(), name="ListOfStudent"),
     path("teacher/<int:course_id>/assessment/", views.Assessment.as_view(), name="Assessment"),
+<<<<<<< HEAD
+    path("teacher/<int:course_id>/teacher_assessment/<int:student_id>/", views.TeacherAssessment.as_view(), name="TeacherAssessment"),
+    path("student/<int:student_id>/assessment", views.StudentReceiveAssess.as_view(), name="StudentReceiveAssess"),
+=======
+    path("teacher/<int:course_id>/course_info/", views.AddDescription.as_view(), name = "AddDescription" ),
+>>>>>>> 8775de51e679517688a56f13765a14a84f0c0786
 ]

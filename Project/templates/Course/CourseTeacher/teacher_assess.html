@@ -1,0 +1,52 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Teacher Assessment</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        h2 {
+            color: #333;
+        }
+        form {
+            margin-top: 20px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+    </style>
+    <meta charset="utf-8">
+	<meta name="description" content="Academic management">
+	<meta content="author" name="Nguyen Loc">
+	<meta content="country" name="Viet Nam">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="{% static 'css/file.css' %}">
+</head>
+<body>
+    <nav>
+		<a href="/teacher" class="menu_left">Trang chủ</a>
+		<a href="/teacher/upload" class="menu_left">Cập nhật nội dung khóa học</a>
+		<a href="/teacher/class_manage" class="menu_left">Quản lý danh sách lớp</a>
+		<a href="/teacher/profile" class="menu_left">Hồ sơ</a>
+		<a href="/login" class="menu_right">Đăng xuất</a>
+	</nav>
+    
+    <h2>Teacher Assessment</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
