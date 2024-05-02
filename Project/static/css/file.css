@@ -540,7 +540,6 @@ button:hover {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh; /* Chiều cao toàn màn hình */
 }
 
 #subject_title {
@@ -550,17 +549,23 @@ button:hover {
 #semester_font {
   font-family: 'Arial', sans-serif;
   color: #333333;
-  font-size: 28px;
+  font-size: 16px;
   font-weight: bold;
 }
 
-#id_semester {
-  font-family: 'Verdana', sans-serif;
+#id_semester, #id_subject {
+  font-family: 'Verdana', sans-se rif;
+  font-size: 14px;  
+  padding: 5px;
+  margin: 10px 0;
+}
+
+#id_semester_font {
+  font-family: 'Verdana', sans-se rif;
   color: #555555;
-  font-size: 26px;  
-  padding: 17px;
-  margin: 22px 0;
   border: 1px solid #cccccc;
   border-radius: 4px;
+  padding: 10px;
+  margin: 10px 0;
 }
 /*course_registration*/
