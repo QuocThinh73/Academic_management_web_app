@@ -10,11 +10,11 @@
 </head>
 <body>
     <h1>{{ course }}</h1>
-    <p>Môn học: {{ course.subject.name }}</p>
-    <p>Học kì: {{ course.semester.semester_id }}</p>
+    <p class="overview">Môn học: {{ course.subject.name }}</p>
+    <p class="overview">Học kì: {{ course.semester.semester_id }}</p>
     <div>
         <a href="{% url 'Course:ScoreView' course.id %}" class="btn">Xem điểm</a>
         <a href="{% url 'Course:DocumentView' course.id %}" class="btn">Xem tài liệu</a>
     </div>
-</body>
+</body> 
 </html>
