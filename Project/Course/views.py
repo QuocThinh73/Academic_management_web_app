@@ -58,7 +58,6 @@ class AddDescription(RoleRequiredMixin, View):
             print("luu thanh cong")
             course.save()
         return redirect("Course:AddDescription", course_id=course_id)
-=======
 class Assessment(RoleRequiredMixin, View):
     def has_permission(self, user):
         return user.user_type == 'Teacher'
