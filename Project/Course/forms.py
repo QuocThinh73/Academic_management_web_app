@@ -1,6 +1,8 @@
 from django import forms
-from .models import TeacherAssessment
-class TeacherAssessmentForm(forms.ModelForm):
+from .models import Course
+
+class DocumentForm(forms.ModelForm):
     class Meta:
-        model = TeacherAssessment
-        fields = ['course', 'student', 'teacher', 'grade', 'comment']
+        model = Course
+        fields = ['description', 'syllabus', 'course_file']
+

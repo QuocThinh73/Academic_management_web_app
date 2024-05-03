@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     "Grade",
     "Logout",
     "Schedule",
+    "Assessment",
     "File_document",
 ]
 
