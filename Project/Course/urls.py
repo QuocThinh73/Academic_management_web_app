@@ -11,5 +11,5 @@ urlpatterns = [
     path("teacher/<int:course_id>/assessment/", views.Assessment.as_view(), name="Assessment"),
     path("teacher/<int:course_id>/teacher_assessment/<int:student_id>/", views.TeacherAssessment.as_view(), name="TeacherAssessment"),
     path("student/<int:student_id>/assessment", views.StudentReceiveAssess.as_view(), name="StudentReceiveAssess"),
-    path("teacher/<int:course_id>/course_info/", views.AddDescription.as_view(), name = "AddDescription" ),
+
 ]

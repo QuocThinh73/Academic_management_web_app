@@ -6,7 +6,6 @@ from Login.mixins import RoleRequiredMixin
 from .forms import TeacherAssessmentForm
 from django.views.generic.detail import DetailView
 from .models import TeacherAssessment
-from .forms import DocumentForm
 
 class CourseTeacher(RoleRequiredMixin, View):
     def has_permission(self, user):
@@ -34,6 +33,7 @@ class ListOfStudent(RoleRequiredMixin, View):
     
 
 #Hien trang danh gia sinh vien danh cho giao vien
+<<<<<<< HEAD
 class AddDescription(RoleRequiredMixin, View):
     def has_permission(self, user):
         return user.user_type == 'Teacher'
@@ -59,6 +59,8 @@ class AddDescription(RoleRequiredMixin, View):
             course.save()
         return redirect("Course:AddDescription", course_id=course_id)
 
+=======
+>>>>>>> dc92b5cc17b49436dfbc2b5f0e2f34c51af5e876
 class Assessment(RoleRequiredMixin, View):
     def has_permission(self, user):
         return user.user_type == 'Teacher'

@@ -280,6 +280,7 @@ table {
   width: 100%;
   border: 1px solid #ddd;
   background-color: white;
+    counter-reset: section;
 }
 table th {
     background-color: #f2f2f2;
@@ -289,6 +290,13 @@ table th, table td {
   text-align: left;
   padding: 16px;
 }
+
+/*Dem STT*/
+.count:before {
+  counter-increment: section;
+  content: counter(section);
+}
+/*Dem STT*/
 /*Styling the table*/
 
 #left_side {
