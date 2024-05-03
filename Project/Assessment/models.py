@@ -32,4 +32,16 @@ class TeacherAssessment(models.Model):
             return 'D'
         else:
             return 'F'
+        
+#Student danh gia Teacher
+class StudentAssessment(models.Model):
+    student = models.ForeignKey(Student, on_delete=models.CASCADE, null=True)
+    course = models.ForeignKey(Course, on_delete=models.CASCADE, null=True)
+    course_feedback = models.TextField()
+    teacher_feedback = models.TextField()
+    improvements = models.TextField()
+    
+    def __str__(self):
+        return f'Review for {self.course}'
+
 

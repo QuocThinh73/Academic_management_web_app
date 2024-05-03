@@ -11,7 +11,8 @@ class AddDescription(RoleRequiredMixin, View):
     
     def get(self, request, course_id):
         course = Course.objects.get(pk=course_id)
-        form = DocumentForm(prefix = course_id)
+        documents = Document.objects.filter(course = course)
+        form = DocumentForm( instance=documents)
         context = {
         "course": course,
         "form": form,
@@ -22,11 +23,10 @@ class AddDescription(RoleRequiredMixin, View):
         course = Course.objects.get(pk=course_id)
         form = DocumentForm(request.POST, prefix=course_id)
         if form.is_valid():
-            #course, created = Course.objects.get_or_create()
-            Document.course = course
-            Document.description = form.cleaned_data.get('description')
-            Document.syllabus = form.cleaned_data.get('syllabus')
-            Document.course_file = form.cleaned_data.get('course_file')
-            print("luu thanh cong")
-            course.save()
+            document, created = Document.objects.get_or_create(course = course)
+            if created is False:
+                document.description = form.cleaned_data.get('description')
+                document.syllabus = form.cleaned_data.get('syllabus')
+                document.course_file = form.cleaned_data.get('course_file')
+                document.save()
         return redirect("File_document:AddDescription", course_id=course_id)

@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.views import View
 from Course.models import Course
 from Grade.models import Grade
+from File_document.models import Document
 from Login.mixins import RoleRequiredMixin
 
 class CourseTeacher(RoleRequiredMixin, View):
@@ -66,7 +67,10 @@ class DocumentView(RoleRequiredMixin, View):
         return user.user_type == 'Student'
     
     def get(self, request, course_id):
+        course = Course.objects.get(pk=course_id)
+        documents = Document.objects.filter(course = course). first()
         context = {
-
+            'course' : course,
+            'documents': documents,
         }
         return render(request, "Course/CourseStudent/DocumentView.html", context)

@@ -1,1 +1,36 @@
-Template này dùng để hiển thị tài liệu của lớp học
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/file.css' %}">
+    <title>Điểm môn học</title>
+</head>
+<body>
+    <nav>
+		<a href="{% url 'Student:student' %}" class="menu_left">Trang chủ</a>
+		<a href="{% url 'Student:student_course' %}" class="menu_left">Khóa học của tôi</a>
+		<a href="{% url 'Registration:registration_student' %}" class="menu_left">Đăng ký môn học</a>
+		<a href="{% url 'Student:student_profile' %}" class="menu_left">Hồ sơ và quản lý cá nhân</a>
+		<a href="{% url 'Logout:logout' %}" class="menu_right">Đăng xuất</a>
+	</nav>
+
+    <h1 class="menu_text">Tài liệu của khóa học: {{ course }}</h1>
+    <div class="center_form"> 
+        <hr>
+        <div class="list_form">
+            {% for document in documents %}
+            <li>
+                <h3>{{ document.description }}</h3>
+                <p>{{ document.syllabus }}</p>
+                {% if document.course_file %}
+                    <a href="{{ document.course_file.url }}">Download file</a>
+                {% endif %}
+            </li>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
