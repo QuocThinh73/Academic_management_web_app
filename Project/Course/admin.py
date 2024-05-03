@@ -13,22 +13,28 @@ class ScheduleInlineForm(forms.ModelForm):
         cleaned_data = super().clean()
         start_hour = cleaned_data.get('start_hour')
         subject = cleaned_data.get('course').subject
-        if start_hour is not None and subject is not None:
-            hours = subject.hours
-            end_hour = start_hour.hour + hours  # Accessing the hour attribute
+        days = cleaned_data.get('days')
+        
+        if start_hour and subject and days:
+            end_hour = start_hour.hour + subject.hours
+
             if end_hour > 18:
-                raise forms.ValidationError(f"Thời gian học vượt quá 18 giờ. Hãy chọn lại giờ bắt đầu.")
+                raise forms.ValidationError(f"Thời gian học vượt quá 18 giờ.")
+
+            course = cleaned_data.get('course')
+
+            teacher_schedules = Schedule.objects.filter(course__teacher=course.teacher, course__semester=course.semester, days=days).exclude(id=self.instance.id)
+            for teacher_schedule in teacher_schedules:
+                if (start_hour.hour >= teacher_schedule.start_hour.hour and start_hour.hour < teacher_schedule.end_hour) or (end_hour > teacher_schedule.start_hour.hour and end_hour <= teacher_schedule.end_hour):
+                    raise forms.ValidationError(f"Trùng lịch với giảng viên.")
             
-            conflicting_schedules = Schedule.objects.filter(
-                course__teacher=cleaned_data.get('course').teacher,
-                days=cleaned_data.get('days'),
-                start_hour__hour__lt=end_hour,  # Đổi từ end_hour thành start_hour
-                start_hour__hour__gt=start_hour.hour - subject.hours  # Sử dụng start_hour và trừ đi hours từ Subject
-            )
-            
-            if conflicting_schedules.exists():
-                raise forms.ValidationError("Lịch học trùng lặp với một lịch khác.")
-            
+            students = course.students.all()
+            for student in students:
+                student_courses = student.course_set.all()
+                for course in student_courses:
+                    student_schedules = course.schedule_set.filter(course__semester=course.semester, days=days).exclude(id=self.instance.id)
+                    print(f"{student.name}: {student_schedules}")
+
         return cleaned_data
     
 class ScheduleInline(admin.TabularInline):
