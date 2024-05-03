@@ -1,0 +1,31 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Course Reviews</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .review {
+            width: 50%;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    {% for assessment in assessments %}
+        <div class="review">
+            <h2>Review</h2>
+            <p><strong>Course Feedback:</strong> {{ assessment.course_feedback }}</p>
+            <p><strong>Teacher Feedback:</strong> {{ assessment.teacher_feedback }}</p>
+            <p><strong>Improvements:</strong> {{ assessment.improvements }}</p>
+        </div>
+    {% endfor %}
+</body>
+</html>

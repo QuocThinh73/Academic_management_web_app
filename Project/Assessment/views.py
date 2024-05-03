@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect
-from .models import TeacherAssessment
+from django.contrib import messages
+from .models import TeacherAssessment, StudentAssessment
 from Course.models import Course
 from Student.models import Student
-from .forms import TeacherAssessmentForm
+from .forms import TeacherAssessmentForm, StudentAssessmentForm
 from django.views import View
 from Login.mixins import RoleRequiredMixin
 from django.views.generic import DetailView
@@ -33,7 +34,8 @@ class TeacherAssessmentView(RoleRequiredMixin, View):
             assess.teacher = request.user
             assess.student_id = student_id
             assess.save()
-            return redirect('Course:assessment', course_id = course_id)
+            messages.success(request, 'Your assessment was saved')
+            return redirect("Assessment:TeacherAssessmentView", course_id=course_id, student_id=student_id)
         return render(request, "Course/CourseTeacher/teacher_assess.html", {"form": form})
 
 #Student xem danh gia tu giao vien
@@ -46,9 +48,36 @@ class StudentAssessView(DetailView):
         return self.model.objects.filter(student_id=self.kwargs['student_id'])
 
 #Hien trang de sinh vien co the vo danh gia giao vien cho mon hoc tuong ung
-class StudentAssessment(RoleRequiredMixin, View):
+class StudentAssessmentView(RoleRequiredMixin, View):
     def has_permission(self, user):
         return user.user_type == 'Student'
     
-    def get(self, request):
-        pass
+    def get(self, request, course_id):
+        form = StudentAssessmentForm()
+        course = Course.objects.get(id=course_id)
+        context = {
+            'form': form,
+            'course': course,
+        }
+        return render(request, "Course/CourseStudent/student_assess.html", context)
+
+    def post(self, request, course_id):
+        form = StudentAssessmentForm(request.POST)
+        course = Course.objects.get(id=course_id)
+        if form.is_valid():
+            assessment = form.save(commit=False)
+            assessment.student = request.user
+            assessment.course = course
+            assessment.save()
+            messages.success(request, 'Your assessment was saved')
+            return redirect("Assessment:StudentAssessmentView", course_id=course_id)
+        return render(request, "Course/CourseStudent/student_assess.html", {'form': form})
+    
+#Hien trang de giao vien coi danh gia tu sinh vien
+class TeacherAssessView(DetailView):
+    model = StudentAssessment
+    template_name = "Course/CourseTeacher/teacher_receive_assess.html"
+    context_object_name = "assessments"
+
+    def get_queryset(self):
+        return self.model.objects.filter(course_id=self.kwargs['course_id'])
