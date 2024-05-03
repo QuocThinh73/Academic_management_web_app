@@ -25,8 +25,20 @@
 
 	<h2 class="menu_text">Đăng ký môn học</h2>
 
+	{% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            {% if message.tags == 'error' %}
+                <li class="error-message">{{ message }}</li>
+            {% elif message.tags == 'success' %}
+                <li class="success-message">{{ message }}</li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+	{% endif %}
+
 	<form class="center_form" method="post">
-		<div id="semester_font">{% csrf_token %}</div>
+		{% csrf_token %}
 		<div id="id_semester_font">{{ form.as_p }}</div>
 		<button type="submit">Đăng ký</button>
 	</form>
