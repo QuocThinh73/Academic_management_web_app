@@ -5,6 +5,7 @@ from .models import RegistrationCourse
 from Databases.models import Semester
 from Login.mixins import RoleRequiredMixin
 from django.contrib import messages
+from Databases.models import Subject
 # Create your views here.
 
 class RegistrationStudent(RoleRequiredMixin, View):
