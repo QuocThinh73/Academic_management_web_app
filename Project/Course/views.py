@@ -30,33 +30,6 @@ class ListOfStudent(RoleRequiredMixin, View):
             "students": students,
         }
         return render(request, "Course/CourseTeacher/list_of_student.html", context)
-    
-
-#Hien trang danh gia sinh vien danh cho giao vien
-class AddDescription(RoleRequiredMixin, View):
-    def has_permission(self, user):
-        return user.user_type == 'Teacher'
-    
-    def get(self, request, course_id):
-        course = Course.objects.get(pk=course_id)
-        form = DocumentForm(prefix = course_id)
-        context = {
-        "course": course,
-        "form": form,
-        }
-        return render(request, "Course/CourseTeacher/course_info.html", context)
-    
-    def post(self, request, course_id):
-        course = Course.objects.get(pk=course_id)
-        form = DocumentForm(request.POST, prefix=course_id)
-        if form.is_valid():
-            #course, created = Course.objects.get_or_create()
-            course.description = form.cleaned_data.get('description')
-            course.syllabus = form.cleaned_data.get('syllabus')
-            course.course_file = form.cleaned_data.get('course_file')
-            print("luu thanh cong")
-            course.save()
-        return redirect("Course:AddDescription", course_id=course_id)
 
 class Assessment(RoleRequiredMixin, View):
     def has_permission(self, user):
