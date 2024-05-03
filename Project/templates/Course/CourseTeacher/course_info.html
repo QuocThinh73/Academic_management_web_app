@@ -1,22 +1,16 @@
-{% load static %}
-
-<!DOCTYPE html>
-<html lang="vi">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Course Information</title>
-    <link rel="stylesheet" href="{% static 'css/course.css' %}">
-</head>
-<body>
-    <h1>Course Information</h1>
-    <h2>{{ course.subject.name }} - HK{{ course.semester.semester_id }}</h2>
-    <form method="post">
-        {% csrf_token %}
-        <p>Description: {{ form.description}}</p>
-        <p>Syllabus: {{ form.syllabus }}</p>
-        <p>File: {{ form.course_file }}</p>
-        <button type="submit">Submit</button>
-    </form>
-</body>
-</html>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ formset.management_form }}
+    {% for form in formset %}
+        <div class="form-group">
+            {{ form.id }}
+            {{ form.description }}
+            {{ form.syllabus }}
+            {{ form.course_file }}
+            {% if form.DELETE %}
+                <label>Delete: {{ form.DELETE }}</label>
+            {% endif %}
+        </div>
+    {% endfor %}
+    <button type="submit">Upload</button>
+</form>
