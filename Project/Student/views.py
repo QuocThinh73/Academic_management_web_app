@@ -41,6 +41,21 @@ class StudentProfile(RoleRequiredMixin, View):
     def has_permission(self, user):
         return user.user_type == 'Student'
     
+    def get(self, request):
+        # Lấy thông tin của sinh viên
+        student = request.user.student
+        student_email = request.user.email
+
+        context = {
+            "student" : student,
+            "student_email" : student_email,
+        }
+        return render(request, "Student/profile.html", context)
+    
+class ScoreView(RoleRequiredMixin, View):
+    def has_permission(self, user):
+        return user.user_type == 'Student'
+    
     @classmethod
     def get_semester(cls, student):
         courses = Course.objects.filter(students=student)
@@ -93,16 +108,15 @@ class StudentProfile(RoleRequiredMixin, View):
     def get(self, request):
         # Lấy thông tin của sinh viên
         student = request.user.student
-        student_email = request.user.email
         info_by_semester = self.get_info_by_semester(student)
 
         context = {
-            "student" : student,
-            "student_email" : student_email,
             "info_by_semester": info_by_semester,
         }
-        return render(request, "Student/profile.html", context)
     
+        return render(request, "Student/score_view.html", context)
+        
+
 class ScheduleView(RoleRequiredMixin, View):
     def has_permission(self, user):
         return user.user_type == 'Student'
@@ -129,4 +143,3 @@ class ScheduleView(RoleRequiredMixin, View):
         }
 
         return render(request, "Student/schedule_view.html", context)
-    

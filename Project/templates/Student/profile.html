@@ -26,7 +26,8 @@
 		<a href="{% url 'Student:student' %}" class="menu_left">Trang chủ</a>
 		<a href="{% url 'Student:student_course' %}" class="menu_left">Khóa học của tôi</a>
 		<a href="{% url 'Registration:registration_student' %}" class="menu_left">Đăng ký môn học</a>
-		<a href="{% url 'Student:student_profile' %}" class="menu_left">Hồ sơ và quản lý cá nhân</a>
+		<a href="{% url 'Student:student_profile' %}" class="menu_left">Hồ sơ lý lịch</a>
+		<a href="{% url 'Student:student_score' %}" class="menu_left">Điểm số</a>
 		<a href="{% url 'Student:student_schedule' %}" class="menu_left">Thời khóa biểu</a>
 		<a href="{% url 'Logout:logout' %}" class="menu_right">Đăng xuất</a>
 	</nav>
@@ -45,59 +46,6 @@
 			<p>{{ student.department }}</p>
 			<p><strong>Ngành</strong></p>
 			<p>{{ student.major }}</p>
-		</div>
-		<div id="right_side">
-			<h3>Điểm số</h3>
-			{% for semester_id, info in info_by_semester.items %}
-				<h3>HK{{ semester_id }}</h3>
-				<table>
-					<tr>
-						<th>Môn học</th>
-						<th>Bài tập</th>
-						<th>Giữa kì</th>
-						<th>Cuối kì</th>
-						<th>Tổng kết</th>
-					</tr>
-					{% for grade_info in info.grades_info %}
-						<tr>
-							<td>{{ grade_info.subject }}</td>
-							{% if grade_info.assignment_score is not None %}
-								<td>{{ grade_info.assignment_score }}</td>
-							{% else %}
-								<td></td>
-							{% endif %}
-							{% if grade_info.midterm_score is not None %}
-								<td>{{ grade_info.midterm_score }}</td>
-							{% else %}
-								<td></td>
-							{% endif %}
-							{% if grade_info.final_score is not None %}
-								<td>{{ grade_info.final_score }}</td>
-							{% else %}
-								<td></td>
-							{% endif %}
-							{% if grade_info.average_score is not None %}
-								<td>{{ grade_info.average_score }}</td>
-							{% else %}
-								<td></td>
-							{% endif %}
-						</tr>
-					{% endfor %}
-					<tr>
-						<th colspan="5">
-							{% if info.average_score_semester is not None %}
-								<p>Điểm trung bình học kỳ: {{ info.average_score_semester }}</p>
-								<p>Điểm trung bình tích lũy: {{ info.average_score_all }}</p>
-								<p>Số tín chỉ tích lũy: {{ info.credit }}</p>
-							{% else %}
-								<p>Điểm trung bình học kỳ:</p>
-								<p>Điểm trung bình tích lũy:</p>
-								<p>Số tín chỉ tích lũy:</p>
-							{% endif %}
-						</th>
-					</tr>
-				</table>
-			{% endfor %}
 		</div>
 	</div>
 
