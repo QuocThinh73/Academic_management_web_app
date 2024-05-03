@@ -11,10 +11,6 @@ class Course(models.Model):
     id_course = models.CharField(max_length=3, null=True)
 
     @classmethod
-    def courses_of_student_in_semester(cls, student, semester):
-        return cls.objects.filter(students=student, semester=semester)
-
-    @classmethod
     def count_courses_upon_subject(cls, subject, semester):
         return cls.objects.filter(subject=subject, semester=semester).count()
 
