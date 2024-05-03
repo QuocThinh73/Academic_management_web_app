@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import TeacherAssessment
+from Course.models import Course
+from Student.models import Student
 from .forms import TeacherAssessmentForm
 from django.views import View
 from Login.mixins import RoleRequiredMixin
@@ -12,9 +14,16 @@ class TeacherAssessmentView(RoleRequiredMixin, View):
     def has_permission(self, user):
         return user.user_type == 'Teacher'
     
-    def get(self, request, course_id, student_id):
+    def get(self, request, course_id):
         form = TeacherAssessmentForm()
-        return render(request, "Course/CourseTeacher/teacher_assess.html", {"form": form})
+        course = Course.objects.get(id=course_id)
+        students_course = course.students.all()
+        context = {
+            "form": form,
+            "course": course,
+            "students_course": students_course,
+        }
+        return render(request, "Course/CourseTeacher/teacher_assess.html", context)
     
     def post(self, request, course_id, student_id):
         form = TeacherAssessmentForm(request.POST)
