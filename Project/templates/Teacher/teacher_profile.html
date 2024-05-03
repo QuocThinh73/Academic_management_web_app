@@ -57,16 +57,17 @@
 		<a href="{% url 'Logout:logout' %}" class="menu_right">Đăng xuất</a>
 	</nav>
     <div class="container">
-        <h1>Teacher Profile</h1>
+        <h1>Hồ sơ</h1>
         <h2>{{ teacher.name }}</h2>
         <p>Email: {{ teacher_mail }}</p>
-        <p>Department: {{ department.name }}</p>
-        <p>Teaching Schedule: {{ teaching_schedule }}</p>
+        <p>Khoa: {{ teacher.department.name }}</p>
+        <p>Giới tính: {{ teacher.gender }}</p>
+        <p>Số điện thoại: {{ teacher.phone_number }}</p>
 
         <h2>Degrees:</h2>
         <ul>
         {% for degree in degrees %}
-            <li>{{ degree.name }} from {{ degree.university }} ({{ degree.year_obtained }})</li>
+            <li>{{ degree }} tại {{ degree.university }} ({{ degree.year_obtained }})</li>
         {% endfor %}
         </ul>
     </div>
