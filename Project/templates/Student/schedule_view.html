@@ -33,18 +33,18 @@
             <thead>
                 <tr>
                     <th>Lớp</th>
-                    <th>Giảng viên</th>
                     <th>Thứ</th>
                     <th>Thời gian</th>
+                    <th>Giảng viên</th>
                 </tr>
             </thead>
             <tbody>
                 {% for schedule in schedules %}
                     <tr>
                         <td>{{ schedule.course.subject.name }}</td>
-                        <td>{{ schedule.course.teacher.name }}</td>
                         <td>{{ schedule.days }}</td>
                         <td>{{ schedule.start_hour }}h - {{ schedule.end_hour }}h</td>
+                        <td>{{ schedule.course.teacher.name }}</td>
                     </tr>
                 {% endfor %}
             </tbody>

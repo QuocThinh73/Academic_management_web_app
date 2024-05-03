@@ -44,7 +44,7 @@ class RegistrationCourseAdmin(admin.ModelAdmin):
     create_course.short_description = "Tạo lớp học"
 
     list_display = ['subject', 'student', 'semester']
-    list_filter = ['semester__semester_id', 'subject']
+    list_filter = ['semester__semester_id', 'subject', 'student']
     actions = [create_course]
 
 admin.site.register(RegistrationCourse, RegistrationCourseAdmin)

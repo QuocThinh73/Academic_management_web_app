@@ -35,7 +35,6 @@ class TeacherProfile(RoleRequiredMixin, View):
         teacher_mail = request.user.email
         degrees = Degrees.objects.filter(teacher=teacher)
         department = teacher.department
-        teaching_schedule = teacher.teaching_schedule
 
         #Hien thi thong tin giao vien
         context = {
@@ -43,7 +42,6 @@ class TeacherProfile(RoleRequiredMixin, View):
             'teacher_mail': teacher_mail,
             'degrees': degrees,
             'department': department,
-            'teaching_schedule': teaching_schedule,
         }
         return render(request, 'Teacher/teacher_profile.html', context)
 

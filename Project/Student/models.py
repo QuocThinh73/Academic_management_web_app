@@ -9,6 +9,28 @@ class Student(models.Model):
     department = models.ForeignKey(Department, on_delete=models.CASCADE, null=True)
     major = models.ForeignKey(Major, on_delete=models.CASCADE, null = True)
     username = models.OneToOneField(MyUser, on_delete=models.CASCADE,  null=True)
+    hometown = models.CharField(max_length=40, null=True)
+
+    GENDER_CHOICES = [
+        ('Nam', 'Nam'),
+        ('Nữ', 'Nữ'),
+    ]
+    gender = models.CharField(max_length=10, null=True, choices=GENDER_CHOICES)
+
+    STATE_CHOICES = [
+        ('Đang học', 'Đang học'),
+        ('Tạm dừng học', 'Tạm dừng học'),
+        ('Thôi học', 'Thôi học'),
+        ('Tốt nghiệp', 'Tốt nghiệp'),
+    ]
+    state = models.CharField(max_length=20, null=True, choices=STATE_CHOICES)
+
+    TYPE_CHOICES = [
+        ('Cử nhân', 'Cử nhân'),
+        ('Thạc sĩ', 'Thạc sĩ'),
+    ]
+    type = models.CharField(max_length=20, null=True, choices=TYPE_CHOICES)
+
 
     def __str__(self):
         return self.name

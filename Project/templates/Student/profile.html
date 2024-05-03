@@ -34,18 +34,24 @@
 	<div id="flex_container">
 		<div id="left_side">			
 			<h1 id="menu_text">{{ student.name }}</h1>
-			<h2>Sinh viên</h2>
-			<h3><strong>Chi tiết người dùng</strong></h3>
 			<p><strong>Email</strong></p>
 			<p><a href="mailto:" {{ student_email }}>{{ student_email }}</a></p>
 			<p><strong>Mã số sinh viên</strong></p>
 			<p>{{ student.student_id }}</p>
-			<p><strong>Ngày sinh</strong></p>
-			<p>{{ student.date_of_birth }}</p>
 			<p><strong>Khoa</strong></p>
 			<p>{{ student.department }}</p>
 			<p><strong>Ngành</strong></p>
 			<p>{{ student.major }}</p>
+			<p><strong>Ngày sinh</strong></p>
+			<p>{{ student.date_of_birth }}</p>
+			<p><strong>Giới tính</strong></p>
+			<p>{{ student.gender }}</p>
+			<p><strong>Quê quán</strong></p>
+			<p>{{ student.hometown }}</p>
+			<p><strong>Tình trạng</strong></p>
+			<p>{{ student.state }}</p>
+			<p><strong>Chương trình đào tạo</strong></p>
+			<p>{{ student.type }}</p>
 		</div>
 	</div>
 

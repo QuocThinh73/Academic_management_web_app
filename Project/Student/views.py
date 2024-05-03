@@ -136,7 +136,6 @@ class ScheduleView(RoleRequiredMixin, View):
         days_order = ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN']
         for schedules in schedules_by_semester.values():
             schedules.sort(key=lambda x: (days_order.index(x.days.day), x.start_hour.hour))
-        print(schedules_by_semester)
 
         context = {
             "schedules_by_semester": schedules_by_semester
