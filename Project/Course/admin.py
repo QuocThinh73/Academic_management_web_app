@@ -18,6 +18,17 @@ class ScheduleInlineForm(forms.ModelForm):
             end_hour = start_hour.hour + hours  # Accessing the hour attribute
             if end_hour > 18:
                 raise forms.ValidationError(f"Thời gian học vượt quá 18 giờ. Hãy chọn lại giờ bắt đầu.")
+            
+            conflicting_schedules = Schedule.objects.filter(
+                course__teacher=cleaned_data.get('course').teacher,
+                days=cleaned_data.get('days'),
+                start_hour__hour__lt=end_hour,  # Đổi từ end_hour thành start_hour
+                start_hour__hour__gt=start_hour.hour - subject.hours  # Sử dụng start_hour và trừ đi hours từ Subject
+            )
+            
+            if conflicting_schedules.exists():
+                raise forms.ValidationError("Lịch học trùng lặp với một lịch khác.")
+            
         return cleaned_data
     
 class ScheduleInline(admin.TabularInline):

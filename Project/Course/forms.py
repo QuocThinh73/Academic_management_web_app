@@ -5,3 +5,4 @@ class DocumentForm(forms.ModelForm):
     class Meta:
         model = Course
         fields = ['description', 'syllabus', 'course_file']
+

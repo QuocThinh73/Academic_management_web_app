@@ -12,7 +12,7 @@ class Course(models.Model):
     description = models.TextField(null = True)
     syllabus = models.TextField(null = True)
     course_file = models.FileField(upload_to='Course/course_file/', null = True, blank=None)
-    
+
     @classmethod
     def count_courses_upon_subject(cls, subject, semester):
         return cls.objects.filter(subject=subject, semester=semester).count()

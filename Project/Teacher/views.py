@@ -25,13 +25,6 @@ class ClassManageView(RoleRequiredMixin, View):
         }
         return render(request, "Teacher/class_manage.html", context)
     
-class UploadView(RoleRequiredMixin, View):
-    def has_permission(self, user):
-        return user.user_type == 'Teacher'
-
-    def get(self, request):
-        return render(request, "Teacher/upload.html")
-    
 class TeacherProfile(RoleRequiredMixin, View):
     def has_permission(self, user):
         return user.user_type == 'Teacher'

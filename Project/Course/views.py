@@ -52,7 +52,7 @@ class AddDescription(RoleRequiredMixin, View):
             course.course_file = form.cleaned_data.get('course_file')
             course.save()
         return redirect("Course:AddDescription", course_id=course_id)
-    
+
 class Assessment(RoleRequiredMixin, View):
     def has_permission(self, user):
         return user.user_type == 'Teacher'
@@ -95,5 +95,3 @@ class DocumentView(RoleRequiredMixin, View):
 
         }
         return render(request, "Course/CourseStudent/DocumentView.html", context)
-
-

@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     "Logout",
     "Schedule",
     "Assessment",
+    "File_document",
 ]
 
 MIDDLEWARE = [
