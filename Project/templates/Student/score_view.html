@@ -1,0 +1,92 @@
+<!-- Django -->
+{% load static %}
+
+<!DOCTYPE html>
+<html lang='vi'>
+<head>
+	<meta charset="utf-8">
+	<meta name="description" content="Academic management">
+	<meta content="author" name="Nguyen Loc">
+	<meta content="country" name="Viet Nam">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="{% static 'css/file.css' %}">
+	<title>Trang sinh viên</title>
+</head>
+<body>
+	<!-- BackGround -->
+	<div id="back_ground_wave">
+	     <div class="wave"></div>
+	     <div class="wave"></div>
+	     <div class="wave"></div>
+ 	</div>
+	<!-- BackGround -->
+	
+	<nav>
+		<a href="{% url 'Student:student' %}" class="menu_left">Trang chủ</a>
+		<a href="{% url 'Student:student_course' %}" class="menu_left">Khóa học của tôi</a>
+		<a href="{% url 'Registration:registration_student' %}" class="menu_left">Đăng ký môn học</a>
+		<a href="{% url 'Student:student_profile' %}" class="menu_left">Hồ sơ lý lịch</a>
+		<a href="{% url 'Student:student_score' %}" class="menu_left">Điểm số</a>
+		<a href="{% url 'Student:student_schedule' %}" class="menu_left">Thời khóa biểu</a>
+		<a href="{% url 'Logout:logout' %}" class="menu_right">Đăng xuất</a>
+	</nav>
+	<div id="flex_container">
+		<div id="right_side">
+			<h3>Điểm số</h3>
+			{% for semester_id, info in info_by_semester.items %}
+				<h3>HK{{ semester_id }}</h3>
+				<table>
+					<tr>
+						<th>Môn học</th>
+						<th>Bài tập</th>
+						<th>Giữa kì</th>
+						<th>Cuối kì</th>
+						<th>Tổng kết</th>
+					</tr>
+					{% for grade_info in info.grades_info %}
+						<tr>
+							<td>{{ grade_info.subject }}</td>
+							{% if grade_info.assignment_score is not None %}
+								<td>{{ grade_info.assignment_score }}</td>
+							{% else %}
+								<td></td>
+							{% endif %}
+							{% if grade_info.midterm_score is not None %}
+								<td>{{ grade_info.midterm_score }}</td>
+							{% else %}
+								<td></td>
+							{% endif %}
+							{% if grade_info.final_score is not None %}
+								<td>{{ grade_info.final_score }}</td>
+							{% else %}
+								<td></td>
+							{% endif %}
+							{% if grade_info.average_score is not None %}
+								<td>{{ grade_info.average_score }}</td>
+							{% else %}
+								<td></td>
+							{% endif %}
+						</tr>
+					{% endfor %}
+					<tr>
+						<th colspan="5">
+							{% if info.average_score_semester is not None %}
+								<p>Điểm trung bình học kỳ: {{ info.average_score_semester }}</p>
+								<p>Điểm trung bình tích lũy: {{ info.average_score_all }}</p>
+								<p>Số tín chỉ tích lũy: {{ info.credit }}</p>
+							{% else %}
+								<p>Điểm trung bình học kỳ:</p>
+								<p>Điểm trung bình tích lũy:</p>
+								<p>Số tín chỉ tích lũy:</p>
+							{% endif %}
+						</th>
+					</tr>
+				</table>
+			{% endfor %}
+		</div>
+	</div>
+
+
+
+</body>
