@@ -9,9 +9,11 @@ class Course(models.Model):
     subject = models.ForeignKey(Subject, on_delete=models.CASCADE, null=True)
     semester = models.ForeignKey(Semester, on_delete=models.CASCADE, null=True)
     id_course = models.CharField(max_length=3, null=True)
-    description = models.TextField(null = True)
-    syllabus = models.TextField(null = True)
-    course_file = models.FileField(upload_to='Course/course_file/', null = True, blank=None)
+    description = models.TextField(null = True, default="")
+    syllabus = models.TextField(null = True, default="")
+    course_file = models.FileField(null = True, blank=None)
+    #course_file = models.FileField(upload_to='Course/course_file/', null = True, blank=None)
+
     @classmethod
     def count_courses_upon_subject(cls, subject, semester):
         return cls.objects.filter(subject=subject, semester=semester).count()
