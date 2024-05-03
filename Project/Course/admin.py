@@ -25,6 +25,7 @@ class ScheduleInlineForm(forms.ModelForm):
                 start_hour__hour__lt=end_hour,  # Đổi từ end_hour thành start_hour
                 start_hour__hour__gt=start_hour.hour - subject.hours  # Sử dụng start_hour và trừ đi hours từ Subject
             )
+            
             if conflicting_schedules.exists():
                 raise forms.ValidationError("Lịch học trùng lặp với một lịch khác.")
             
