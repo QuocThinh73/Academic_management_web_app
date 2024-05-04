@@ -3,6 +3,8 @@ from django.views import View
 from Course.models import Course
 from .models import *
 from Login.mixins import RoleRequiredMixin
+from Schedule.models import Schedule
+from collections import defaultdict
 
 # Create your views here.
 
@@ -43,7 +45,31 @@ class TeacherProfile(RoleRequiredMixin, View):
         }
         return render(request, 'Teacher/teacher_profile.html', context)
 
-        
+class TeacherSchedule(RoleRequiredMixin, View):
+    def has_permission(self, user):
+        return user.user_type == 'Teacher'
+    
+    def get(self, request):
+        teacher = request.user.teacher
+        techer_courses = Course.objects.filter(teacher=teacher)
+
+        teacher_schedules = Schedule.objects.filter(course__in=techer_courses)
+        schedules_by_semester = defaultdict(list)
+
+        for schedule in teacher_schedules:
+            semester_id = schedule.course.semester.semester_id
+            schedules_by_semester[semester_id].append(schedule)
+
+        schedules_by_semester = dict(sorted(schedules_by_semester.items(), reverse=True))
+        days_order = ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN']
+        for schedules in schedules_by_semester.values():
+            schedules.sort(key=lambda x: (days_order.index(x.days.day), x.start_hour.hour))
+
+        context = {
+            "schedules_by_semester": schedules_by_semester
+        }
+
+        return render(request, "Teacher/schedule_view.html", context)
 
 
     

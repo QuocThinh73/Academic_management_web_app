@@ -17,6 +17,7 @@
 		<a href="/teacher" class="menu_left">Trang chủ</a>
 		<a href="/teacher/class_manage" class="menu_left">Quản lý danh sách lớp</a>
 		<a href="/teacher/profile" class="menu_left">Hồ sơ</a>
+		<a href="{% url 'Teacher:TeacherSchedule' %}" class="menu_left">Lịch giảng dạy</a>
 		<a href="{% url 'Logout:logout' %}" class="menu_right">Đăng xuất</a>
 	</nav>
 	<h1 class="menu_text">Quản lý danh sách lớp dạy<h1>
@@ -28,11 +29,16 @@
 	  	{% endfor %}
 	</div>
 
-	<div class="main_container">
-	  <div class="filterDiv programming_plus programming os">CN01</div>
-	  <div class="filterDiv programming_plus os">CC01</div>
-	  <div class="filterDiv os">L01</div>
-	  <div class="filterDiv dsa os">CN02</div>
-	</div>
+	<footer>
+		<div class="call">
+			<div class="fa fa-phone"></div>
+			<p class="call_us">Liên hệ: 0123456789 </p>
+		</div>
+		<div class="contact">
+			<div class="fa fa-envelope"></div>
+			<p class="contact_us">E-mail:defuniversity@def.edu.vn</p>
+		</div>
+	</footer>
+	<script src="{% static 'js/reloadPage.css' %}"></script>
 
 </body>
