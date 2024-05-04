@@ -9,37 +9,48 @@
 	<meta content="author" name="Nguyen Loc">
 	<meta content="country" name="Viet Nam">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 	<link rel="stylesheet" href="{% static 'css/home.css' %}">
-	<link rel="stylesheet" href="{% static 'css/reloadPage.css' %}">
-
 	<title>Trang chủ</title>
 </head>
 <body>
 	<nav>
-		<a onclick="reloadPage()" class="menu_left">Trang chủ</a>
-		<a href="/main_login" class="menu_right">Đăng nhập</a>
+		<a href="{% url 'Login:home' %}" class="menu_left">Trang chủ</a>
+		<a href="{% url 'Login:main_login' %}" class="menu_right">Đăng nhập</a>
 	</nav>
 
-	<!-- <h1 id="menu_text">
-		Welcome to ...
-	</h1> -->
-
-	<!-- BackGround -->
-	<!-- <div id="back_ground_wave">
-	     <div class="wave"></div>
-	     <div class="wave"></div>
-	     <div class="wave"></div>
- 	</div> -->
-	<!-- BackGround -->
-	<div id="slideshow">
-	  	<div class="slide-wrapper">
-		    <div class="slide"><img src="https://d1vcqlflm6aitx.cloudfront.net/images/800x100p/1700030207-how-to-choose-the-right-university.webp"></div>
-		    <div class="slide"><img src="https://file1.dangcongsan.vn/data/0/images/2021/09/10/phammai/dh.jpg"></div>
-		    <div class="slide"><img src="https://unizone.edu.vn/wp-content/uploads/2019/11/sinh-vien-dai-hoc-bach-khoa-tp-hcm.jpg"></div>
-			<div class="slide"><img src="https://nld.mediacdn.vn/291774122806476800/2023/11/6/chip-16992368640541636297906-16992403001991280085782.jpg"></div>
+	
+	<div class="slideshow-container">
+		<div class="mySlides fade">
+		  <!--<div class="numbertext">1 / 3</div>-->
+		  <img src="{% static 'assets/Education.jpg' %}" style="width:100%; height:720px;">
+		  <div class="text">Chào mừng bạn ghé tới trang của chúng tôi</div>
 		</div>
+		
+		<div class="mySlides fade">
+		  <!--<div class="numbertext">2 / 3</div>-->
+		  <img src="{% static 'assets/Picture3.jpeg' %}" style="width:100%; height:720px;" >
+		  <div class="text">Đây là trang quản lý học thuật</div>
+		</div>
+		
+		<div class="mySlides fade">
+		  <!--<div class="numbertext">3 / 3</div>-->
+		  <img src="{% static 'assets/Picture2.jpeg' %}" style="width:100%; height:720px;">
+		  <div class="text">Phát triển do một nhóm sinh viên KHKTMT-clc TCTN k22 của trường ĐHBK</div>
+		</div>
+		
+		<a class="prev" onclick="plusSlides(-1)">❮</a>
+		<a class="next" onclick="plusSlides(1)">❯</a>
+		
 	</div>
-
+	<br>
+		
+	<div style="text-align:center">
+		<span class="dot" onclick="currentSlide(1)"></span> 
+		<span class="dot" onclick="currentSlide(2)"></span> 
+		<span class="dot" onclick="currentSlide(3)"></span> 
+	</div>
+		
 	<footer>
 		<div class="call">
 			<div class="fa fa-phone"></div>
@@ -47,9 +58,37 @@
 		</div>
 		<div class="contact">
 			<div class="fa fa-envelope"></div>
-			<p class="contact_us">E-mail:ABC@gmail.com</p>
+			<p class="contact_us">E-mail:defuniversity@def.edu.vn</p>
 		</div>
 	</footer>
-	<script src="{% static 'js/reloadPage.css' %}"></script>
+	<script>
+		let slideIndex = 1;
+		showSlides(slideIndex);
+		
+		function plusSlides(n) {
+		  showSlides(slideIndex += n);
+		}
+		
+		function currentSlide(n) {
+		  showSlides(slideIndex = n);
+		}
+		
+		function showSlides(n) {
+		  let i;
+		  let slides = document.getElementsByClassName("mySlides");
+		  let dots = document.getElementsByClassName("dot");
+		  if (n > slides.length) {slideIndex = 1}    
+		  if (n < 1) {slideIndex = slides.length}
+		  for (i = 0; i < slides.length; i++) {
+			slides[i].style.display = "none";  
+		  }
+		  for (i = 0; i < dots.length; i++) {
+			dots[i].className = dots[i].className.replace(" active", "");
+		  }
+		  slides[slideIndex-1].style.display = "block";  
+		  dots[slideIndex-1].className += " active";
+		}
+	</script>
+	
 </body>
 
