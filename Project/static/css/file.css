@@ -604,13 +604,5 @@ button:hover {
     font-size: 105%;
 }
 
-/*Message error and success*/
-.error-message {
-  background-color: red;
-}
 
-
-.success-message {
-  background-color: green;
-}
 /*course_registration*/

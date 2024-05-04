@@ -7,12 +7,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Danh sách Tài liệu</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/file.css' %}">
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
 </head>
 <body>
+    <nav>
+		<a href="{% url 'Student:student' %}" class="menu_left">Trang chủ</a>
+		<a href="{% url 'Student:student_course' %}" class="menu_left">Khóa học của tôi</a>
+		<a href="{% url 'Registration:registration_student' %}" class="menu_left">Đăng ký môn học</a>
+		<a href="{% url 'Student:student_profile' %}" class="menu_left">Hồ sơ lý lịch</a>
+		<a href="{% url 'Student:student_score' %}" class="menu_left">Điểm số</a>
+		<a href="{% url 'Student:student_schedule' %}" class="menu_left">Thời khóa biểu</a>
+		<a href="{% url 'Logout:logout' %}" class="menu_right">Đăng xuất</a>
+	</nav>
     <header>
         <h1>Danh sách Tài liệu của Khóa học</h1>
     </header>
 
+    
     <main>
         <ul>
             {% for document in documents %}

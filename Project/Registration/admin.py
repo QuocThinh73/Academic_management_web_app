@@ -6,19 +6,17 @@ from django.db.models import Count
 
 class RegistrationCourseAdmin(admin.ModelAdmin):
     def create_course(modeladmin, request, queryset):
-        subject_groups = queryset.values('subject').annotate(total=Count('id')).order_by()
-
-        for subject_group in subject_groups:
-            subject_id = subject_group['subject']
-            registrations = queryset.filter(subject_id=subject_id).order_by('id')
-
-            total_registrations = registrations.count()
-            num_courses = (total_registrations + 4) // 5 
+        subjects = queryset.values_list('subject', flat=True).distinct()
+        
+        for subject_id in subjects:
+            all_registrations = RegistrationCourse.objects.filter(subject_id=subject_id).order_by('id')
+            total_registrations = all_registrations.count()
+            num_courses = (total_registrations + 4) // 5
 
             for course_number in range(num_courses):
                 start_index = course_number * 5
                 end_index = start_index + 5
-                current_registrations = registrations[start_index:end_index]
+                current_registrations = all_registrations[start_index:end_index]
 
                 if current_registrations.exists():
                     first_registration = current_registrations.first()
@@ -41,10 +39,10 @@ class RegistrationCourseAdmin(admin.ModelAdmin):
                         grade = Grade.objects.create(student=registration.student, course=course)
                         grade.save()
                         registration.delete()
-        
+
         modeladmin.message_user(request, "Các lớp học đã được tạo thành công.", level='SUCCESS')
 
-    create_course.short_description = "Tạo lớp học dựa trên môn đã chọn"
+    create_course.short_description = "Tạo lớp học"
 
     list_display = ['subject', 'student', 'semester']
     list_filter = ['semester__semester_id', 'subject', 'student']

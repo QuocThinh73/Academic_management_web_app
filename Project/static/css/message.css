@@ -1,0 +1,17 @@
+.messages {
+    margin-bottom: 20px; /* Add spacing below the message list */
+    text-align: center; /* Center align all messages */
+    list-style-type: none; /* Remove the default list bullet */
+    padding: 0; /* Remove default padding */
+    background: none; /* Ensure no background color */
+}
+
+.error-message {
+    color: red; /* Red text color for errors */
+    background: none; /* No background color */
+}
+
+.success-message {
+    color: green; /* Green text color for success */
+    background: none; /* No background color */
+}
