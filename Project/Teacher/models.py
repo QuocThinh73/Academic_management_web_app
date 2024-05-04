@@ -23,6 +23,9 @@ class Teacher(models.Model):
     department = models.ForeignKey(Department, on_delete=models.CASCADE, null=True)
     username = models.OneToOneField(MyUser, on_delete=models.CASCADE, null = True)
     phone_number = models.CharField(max_length=15, null=True)
+    date_of_birth = models.DateField(null=True)
+    hometown = models.CharField(max_length=40, null=True)
+    avatar = models.ImageField(upload_to="Avatar/Teacher/", null=True, blank=True)
 
     GENDER_CHOICES = [
         ('Nam', 'Nam'),
