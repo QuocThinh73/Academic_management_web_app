@@ -11,6 +11,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="{% static 'css/file.css' %}">
+	<link rel="stylesheet" href="{% static 'css/reloadPage.css' %}">
 	<title>Trang sinh viên</title>
 </head>
 <body>
@@ -28,13 +29,6 @@
 		<h1 class="menu_text">
 			Các khóa học của tôi
 		</h1>
-		<h2 class="overview">Tổng quan về khóa học</h2>
-		<div class="search-container">
-	    	<form action="/action_page.php">
-	     		<input type="text" placeholder="Tìm kiếm..." name="search">
-	      		<button type="submit"><i class="fa fa-search"></i></button>
-	    	</form>
-	  	</div>
 	</div>
   	<br>
   	<br>
@@ -52,5 +46,15 @@
 		{% endfor %}
   	</div>
 	
-
+	  <footer>
+		<div class="call">
+			<div class="fa fa-phone"></div>
+			<p class="call_us">Liên hệ: 0123456789 </p>
+		</div>
+		<div class="contact">
+			<div class="fa fa-envelope"></div>
+			<p class="contact_us">E-mail:defuniversity@def.edu.vn</p>
+		</div>
+	</footer>
+	<script src="{% static 'js/reloadPage.css' %}"></script>
 </body>

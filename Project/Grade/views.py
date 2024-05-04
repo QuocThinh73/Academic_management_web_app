@@ -29,17 +29,30 @@ class ImportScore(RoleRequiredMixin, View):
     def post(self, request, course_id):
         course = Course.objects.get(pk=course_id)
         students = course.students.all()
+        forms = []
+        form_is_valid = True
+
         for student in students:
-            form = GradeForm(request.POST, prefix=student.id)
+            form = GradeForm(request.POST, prefix=student.student_id)
             if form.is_valid():
-                # Kiểm tra xem có bản ghi Grade của sinh viên trong khóa học này không
                 grade, created = Grade.objects.get_or_create(student=student, course=course)
-                # Cập nhật điểm
-                if created is False:
+                if not created:
                     grade.assignment_score = form.cleaned_data.get('assignment_score')
                     grade.midterm_score = form.cleaned_data.get('midterm_score')
                     grade.final_score = form.cleaned_data.get('final_score')
                     grade.teacher = request.user.teacher
                     grade.save()
+            else:
+                form_is_valid = False
+            forms.append((student, form))
 
-        return redirect("Grade:ImportScore", course_id=course_id)
+        if form_is_valid:
+            return redirect("Grade:ImportScore", course_id=course_id)
+        else:
+            # Re-render the page with the existing data to show errors
+            context = {
+                "course": course,
+                "students": students,
+                "forms": forms,
+            }
+        return render(request, "Course/CourseTeacher/import_score.html", context)

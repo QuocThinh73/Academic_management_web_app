@@ -37,6 +37,8 @@
 			{% if student.avatar %}
             	<img src="{{ student.avatar.url }}" alt="{{ student.name }}" style="height: 300px; max-height: 300px; max-width: 300px;">
         	{% endif %}
+		</div>
+		<div id="right_side">
 			<p><strong>Email</strong></p>
 			<p><a href="mailto:" {{ student_email }}>{{ student_email }}</a></p>
 			<p><strong>Mã số sinh viên</strong></p>
@@ -57,7 +59,17 @@
 			<p>{{ student.type }}</p>
 		</div>
 	</div>
-
-
+	
+	<footer>
+        <div class="call">
+            <div class="fa fa-phone"></div>
+            <p class="call_us">Liên hệ: 0123456789 </p>
+        </div>
+        <div class="contact">
+            <div class="fa fa-envelope"></div>
+            <p class="contact_us">E-mail:defuniversity@def.edu.vn</p>
+        </div>
+    </footer>
+    <script src="{% static 'js/reloadPage.css' %}"></script>
 
 </body>

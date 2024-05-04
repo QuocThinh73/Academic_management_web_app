@@ -8,30 +8,51 @@
     <title>Nhập điểm</title>
     <link rel="stylesheet" href="{% static 'css/course.css' %}">
     <link rel="stylesheet" href="{% static 'css/file.css' %}">
+    <link rel="stylesheet" href="{% static 'css/import_score.css' %}">
 </head>
 <body>
     <nav>
         <a href="/teacher" class="menu_left">Trang chủ</a>
-        <a href="/teacher/upload" class="menu_left">Cập nhật nội dung khóa học</a>
-        <a href="/teacher/class_manage" class="menu_left">Quản lý danh sách lớp</a>
-        <a href="/teacher/profile" class="menu_left">Hồ sơ</a>
-        <a href="{% url 'Logout:logout' %}" class="menu_right">Đăng xuất</a>
+		<a href="/teacher/class_manage" class="menu_left">Quản lý danh sách lớp</a>
+		<a href="/teacher/profile" class="menu_left">Hồ sơ</a>
+		<a href="/teacher/schedule" class="menu_left">Lịch giảng dạy</a>
+		<a href="{% url 'Logout:logout' %}" class="menu_right">Đăng xuất</a>
     </nav>
     <h1 class="menu_text">Nhập điểm</h1>
-    <div class="center_form">
-        <div class="list_form">
-            <h2>{{ course.subject.name }} - HK{{ course.semester.semester_id }}</h2>
+        <div class="center_form">
+            <div class="list_form">
+                <h2>{{ course.subject.name }} - HK{{ course.semester.semester_id }} - Nhóm {{ course.id_course }}</h2>
+            </div>
+            <form method="post">
+                {% csrf_token %}
+                {% for student, form in forms %}
+                    <div class="form-row">
+                        <span class="student-name">{{ student.name }}</span>
+                        <div class="input-container">
+                            <label>Bài tập</label>
+                            {{ form.assignment_score }}
+                            {% if form.assignment_score.errors %}
+                                <span class="error-message">{{ form.assignment_score.errors|first }}</span>
+                            {% endif %}
+                        </div>
+                        <div class="input-container">
+                            <label>Giữa kì</label>
+                            {{ form.midterm_score }}
+                            {% if form.midterm_score.errors %}
+                                <span class="error-message">{{ form.midterm_score.errors|first }}</span>
+                            {% endif %}
+                        </div>
+                        <div class="input-container">
+                            <label>Cuối kì</label>
+                            {{ form.final_score }}
+                            {% if form.final_score.errors %}
+                                <span class="error-message">{{ form.final_score.errors|first }}</span>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endfor %}
+                <button type="submit">Submit</button>
+            </form>        
         </div>
-        <form method="post">
-            {% csrf_token %}
-            {% for student, form in forms %}
-                <h3>{{ student.name }}</h3>
-                <p>Bài tập: {{ form.assignment_score }}</p>
-                <p>Giữa kì: {{ form.midterm_score }}</p>
-                <p>Cuối kì: {{ form.final_score }}</p>
-            {% endfor %}
-            <button type="submit">Submit</button>
-        </form>
-    </div>
 </body>
 </html>

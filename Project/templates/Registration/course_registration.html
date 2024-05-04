@@ -10,6 +10,7 @@
 	<meta content="country" name="Viet Nam">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="{% static 'css/file.css' %}">
+	<link rel="stylesheet" href="{% static 'css/reloadPage.css' %}">
 	<title>Trang chủ</title>
 </head>
 <body>
@@ -42,6 +43,18 @@
 		<div id="id_semester_font">{{ form.as_p }}</div>
 		<button type="submit">Đăng ký</button>
 	</form>
+
+	<footer>
+		<div class="call">
+			<div class="fa fa-phone"></div>
+			<p class="call_us">Liên hệ: 0123456789 </p>
+		</div>
+		<div class="contact">
+			<div class="fa fa-envelope"></div>
+			<p class="contact_us">E-mail:defuniversity@def.edu.vn</p>
+		</div>
+	</footer>
+	<script src="{% static 'js/reloadPage.css' %}"></script>
 
 	<script>
 	function myFunction() {
