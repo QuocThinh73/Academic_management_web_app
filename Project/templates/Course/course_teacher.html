@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Teacher View</title>
+    <title>Trang giảng viên</title>
     <link rel="stylesheet" href="{% static 'css/course.css' %}">
     <link rel="stylesheet" href="{% static 'css/file.css' %}">
 </head>
@@ -21,13 +21,14 @@
     <div class="center_form">
         <div class="list_form">
             <p>Môn học: {{ course.subject.name }}</p>
+            <p>Nhóm: {{ course.id_course }}</p>
             <p>Học kì: {{ course.semester.semester_id }}</p>
         </div>
         <div>
             <a href="{% url 'Course:ListOfStudent' course.id %}" class="btn">Xem danh sách sinh viên</a>
-            <a href="{% url 'Grade:ImportScore' course.id %}" class="btn">Nhập điểm cho sinh viên</a>
+            <a href="{% url 'File_document:AddDescription' course.id %}" class="btn">Thêm tài liệu</a>
+            <a href="{% url 'Grade:ImportScore' course.id %}" class="btn">Nhập điểm</a>
             <a href="{% url 'Course:Assessment' course.id %}" class="btn">Đánh giá sinh viên</a>
-            <a href="{% url 'File_document:AddDescription' course.id %}" class="btn">Add description</a>
         </div>
     </div>
 </body>

@@ -22,8 +22,18 @@ class ClassManageView(RoleRequiredMixin, View):
     def get(self, request):
         teacher = request.user.teacher
         courses = Course.objects.filter(teacher=teacher)
+
+        courses_by_semester = {}
+        for course in courses:
+            semester_id = course.semester.semester_id
+            if semester_id not in courses_by_semester:
+                courses_by_semester[semester_id] = []
+            courses_by_semester[semester_id].append(course)
+        courses_by_semester = dict(sorted(courses_by_semester.items(), reverse=True))
+
+
         context = {
-            "courses": courses
+            "courses_by_semester": courses_by_semester
         }
         return render(request, "Teacher/class_manage.html", context)
     

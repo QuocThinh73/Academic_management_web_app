@@ -10,7 +10,7 @@
 	<meta content="country" name="Viet Nam">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="{% static 'css/file.css' %}">
-	<title>Trang chủ</title>
+	<title>Trang giảng viên</title>
 </head>
 <body>
 	<nav>
@@ -20,14 +20,26 @@
 		<a href="/teacher/schedule" class="menu_left">Lịch giảng dạy</a>
 		<a href="{% url 'Logout:logout' %}" class="menu_right">Đăng xuất</a>
 	</nav>
-	<h1 class="menu_text">Quản lý danh sách lớp dạy<h1>
-	<div id="course_container">
-		{% for course in courses %}
-			<a href="{% url 'Course:CourseTeacher' course.id %}" class="course_item">
-				<div class="course_title">{{ course }}</div>
-			</a>
-	  	{% endfor %}
+	<div id="theme1">
+		<h1 class="menu_text">
+			Các khóa học của tôi
+		</h1>
 	</div>
+  	<br>
+  	<br>
+  	<div id="theme2">
+  	<h2 id="course"></h2>
+	  	{% for semester, courses in courses_by_semester.items %}
+			<h2 class=overview id="course">Học kỳ {{ semester }}</h2>
+			<div id="course_container">
+				{% for course in courses %}
+				<a href="{% url 'Course:CourseTeacher' course.id %}" class="course_item">
+					<div class="course_title">{{ course }}</div>
+				</a>
+				{% endfor %}
+			</div>
+		{% endfor %}
+  	</div>
 
 	<footer>
 		<div class="call">
