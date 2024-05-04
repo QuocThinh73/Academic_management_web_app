@@ -10,6 +10,7 @@ class Student(models.Model):
     major = models.ForeignKey(Major, on_delete=models.CASCADE, null = True)
     username = models.OneToOneField(MyUser, on_delete=models.CASCADE,  null=True)
     hometown = models.CharField(max_length=40, null=True)
+    avatar = models.ImageField(upload_to="Avatar/Student/", null=True, blank=True)
 
     GENDER_CHOICES = [
         ('Nam', 'Nam'),

@@ -60,7 +60,7 @@
         <h1>Hồ sơ</h1>
         <h2>{{ teacher.name }}</h2>
         {% if teacher.avatar %}
-            <img src="{{ teacher.avatar.url }}" alt="{{ teacher.name }}" style="max-height: 300px; max-width: 300px;">
+            <img src="{{ teacher.avatar.url }}" alt="{{ teacher.name }}" style="height: 300px; max-height: 300px; max-width: 300px;">
         {% endif %}
         <p>Email: {{ teacher_mail }}</p>
         <p>Khoa: {{ teacher.department.name }}</p>

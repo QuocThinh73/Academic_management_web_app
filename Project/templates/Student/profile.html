@@ -34,6 +34,9 @@
 	<div id="flex_container">
 		<div id="left_side">			
 			<h1 id="menu_text">{{ student.name }}</h1>
+			{% if student.avatar %}
+            	<img src="{{ student.avatar.url }}" alt="{{ student.name }}" style="height: 300px; max-height: 300px; max-width: 300px;">
+        	{% endif %}
 			<p><strong>Email</strong></p>
 			<p><a href="mailto:" {{ student_email }}>{{ student_email }}</a></p>
 			<p><strong>Mã số sinh viên</strong></p>
