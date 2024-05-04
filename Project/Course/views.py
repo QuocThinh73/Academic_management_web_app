@@ -4,6 +4,7 @@ from Course.models import Course
 from Grade.models import Grade
 from File_document.models import Document
 from Login.mixins import RoleRequiredMixin
+from django.views.generic import ListView
 
 class CourseTeacher(RoleRequiredMixin, View):
     def has_permission(self, user):
@@ -68,15 +69,14 @@ class ScoreView(RoleRequiredMixin, View):
         }
         return render(request, "Course/CourseStudent/ScoreView.html", context)
     
-class DocumentView(RoleRequiredMixin, View):
+class DocumentView(RoleRequiredMixin, ListView):
+    model = Document
+    template_name = 'Course/CourseStudent/DocumentView.html'
+    context_object_name = 'documents'
+
     def has_permission(self, user):
         return user.user_type == 'Student'
     
-    def get(self, request, course_id):
-        course = Course.objects.get(pk=course_id)
-        documents = Document.objects.filter(course = course). first()
-        context = {
-            'course' : course,
-            'documents': documents,
-        }
-        return render(request, "Course/CourseStudent/DocumentView.html", context)
+    def get_queryset(self):
+        course_id = self.kwargs.get('course_id')
+        return Document.objects.filter(course__id=course_id)

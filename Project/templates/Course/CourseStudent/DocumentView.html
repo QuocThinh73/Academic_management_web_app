@@ -1,36 +1,39 @@
-{% load static %}
 
+{% load static %}
 <!DOCTYPE html>
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'css/file.css' %}">
-    <title>Điểm môn học</title>
+    <title>Danh sách Tài liệu</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
-    <nav>
-		<a href="{% url 'Student:student' %}" class="menu_left">Trang chủ</a>
-		<a href="{% url 'Student:student_course' %}" class="menu_left">Khóa học của tôi</a>
-		<a href="{% url 'Registration:registration_student' %}" class="menu_left">Đăng ký môn học</a>
-		<a href="{% url 'Student:student_profile' %}" class="menu_left">Hồ sơ và quản lý cá nhân</a>
-		<a href="{% url 'Logout:logout' %}" class="menu_right">Đăng xuất</a>
-	</nav>
+    <header>
+        <h1>Danh sách Tài liệu của Khóa học</h1>
+    </header>
 
-    <h1 class="menu_text">Tài liệu của khóa học: {{ course }}</h1>
-    <div class="center_form"> 
-        <hr>
-        <div class="list_form">
+    <main>
+        <ul>
             {% for document in documents %}
             <li>
                 <h3>{{ document.description }}</h3>
-                <p>{{ document.syllabus }}</p>
+                <p>Giáo trình: {{ document.syllabus }}</p>
+                <!-- Link để tải xuống tài liệu -->
                 {% if document.course_file %}
-                    <a href="{{ document.course_file.url }}">Download file</a>
+                <a href="{{ document.course_file.url }}" download>Tải về</a>
+                {% else %}
+                <p>Không có tài liệu đính kèm.</p>
                 {% endif %}
             </li>
+            {% empty %}
+            <li>Không có tài liệu nào được tải lên cho khóa học này.</li>
             {% endfor %}
-        </div>
-    </div>
+        </ul>
+    </main>
+
+    <footer>
+        <p>Bản quyền © 2024 Website của bạn.</p>
+    </footer>
 </body>
 </html>
