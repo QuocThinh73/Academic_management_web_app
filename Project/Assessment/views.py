@@ -42,14 +42,23 @@ class TeacherAssessmentView(RoleRequiredMixin, View):
         return redirect("Assessment:TeacherAssessmentView", course_id=course_id)
 
 #Student xem danh gia tu giao vien
-class StudentAssessView(DetailView):
-    model = TeacherAssessment
-    template_name = "Course/CourseStudent/student_receive_assess.html"
-    context_object_name = "assessment"
-
-    def get_queryset(self):
-        return self.model.objects.filter(student_id=self.kwargs['pk'])
-
+class StudentAssessView(RoleRequiredMixin, View):
+    def has_permission(self, user):
+        return user.user_type == 'Student'
+    
+    def get(self, request, pk):
+        course = Course.objects.get(id=pk)
+        student = request.user.student
+        assessment = TeacherAssessment.objects.filter(course=course, student=student).first()
+        form = TeacherAssessmentForm(instance=assessment)
+        context = {
+            "course": course,
+            "student": student,
+            "assessment": assessment,
+            "form": form,
+        }
+        return render(request, "Course/CourseStudent/student_receive_assess.html", context)
+    
 #Hien trang de sinh vien co the vo danh gia giao vien cho mon hoc tuong ung
 class StudentAssessmentView(RoleRequiredMixin, View):
     def has_permission(self, user):
@@ -82,10 +91,18 @@ class StudentAssessmentView(RoleRequiredMixin, View):
         return redirect("Assessment:StudentAssessmentView", course_id=course_id)
     
 #Hien trang de giao vien coi danh gia tu sinh vien
-class TeacherAssessView(DetailView):
-    model = StudentAssessment
-    template_name = "Course/CourseTeacher/teacher_receive_assess.html"
-    context_object_name = "assessments"
-
-    def get_queryset(self):
-        return self.model.objects.filter(course_id=self.kwargs['course_id'])
+class TeacherAssessView(RoleRequiredMixin, View):
+    def has_permission(self, user):
+        return user.user_type == 'Teacher'
+    
+    def get(self, request, pk):
+        course = Course.objects.get(id=pk)
+        teacher = request.user.teacher
+        assessment = StudentAssessment.objects.filter(course=course).first()
+        form = StudentAssessmentForm(instance=assessment)
+        context = {
+            "course": course,
+            "assessment": assessment,
+            "form": form,
+        }
+        return render(request, "Course/CourseTeacher/teacher_receive_assess.html", context)

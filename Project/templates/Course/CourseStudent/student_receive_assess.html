@@ -44,8 +44,9 @@
     
     <h2>Student Assessment</h2>
     {% if assessment %}
-        <p>Your teacher, {{ assessment.teacher }}, has given you the following assessment:</p>
-        <p>{{ assessment.assessment }}</p>
+        <h3>Teacher's Assessment</h3>
+        <p>Teacher: {{ assessment.teacher }}</p>
+        <p>Assessment: {{ assessment.assessment }}</p>
     {% else %}
         <p>No assessment has been given yet.</p>
     {% endif %}

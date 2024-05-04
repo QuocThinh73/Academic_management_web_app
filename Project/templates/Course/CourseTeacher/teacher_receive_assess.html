@@ -17,15 +17,30 @@
             margin-bottom: 20px;
         }
     </style>
+    <meta charset="utf-8">
+	<meta name="description" content="Academic management">
+	<meta content="author" name="Nguyen Loc">
+	<meta content="country" name="Viet Nam">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="{% static 'css/file.css' %}">
 </head>
 <body>
-    {% for assessment in assessments %}
-        <div class="review">
-            <h2>Review</h2>
-            <p><strong>Course Feedback:</strong> {{ assessment.course_feedback }}</p>
-            <p><strong>Teacher Feedback:</strong> {{ assessment.teacher_feedback }}</p>
-            <p><strong>Improvements:</strong> {{ assessment.improvements }}</p>
-        </div>
-    {% endfor %}
+    <nav>
+		<a href="/teacher" class="menu_left">Trang chủ</a>
+		<a href="/teacher/upload" class="menu_left">Cập nhật nội dung khóa học</a>
+		<a href="/teacher/class_manage" class="menu_left">Quản lý danh sách lớp</a>
+		<a href="/teacher/profile" class="menu_left">Hồ sơ</a>
+		<a href="/login" class="menu_right">Đăng xuất</a>
+	</nav>
+    
+    <h2>Teacher Assessment</h2>
+    {% if assessment %}
+        <p>Course Feedback: {{ assessment.course_feedback }}</p>
+        <p>Teacher Feedback: {{ assessment.teacher_feedback }}</p>
+        <p>Improvements: {{ assessment.improvements }}
+    {% else %}
+        <p>No assessment has been given yet.</p>
+    {% endif %}
+</body>
 </body>
 </html>
