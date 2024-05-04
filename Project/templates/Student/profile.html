@@ -11,7 +11,6 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="{% static 'css/file.css' %}">
-	<link rel="stylesheet" href="{% static 'css/reloadPage.css' %}">
 	<title>Trang sinh viên</title>
 </head>
 <body>
@@ -38,6 +37,8 @@
 			{% if student.avatar %}
             	<img src="{{ student.avatar.url }}" alt="{{ student.name }}" style="height: 300px; max-height: 300px; max-width: 300px;">
         	{% endif %}
+		</div>
+		<div id="right_side">
 			<p><strong>Email</strong></p>
 			<p><a href="mailto:" {{ student_email }}>{{ student_email }}</a></p>
 			<p><strong>Mã số sinh viên</strong></p>
