@@ -1,0 +1,53 @@
+.center_form {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.list_form h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.input-container label {
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.error-message {
+    color: red; /* Ensures the text is red, making it noticeable as an error */
+    font-size: 0.8em; /* Smaller font size for error messages */
+    margin-top: 2px; /* Adds a small space between the input field and the error message */
+    padding: 0; /* Removes any padding if it exists */
+    background: none; /* Ensures no background is applied */
+    border: none; /* Ensures no border is applied */
+}
+
+.student-name {
+    font-weight: bold;
+    margin-right: 20px;
+    width: 150px; /* Ensuring all names have the same width for alignment */
+    text-align: center; /* Center align the names for better appearance */
+}
+
+button {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    font-size: 16px;
+}
