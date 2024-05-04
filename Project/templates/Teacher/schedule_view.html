@@ -24,7 +24,7 @@
 		<a href="{% url 'Logout:logout' %}" class="menu_right">Đăng xuất</a>
 	</nav>
 
-	<h1>Lịch giảng dạy</h1>
+	<h1 style="text-align: center; font-weight: bold; margin-bottom: 20px; margin-top: 20px;">Lịch giảng dạy</h1>
     
     {% for semester, schedules in schedules_by_semester.items %}
         <h2>Học kì {{ semester }}</h2>
