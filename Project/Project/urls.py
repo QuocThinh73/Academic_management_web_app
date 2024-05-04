@@ -28,6 +28,8 @@ urlpatterns = [
     path("course/", include("Course.urls")),
     path("grade/", include("Grade.urls")),
     path("logout/", include("Logout.urls")),
+    path("file/",include("File_document.urls")),
+    path("assessment/", include("Assessment.urls")),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

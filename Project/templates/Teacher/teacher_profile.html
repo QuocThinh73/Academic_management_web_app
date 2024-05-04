@@ -52,22 +52,27 @@
 <body>
     <nav>
 		<a href="/teacher" class="menu_left">Trang chủ</a>
-		<a href="/teacher/upload" class="menu_left">Cập nhật nội dung khóa học</a>
 		<a href="/teacher/class_manage" class="menu_left">Quản lý danh sách lớp</a>
 		<a href="/teacher/profile" class="menu_left">Hồ sơ</a>
 		<a href="{% url 'Logout:logout' %}" class="menu_right">Đăng xuất</a>
 	</nav>
     <div class="container">
-        <h1>Teacher Profile</h1>
+        <h1>Hồ sơ</h1>
         <h2>{{ teacher.name }}</h2>
+        {% if teacher.avatar %}
+            <img src="{{ teacher.avatar.url }}" alt="{{ teacher.name }}" style="height: 300px; max-height: 300px; max-width: 300px;">
+        {% endif %}
         <p>Email: {{ teacher_mail }}</p>
-        <p>Department: {{ department.name }}</p>
-        <p>Teaching Schedule: {{ teaching_schedule }}</p>
+        <p>Khoa: {{ teacher.department.name }}</p>
+        <p>Giới tính: {{ teacher.gender }}</p>
+        <p>Số điện thoại: {{ teacher.phone_number }}</p>
+        <p>Ngày sinh: {{ teacher.date_of_birth|date:"d/m/Y" }}</p>
+        <p>Quê quán: {{ teacher.hometown}} </p>
 
-        <h2>Degrees:</h2>
+        <h2>Bằng cấp:</h2>
         <ul>
         {% for degree in degrees %}
-            <li>{{ degree.name }} from {{ degree.university }} ({{ degree.year_obtained }})</li>
+            <li>{{ degree }} tại {{ degree.university }} ({{ degree.year_obtained }})</li>
         {% endfor %}
         </ul>
     </div>

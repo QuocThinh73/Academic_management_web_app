@@ -25,13 +25,6 @@ class ClassManageView(RoleRequiredMixin, View):
         }
         return render(request, "Teacher/class_manage.html", context)
     
-class UploadView(RoleRequiredMixin, View):
-    def has_permission(self, user):
-        return user.user_type == 'Teacher'
-
-    def get(self, request):
-        return render(request, "Teacher/upload.html")
-    
 class TeacherProfile(RoleRequiredMixin, View):
     def has_permission(self, user):
         return user.user_type == 'Teacher'
@@ -41,16 +34,12 @@ class TeacherProfile(RoleRequiredMixin, View):
         teacher = request.user.teacher
         teacher_mail = request.user.email
         degrees = Degrees.objects.filter(teacher=teacher)
-        department = teacher.department
-        teaching_schedule = teacher.teaching_schedule
 
         #Hien thi thong tin giao vien
         context = {
             'teacher': teacher,
             'teacher_mail': teacher_mail,
             'degrees': degrees,
-            'department': department,
-            'teaching_schedule': teaching_schedule,
         }
         return render(request, 'Teacher/teacher_profile.html', context)
 

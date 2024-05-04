@@ -2,7 +2,10 @@ from django.shortcuts import render
 from django.views import View
 from Course.models import Course
 from Grade.models import Grade
+from Schedule.models import Schedule
 from Login.mixins import RoleRequiredMixin
+from collections import defaultdict
+
 
 class StudentView(RoleRequiredMixin, View):
     def has_permission(self, user):
@@ -35,6 +38,21 @@ class StudentCourse(RoleRequiredMixin, View):
         return render(request, "Student/my_course.html", context)
     
 class StudentProfile(RoleRequiredMixin, View):
+    def has_permission(self, user):
+        return user.user_type == 'Student'
+    
+    def get(self, request):
+        # Lấy thông tin của sinh viên
+        student = request.user.student
+        student_email = request.user.email
+
+        context = {
+            "student" : student,
+            "student_email" : student_email,
+        }
+        return render(request, "Student/profile.html", context)
+    
+class ScoreView(RoleRequiredMixin, View):
     def has_permission(self, user):
         return user.user_type == 'Student'
     
@@ -90,12 +108,37 @@ class StudentProfile(RoleRequiredMixin, View):
     def get(self, request):
         # Lấy thông tin của sinh viên
         student = request.user.student
-        student_email = request.user.email
         info_by_semester = self.get_info_by_semester(student)
 
         context = {
-            "student" : student,
-            "student_email" : student_email,
             "info_by_semester": info_by_semester,
         }
-        return render(request, "Student/profile.html", context)
+    
+        return render(request, "Student/score_view.html", context)
+        
+
+class ScheduleView(RoleRequiredMixin, View):
+    def has_permission(self, user):
+        return user.user_type == 'Student'
+    
+    def get(self, request):
+        student = request.user.student
+        student_courses = Course.objects.filter(students=student)
+
+        student_schedules = Schedule.objects.filter(course__in=student_courses)
+        schedules_by_semester = defaultdict(list)
+
+        for schedule in student_schedules:
+            semester_id = schedule.course.semester.semester_id
+            schedules_by_semester[semester_id].append(schedule)
+
+        schedules_by_semester = dict(sorted(schedules_by_semester.items(), reverse=True))
+        days_order = ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN']
+        for schedules in schedules_by_semester.values():
+            schedules.sort(key=lambda x: (days_order.index(x.days.day), x.start_hour.hour))
+
+        context = {
+            "schedules_by_semester": schedules_by_semester
+        }
+
+        return render(request, "Student/schedule_view.html", context)

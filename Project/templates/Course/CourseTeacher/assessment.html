@@ -1,53 +1,47 @@
-<!-- Django -->
 {% load static %}
 
 <!DOCTYPE html>
-<html lang='vi'>
+<html lang="vi">
 <head>
-	<meta charset="utf-8">
-	<meta name="description" content="Academic management">
-	<meta content="author" name="Nguyen Loc">
-	<meta content="country" name="Viet Nam">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="{% static 'css/file.css' %}">
-	<title>Trang chủ</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đánh Giá Sinh Viên</title>
+    <link rel="stylesheet" href="{% static 'css/course.css' %}">
+    <link rel="stylesheet" href="{% static 'css/file.css' %}">
 </head>
 <body>
-	<nav>
+    <nav>
 		<a href="/teacher" class="menu_left">Trang chủ</a>
 		<a href="/teacher/upload" class="menu_left">Cập nhật nội dung khóa học</a>
 		<a href="/teacher/class_manage" class="menu_left">Quản lý danh sách lớp</a>
 		<a href="/teacher/profile" class="menu_left">Hồ sơ</a>
-		<a href="/login" class="menu_right">Đăng xuất</a>
+		<a href="{% url 'Logout:logout' %}" class="menu_right">Đăng xuất</a>
 	</nav>
 
-	<h1 class="menu_text"> Lớp Giải tích 1 </h1>
-
-	<div id="right_side">
-			<table>
-				<tr>
-					<th >STT</th>
-					<th >MSSV</th>
-					<th >Họ & Tên</th>
-					<th >Email</th>
-					<th>#</th>
-				</tr>
-				<tr>
-					<td class="count"></td>
-					<td>MSSV</td>
-					<td>NGUYỄN QUỐC LỘC</td>
-					<td>loc.nguyendev04@hcmut.edu.vn</td>
-					<td><button type="summit">Đánh giá</button></td>
-				</tr>
-				<tr>
-					<td class="count"></td>
-					<td>MSSV</td>
-					<td>NGUYỄN QUỐC LỘC</td>
-					<td>loc.nguyendev04@hcmut.edu.vn</td>
-					<td><button type="submit">Đánh giá</button></a></td>
-				</tr>
-			</table>
-		</div>
-	</div>
-
+    <div class="container">
+        <h1 class="menu_text"> {{ course.subject.name }}</h1>
+        <table class="student-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Họ và tên</th>
+					<th>Khoa</th>
+                    <th>Email</th>
+					<th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for student in students_course %}
+                <tr>
+                    <td>{{ student.student_id }}</td>
+                    <td>{{ student.name }}</td>
+					<td>{{ student.department }}</td>
+                    <td>{{ student.username.email }}</td>
+					<td><a href=""><button type="submit">Đánh giá</button></a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 </body>
+</html>

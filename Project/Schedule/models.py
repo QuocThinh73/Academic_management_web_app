@@ -7,6 +7,7 @@ class DayOfWeek(models.Model):
 
     def __str__(self):
         return self.day
+    
 class HourOfDay(models.Model):
     hour = models.IntegerField(unique=True) # Từ 7h đến 15h
 
@@ -17,7 +18,7 @@ class Schedule(models.Model):
     course = models.ForeignKey(Course, on_delete=models.CASCADE, null=True)
     days = models.ForeignKey(DayOfWeek, on_delete=models.CASCADE, null=True)
     start_hour = models.ForeignKey(HourOfDay, on_delete=models.CASCADE, null=True)
-    end_hour = 0
+    end_hour = models.IntegerField(default=0)
 
     def save(self, *args, **kwargs):
         if self.start_hour:

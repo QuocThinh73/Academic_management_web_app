@@ -12,14 +12,16 @@
 	<link rel="stylesheet" href="{% static 'css/home.css' %}">
 	<link rel="stylesheet" href="{% static 'css/reloadPage.css' %}">
 
-	<title>Trang chủ</title>
+	<title>Trang sinh viên</title>
 </head>
 <body>
 	<nav>
 		<a href="{% url 'Student:student' %}" class="menu_left">Trang chủ</a>
 		<a href="{% url 'Student:student_course' %}" class="menu_left">Khóa học của tôi</a>
 		<a href="{% url 'Registration:registration_student' %}" class="menu_left">Đăng ký môn học</a>
-		<a href="{% url 'Student:student_profile' %}" class="menu_left">Hồ sơ và quản lý cá nhân</a>
+		<a href="{% url 'Student:student_profile' %}" class="menu_left">Hồ sơ lý lịch</a>
+		<a href="{% url 'Student:student_score' %}" class="menu_left">Điểm số</a>
+		<a href="{% url 'Student:student_schedule' %}" class="menu_left">Thời khóa biểu</a>
 		<a href="{% url 'Logout:logout' %}" class="menu_right">Đăng xuất</a>
 	</nav>
 

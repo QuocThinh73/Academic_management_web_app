@@ -17,14 +17,28 @@
 		<a href="{% url 'Student:student' %}" class="menu_left">Trang chủ</a>
 		<a href="{% url 'Student:student_course' %}" class="menu_left">Khóa học của tôi</a>
 		<a href="{% url 'Registration:registration_student' %}" class="menu_left">Đăng ký môn học</a>
-		<a href="{% url 'Student:student_profile' %}" class="menu_left">Hồ sơ và quản lý cá nhân</a>
+		<a href="{% url 'Student:student_profile' %}" class="menu_left">Hồ sơ lý lịch</a>
+		<a href="{% url 'Student:student_score' %}" class="menu_left">Điểm số</a>
+		<a href="{% url 'Student:student_schedule' %}" class="menu_left">Thời khóa biểu</a>
 		<a href="{% url 'Logout:logout' %}" class="menu_right">Đăng xuất</a>
 	</nav>
 
 	<h2 class="menu_text">Đăng ký môn học</h2>
 
+	{% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            {% if message.tags == 'error' %}
+                <li class="error-message">{{ message }}</li>
+            {% elif message.tags == 'success' %}
+                <li class="success-message">{{ message }}</li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+	{% endif %}
+
 	<form class="center_form" method="post">
-		<div id="semester_font">{% csrf_token %}</div>
+		{% csrf_token %}
 		<div id="id_semester_font">{{ form.as_p }}</div>
 		<button type="submit">Đăng ký</button>
 	</form>

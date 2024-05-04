@@ -1,0 +1,54 @@
+<!-- Django -->
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang='vi'>
+<head>
+	<meta charset="utf-8">
+	<meta name="description" content="Academic management">
+	<meta content="author" name="Nguyen Loc">
+	<meta content="country" name="Viet Nam">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+	<link rel="stylesheet" href="{% static 'css/reloadPage.css' %}">
+	<title>Trang sinh viên</title>
+</head>
+<body>
+    <nav>
+		<a href="{% url 'Student:student' %}" class="menu_left">Trang chủ</a>
+		<a href="{% url 'Student:student_course' %}" class="menu_left">Khóa học của tôi</a>
+		<a href="{% url 'Registration:registration_student' %}" class="menu_left">Đăng ký môn học</a>
+		<a href="{% url 'Student:student_profile' %}" class="menu_left">Hồ sơ lý lịch</a>
+		<a href="{% url 'Student:student_score' %}" class="menu_left">Điểm số</a>
+		<a href="{% url 'Student:student_schedule' %}" class="menu_left">Thời khóa biểu</a>
+		<a href="{% url 'Logout:logout' %}" class="menu_right">Đăng xuất</a>
+	</nav>
+
+    <h1>Thời khóa biểu</h1>
+    
+    {% for semester, schedules in schedules_by_semester.items %}
+        <h2>Học kì: {{ semester }}</h2>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Lớp</th>
+                    <th>Thứ</th>
+                    <th>Thời gian</th>
+                    <th>Giảng viên</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for schedule in schedules %}
+                    <tr>
+                        <td>{{ schedule.course.subject.name }}</td>
+                        <td>{{ schedule.days }}</td>
+                        <td>{{ schedule.start_hour }}h - {{ schedule.end_hour }}h</td>
+                        <td>{{ schedule.course.teacher.name }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endfor %}
+</body>
+</html>
