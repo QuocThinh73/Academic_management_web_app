@@ -26,17 +26,20 @@ class TeacherAssessmentView(RoleRequiredMixin, View):
         }
         return render(request, "Course/CourseTeacher/teacher_assess.html", context)
     
-    def post(self, request, course_id, student_id):
-        form = TeacherAssessmentForm(request.POST)
-        if form.is_valid():
-            assess = form.save(commit=False)
-            assess.course_id = course_id
-            assess.teacher = request.user
-            assess.student_id = student_id
-            assess.save()
-            messages.success(request, 'Your assessment was saved')
-            return redirect("Assessment:TeacherAssessmentView", course_id=course_id, student_id=student_id)
-        return render(request, "Course/CourseTeacher/teacher_assess.html", {"form": form})
+    def post(self, request, course_id):
+        course = Course.objects.get(id=course_id)
+        students = course.students.all()
+        for student in students:
+            form = TeacherAssessmentForm(request.POST)
+            if form.is_valid():
+                assess, created = TeacherAssessment.objects.get_or_create(student=student, course=course)
+                if created is False:
+                    assess = form.save(commit=False)
+                    assess.comment = form.cleaned_data['comment']
+                    assess.save()
+                    messages.success(request, 'Your assessment was saved')
+                
+        return redirect("Assessment:TeacherAssessmentView", course_id=course_id)
 
 #Student xem danh gia tu giao vien
 class StudentAssessView(DetailView):
@@ -45,7 +48,7 @@ class StudentAssessView(DetailView):
     context_object_name = "assessment"
 
     def get_queryset(self):
-        return self.model.objects.filter(student_id=self.kwargs['student_id'])
+        return self.model.objects.filter(student_id=self.kwargs['pk'])
 
 #Hien trang de sinh vien co the vo danh gia giao vien cho mon hoc tuong ung
 class StudentAssessmentView(RoleRequiredMixin, View):
@@ -62,16 +65,21 @@ class StudentAssessmentView(RoleRequiredMixin, View):
         return render(request, "Course/CourseStudent/student_assess.html", context)
 
     def post(self, request, course_id):
-        form = StudentAssessmentForm(request.POST)
         course = Course.objects.get(id=course_id)
-        if form.is_valid():
-            assessment = form.save(commit=False)
-            assessment.student = request.user
-            assessment.course = course
-            assessment.save()
-            messages.success(request, 'Your assessment was saved')
-            return redirect("Assessment:StudentAssessmentView", course_id=course_id)
-        return render(request, "Course/CourseStudent/student_assess.html", {'form': form})
+        students = course.students.all()
+        for student in students:
+            form = StudentAssessmentForm(request.POST)
+            if form.is_valid():
+                assessment, created = TeacherAssessment.objects.get_or_create(student=student, course=course)
+                if created is False:
+                    assessment = form.save(commit=False)
+                    assessment.course_feedback = form.cleaned_data['course_feedback']
+                    assessment.teacher_feedback = form.cleaned_data['teacher_feedback']
+                    assessment.improvements = form.cleaned_data['improvements']
+                    assessment.save()
+                    messages.success(request, 'Your assessment was saved')
+                
+        return redirect("Assessment:StudentAssessmentView", course_id=course_id)
     
 #Hien trang de giao vien coi danh gia tu sinh vien
 class TeacherAssessView(DetailView):

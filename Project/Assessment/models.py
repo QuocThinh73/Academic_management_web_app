@@ -2,7 +2,6 @@ from django.db import models
 from Course.models import Course
 from Student.models import Student
 from Teacher.models import Teacher
-from Grade.models import Grade
 
 # Create your models here.
 
@@ -11,7 +10,6 @@ class TeacherAssessment(models.Model):
     course = models.ForeignKey(Course, on_delete=models.CASCADE, null=True)
     student = models.ForeignKey(Student, on_delete=models.CASCADE, null=True)
     teacher = models.ForeignKey(Teacher, on_delete=models.CASCADE, null=True)
-    grade = models.ForeignKey(Grade, on_delete=models.CASCADE, null=True)
     comment = models.TextField()
 
     class Meta:
