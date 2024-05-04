@@ -31,13 +31,13 @@
                 </tr>
             </thead>
             <tbody>
-                {% for student in students_course %}
+                {% for student in students %}
                 <tr>
                     <td>{{ student.student_id }}</td>
                     <td>{{ student.name }}</td>
 					<td>{{ student.department }}</td>
                     <td>{{ student.username.email }}</td>
-					<td><a href=""><button type="submit">Đánh giá</button></a></td>
+					<td><a href="{% url "Assessment:TeacherAssessmentView" course.id %}"><button type="submit">Đánh giá</button></a></td>
                 </tr>
                 {% endfor %}
             </tbody>

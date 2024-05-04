@@ -34,7 +34,13 @@ class Assessment(RoleRequiredMixin, View):
         return user.user_type == 'Teacher'
 
     def get(self, request, course_id):
-        return render(request, "Course/CourseTeacher/assessment.html")
+        course = Course.objects.get(id=course_id)
+        students = course.students.all()
+        context = {
+            "course": course,
+            "students": students,
+        }
+        return render(request, "Course/CourseTeacher/assessment.html", context)
     
 class CourseStudent(RoleRequiredMixin, View):
     def has_permission(self, user):
