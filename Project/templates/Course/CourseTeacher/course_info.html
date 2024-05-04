@@ -1,16 +1,40 @@
-<form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ formset.management_form }}
-    {% for form in formset %}
-        <div class="form-group">
-            {{ form.id }}
-            {{ form.description }}
-            {{ form.syllabus }}
-            {{ form.course_file }}
-            {% if form.DELETE %}
-                <label>Delete: {{ form.DELETE }}</label>
-            {% endif %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="vi">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Thêm tài liệu môn học</title>
+        <link rel="stylesheet" href="{% static 'css/course.css' %}">
+        <link rel="stylesheet" href="{% static 'css/file.css' %}">
+    </head>
+    <body>
+        <nav>
+            <a href="/teacher" class="menu_left">Trang chủ</a>
+            <a href="/teacher/upload" class="menu_left">Cập nhật nội dung khóa học</a>
+            <a href="/teacher/class_manage" class="menu_left">Quản lý danh sách lớp</a>
+            <a href="/teacher/profile" class="menu_left">Hồ sơ</a>
+            <a href="{% url 'Logout:logout' %}" class="menu_right">Đăng xuất</a>
+        </nav>
+        <h1 class="menu_text">Thêm tài liệu môn {{course.subject.name}}</h1>
+        </div class="center_form">
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ formset.management_form }}
+                {% for form in formset %}
+                    <div class="form-group">
+                        {{ form.id }}
+                        {{ form.description }}
+                        {{ form.syllabus }}
+                        {{ form.course_file }}
+                        {% if form.DELETE %}
+                            <label>Delete: {{ form.DELETE }}</label>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+                <button type="submit">Upload</button>
+            </form> 
         </div>
-    {% endfor %}
-    <button type="submit">Upload</button>
-</form>
+    </body>
+</html>
