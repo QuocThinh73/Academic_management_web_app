@@ -11,84 +11,57 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 	<link rel="stylesheet" href="{% static 'css/home.css' %}">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 	<title>Trang chủ</title>
 </head>
 <body>
+	<div class="sticky-top">
 	<nav>
-		<a href="{% url 'Login:home' %}" class="menu_left">Trang chủ</a>
-		<a href="{% url 'Login:main_login' %}" class="menu_right">Đăng nhập</a>
+		<a href="{% url 'Login:home' %}"  class="menu_left">Trang chủ</a>
+		<a href="{% url 'Login:login' %}" class="menu_right">Đăng nhập</a>
 	</nav>
+	</div>
+	<!-- <h1 id="menu_text">
+		Welcome to ...
+	</h1> -->
 
 	
-	<div class="slideshow-container">
-		<div class="mySlides fade">
-		  <!--<div class="numbertext">1 / 3</div>-->
-		  <img src="{% static 'assets/Education.jpg' %}" style="width:100%; height:720px;">
-		  <div class="text">Chào mừng bạn ghé tới trang của chúng tôi</div>
-		</div>
-		
-		<div class="mySlides fade">
-		  <!--<div class="numbertext">2 / 3</div>-->
-		  <img src="{% static 'assets/Picture3.jpeg' %}" style="width:100%; height:720px;" >
-		  <div class="text">Đây là trang quản lý học thuật</div>
-		</div>
-		
-		<div class="mySlides fade">
-		  <!--<div class="numbertext">3 / 3</div>-->
-		  <img src="{% static 'assets/Picture2.jpeg' %}" style="width:100%; height:720px;">
-		  <div class="text">Phát triển do một nhóm sinh viên KHKTMT-clc TCTN k22 của trường ĐHBK</div>
-		</div>
-		
-		<a class="prev" onclick="plusSlides(-1)">❮</a>
-		<a class="next" onclick="plusSlides(1)">❯</a>
-		
-	</div>
-	<br>
-		
-	<div style="text-align:center">
-		<span class="dot" onclick="currentSlide(1)"></span> 
-		<span class="dot" onclick="currentSlide(2)"></span> 
-		<span class="dot" onclick="currentSlide(3)"></span> 
-	</div>
-		
-	<footer>
+	<div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+	<div class="carousel-item">
+      <img src="{% static 'assets/Picture3.jpeg' %}" class="d-block w-100" alt="..."style="height: 720px;">
+    </div>
+    <div class="carousel-item active">
+      <img src="{% static 'assets/Education.jpg' %}" class="d-block w-100 " style="height: 720px;" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'assets/Picture2.jpeg' %}" class="d-block w-100" alt="..." style="height: 720px;">
+    </div>
+   
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+<footer>
 		<div class="call">
 			<div class="fa fa-phone"></div>
 			<p class="call_us">Liên hệ: 0123456789 </p>
 		</div>
 		<div class="contact">
 			<div class="fa fa-envelope"></div>
-			<p class="contact_us">E-mail:defuniversity@def.edu.vn</p>
+			<p class="contact_us">E-mail:ABC@gmail.com</p>
 		</div>
 	</footer>
-	<script>
-		let slideIndex = 1;
-		showSlides(slideIndex);
-		
-		function plusSlides(n) {
-		  showSlides(slideIndex += n);
-		}
-		
-		function currentSlide(n) {
-		  showSlides(slideIndex = n);
-		}
-		
-		function showSlides(n) {
-		  let i;
-		  let slides = document.getElementsByClassName("mySlides");
-		  let dots = document.getElementsByClassName("dot");
-		  if (n > slides.length) {slideIndex = 1}    
-		  if (n < 1) {slideIndex = slides.length}
-		  for (i = 0; i < slides.length; i++) {
-			slides[i].style.display = "none";  
-		  }
-		  for (i = 0; i < dots.length; i++) {
-			dots[i].className = dots[i].className.replace(" active", "");
-		  }
-		  slides[slideIndex-1].style.display = "block";  
-		  dots[slideIndex-1].className += " active";
-		}
-	</script>
+	
 	
 </body>
-
