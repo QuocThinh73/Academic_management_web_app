@@ -24,13 +24,15 @@
     
     <h1 class="menu_text">Đánh Giá Sinh Viên</h1>
     <div class="center_form">
-        {% if assessment %}
-            <h2 class="h2_text">Phản Hồi Của Giáo Viên</h2>
-            <p>Giáo Viên: {{ assessment.teacher }}</p>
-            <p>Đánh Giá: {{ assessment.comment }}</p>
-        {% else %}
-            <p>Không Có Đánh Giá Nào.</p>
-        {% endif %}
+	    <h2 class="h2_text">Phản Hồi Của Giáo Viên</h2>
+    	<div class="list_form">
+	        {% if assessment %}
+	            <p>Giáo Viên: {{ assessment.teacher }}</p>
+	            <p>Đánh Giá: {{ assessment.comment }}</p>
+	        {% else %}
+	            <p>Không Có Đánh Giá Nào.</p>
+	        {% endif %}
+	    </div>
     </div>
 </body>
 </html>
