@@ -24,34 +24,36 @@
                 <h2>{{ course.subject.name }} - HK{{ course.semester.semester_id }} - Nhóm {{ course.id_course }}</h2>
             </div>
             <form method="post">
-                {% csrf_token %}
-                {% for student, form in forms %}
-                    <div class="form-row">
-                        <span class="student-name">{{ student.name }}</span>
-                        <div class="input-container">
-                            <label>Bài tập</label>
-                            {{ form.assignment_score }}
-                            {% if form.assignment_score.errors %}
-                                <span class="error-message">{{ form.assignment_score.errors|first }}</span>
-                            {% endif %}
+                <div class="list_form">
+                    {% csrf_token %}
+                    {% for student, form in forms %}
+                        <div class="form-row">
+                            <span class="student-name">{{ student.name }}</span>
+                            <div class="input-container">
+                                <label>Bài tập</label>
+                                {{ form.assignment_score }}
+                                {% if form.assignment_score.errors %}
+                                    <span class="error-message">{{ form.assignment_score.errors|first }}</span>
+                                {% endif %}
+                            </div>
+                            <div class="input-container">
+                                <label>Giữa kì</label>
+                                {{ form.midterm_score }}
+                                {% if form.midterm_score.errors %}
+                                    <span class="error-message">{{ form.midterm_score.errors|first }}</span>
+                                {% endif %}
+                            </div>
+                            <div class="input-container">
+                                <label>Cuối kì</label>
+                                {{ form.final_score }}
+                                {% if form.final_score.errors %}
+                                    <span class="error-message">{{ form.final_score.errors|first }}</span>
+                                {% endif %}
+                            </div>
                         </div>
-                        <div class="input-container">
-                            <label>Giữa kì</label>
-                            {{ form.midterm_score }}
-                            {% if form.midterm_score.errors %}
-                                <span class="error-message">{{ form.midterm_score.errors|first }}</span>
-                            {% endif %}
-                        </div>
-                        <div class="input-container">
-                            <label>Cuối kì</label>
-                            {{ form.final_score }}
-                            {% if form.final_score.errors %}
-                                <span class="error-message">{{ form.final_score.errors|first }}</span>
-                            {% endif %}
-                        </div>
-                    </div>
-                {% endfor %}
-                <button type="submit">Submit</button>
+                    {% endfor %}
+                    <button type="submit">Submit</button>
+                </div>
             </form>        
         </div>
 </body>

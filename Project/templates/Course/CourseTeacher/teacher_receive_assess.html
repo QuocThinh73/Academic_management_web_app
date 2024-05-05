@@ -33,14 +33,18 @@
 		<a href="{% url 'Logout:logout' %}" class="menu_right">Đăng xuất</a>
 	</nav>
     
-    <h2>Teacher Assessment</h2>
-    {% if assessment %}
-        <p>Course Feedback: {{ assessment.course_feedback }}</p>
-        <p>Teacher Feedback: {{ assessment.teacher_feedback }}</p>
-        <p>Improvements: {{ assessment.improvements }}
-    {% else %}
-        <p>No assessment has been given yet.</p>
-    {% endif %}
-</body>
+    <h1 class="menu_text">Teacher Assessment</h1>
+    <div class="center_form">
+        <div class="list_form">
+            {% if assessment %}
+                <p>Course Feedback: {{ assessment.course_feedback }}</p>
+                <p>Teacher Feedback: {{ assessment.teacher_feedback }}</p>
+                <p>Improvements: {{ assessment.improvements }}
+            {% else %}
+                <p>No assessment has been given yet.</p>
+            {% endif %}
+        </div>
+    </div>
+    
 </body>
 </html>

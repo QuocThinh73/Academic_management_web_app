@@ -4,35 +4,12 @@
 <html>
 <head>
     <title>Student Assessment</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
-        h2 {
-            color: #333;
-        }
-        form {
-            margin-top: 20px;
-        }
-        button {
-            background-color: #4CAF50;
-            color: white;
-            padding: 15px 32px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin: 4px 2px;
-            cursor: pointer;
-        }
-    </style>
     <meta charset="utf-8">
 	<meta name="description" content="Academic management">
 	<meta content="author" name="Nguyen Loc">
 	<meta content="country" name="Viet Nam">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="{% static 'css/file.css' %}">
-    <link rel="stylesheet" href="{% static 'css/home.css' %}">
 </head>
 <body>
     <nav>
@@ -45,13 +22,15 @@
 		<a href="{% url 'Logout:logout' %}" class="menu_right">Đăng xuất</a>
 	</nav>
     
-    <h2>Student Assessment</h2>
-    {% if assessment %}
-        <h3>Teacher's Assessment</h3>
-        <p>Teacher: {{ assessment.teacher }}</p>
-        <p>Assessment: {{ assessment.assessment }}</p>
-    {% else %}
-        <p>No assessment has been given yet.</p>
-    {% endif %}
+    <h1 class="menu_text">Student Assessment</h1>
+    <div class="center_form">
+        {% if assessment %}
+            <h2 class="h2_text">Teacher's Assessment</h2>
+            <p>Teacher: {{ assessment.teacher }}</p>
+            <p>Assessment: {{ assessment.assessment }}</p>
+        {% else %}
+            <p>No assessment has been given yet.</p>
+        {% endif %}
+    </div>
 </body>
 </html>

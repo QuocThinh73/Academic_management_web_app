@@ -10,19 +10,24 @@
 	<meta content="country" name="Viet Nam">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="{% static 'css/file.css' %}">
-	<link rel="stylesheet" href="{% static 'css/reloadPage.css' %}">
     <link rel="stylesheet" href="{% static 'css/schedule.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
 	<title>Trang giảng viên</title>
 </head>
 <body>
-	<nav>
-		<a href="/teacher" class="menu_left">Trang chủ</a>
-		<a href="/teacher/class_manage" class="menu_left">Quản lý danh sách lớp</a>
-		<a href="/teacher/profile" class="menu_left">Hồ sơ</a>
-        <a href="/teacher/schedule" class="menu_left">Lịch giảng dạy</a>
-		<a href="{% url 'Logout:logout' %}" class="menu_right">Đăng xuất</a>
-	</nav>
+    <div class="sticky-top">
+        <nav>
+            <a href="/teacher" class="menu_left">Trang chủ</a>
+            <a href="/teacher/class_manage" class="menu_left">Quản lý danh sách lớp</a>
+            <a href="/teacher/profile" class="menu_left">Hồ sơ</a>
+            <a href="/teacher/schedule" class="menu_left">Lịch giảng dạy</a>
+            <a href="{% url 'Logout:logout' %}" class="menu_right">Đăng xuất</a>
+        </nav>
+    </div>
 
 	<h1 style="text-align: center; font-weight: bold; margin-bottom: 20px; margin-top: 20px;">Lịch giảng dạy</h1>
     

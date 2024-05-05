@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trang giảng viên</title>
+    <title>Upload tài liệu</title>
     <link rel="stylesheet" href="{% static 'css/course.css' %}">
     <link rel="stylesheet" href="{% static 'css/file.css' %}">
 </head>
@@ -18,22 +18,31 @@
 		<a href="/teacher/schedule" class="menu_left">Lịch giảng dạy</a>
 		<a href="{% url 'Logout:logout' %}" class="menu_right">Đăng xuất</a>
     </nav>
-    <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ formset.management_form }}
-        {% for form in formset %}
-            <div class="form-group">
-                {{ form.id }}
-                {{ form.description }}
-                {{ form.syllabus }}
-                {{ form.course_file }}
-                {% if form.DELETE %}
-                    <label>Delete: {{ form.DELETE }}</label>
-                {% endif %}
-            </div>
-        {% endfor %}
+    <h1 class="menu_text"> Upload tài liệu và mô tả khóa học</h1>
+    <div class="center_form" class=".container_box">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ formset.management_form }}
+            {% for form in formset %}
+                <div class="form-group">
+                    <div class="list_form">
+                        {{ form.id }}
+                        <div font-family="Arial">
+                            <h2 class="h2_text">Mô tả</h2>
+                            {{ form.description }}
+                            {{ form.syllabus }}
+                        </div>
+                        {{ form.course_file }}
+                        {% if form.DELETE %}
+                            <label>Delete: {{ form.DELETE }}</label>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endfor %}
+        </form>
         <button type="submit">Upload</button>
-    </form>
+    </div>
+    
 </body>
 </html>
 

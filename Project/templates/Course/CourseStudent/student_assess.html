@@ -41,10 +41,16 @@
 		<a href="{% url 'Student:student_schedule' %}" class="menu_left">Thời khóa biểu</a>
 		<a href="{% url 'Logout:logout' %}" class="menu_right">Đăng xuất</a>
 	</nav>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Submit</button>
-    </form>
+    <h1 class="menu_text">Đánh giá của Sinh viên</h1>
+    <div class="center_form">
+        <form method="post">
+            <div class="list_form">
+                {% csrf_token %}
+                {{ form.as_p }}  
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+        
+    </div>
 </body>
 </html>
