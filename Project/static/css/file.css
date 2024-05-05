@@ -635,6 +635,7 @@ button:hover {
   border-radius: 4px;
   padding: 10px;
   margin: 10px 0;
+  font-size: 150%;
 }
 
 .hightlight_form {

@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Upload tài liệu</title>
+    <title>Thêm tài liệu khóa học và mô tả khóa học - "{{course}}"</title>
     <link rel="stylesheet" href="{% static 'css/course.css' %}">
     <link rel="stylesheet" href="{% static 'css/file.css' %}">
 </head>
@@ -18,7 +18,7 @@
 		<a href="/teacher/schedule" class="menu_left">Lịch giảng dạy</a>
 		<a href="{% url 'Logout:logout' %}" class="menu_right">Đăng xuất</a>
     </nav>
-    <h1 class="menu_text"> Upload tài liệu và mô tả khóa học</h1>
+    <h1 class="menu_text"> Thêm tài liệu và mô tả khóa học</h1>
     <div class="center_form" class=".container_box">
         <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
