@@ -31,7 +31,6 @@
             {% for document in documents %}
             <li>
                 <h3>{{ document.description }}</h3>
-                <p>Giáo trình: {{ document.syllabus }}</p>
                 <!-- Link để tải xuống tài liệu -->
                 {% if document.course_file %}
                 <a href="{{ document.course_file.url }}" download>Tải về</a>
