@@ -22,14 +22,14 @@
 		<a href="{% url 'Logout:logout' %}" class="menu_right">Đăng xuất</a>
 	</nav>
     
-    <h1 class="menu_text">Student Assessment</h1>
+    <h1 class="menu_text">Đánh Giá Sinh Viên</h1>
     <div class="center_form">
         {% if assessment %}
-            <h2 class="h2_text">Teacher's Assessment</h2>
-            <p>Teacher: {{ assessment.teacher }}</p>
-            <p>Assessment: {{ assessment.assessment }}</p>
+            <h2 class="h2_text">Phản Hồi Của Giáo Viên</h2>
+            <p>Giáo Viên: {{ assessment.teacher }}</p>
+            <p>Đánh Giá: {{ assessment.comment }}</p>
         {% else %}
-            <p>No assessment has been given yet.</p>
+            <p>Không Có Đánh Giá Nào.</p>
         {% endif %}
     </div>
 </body>
