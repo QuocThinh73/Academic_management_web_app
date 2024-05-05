@@ -28,18 +28,13 @@ class TeacherAssessmentView(RoleRequiredMixin, View):
     
     def post(self, request, course_id):
         course = Course.objects.get(id=course_id)
-        students = course.students.all()
-        for student in students:
-            form = TeacherAssessmentForm(request.POST)
-            if form.is_valid():
-                assess, created = TeacherAssessment.objects.get_or_create(student=student, course=course)
-                if created is False:
-                    assess = form.save(commit=False)
-                    assess.comment = form.cleaned_data['comment']
-                    assess.save()
-                    messages.success(request, 'Your assessment was saved')
-                
-        return redirect("Assessment:TeacherAssessmentView", course_id=course_id)
+        form = TeacherAssessmentForm(request.POST)
+        if form.is_valid():
+            assessment = form.save(commit=False)
+            assessment.course = course
+            assessment.save()
+            return redirect("Assessment:TeacherAssessmentView", course_id=course_id)
+        return render(request, "Course/CourseTeacher/teacher_assess.html",  {'formset': form, 'course': course})
 
 #Student xem danh gia tu giao vien
 class StudentAssessView(RoleRequiredMixin, View):
@@ -67,28 +62,23 @@ class StudentAssessmentView(RoleRequiredMixin, View):
     def get(self, request, course_id):
         form = StudentAssessmentForm()
         course = Course.objects.get(id=course_id)
+        students = course.students.all()
         context = {
-            'form': form,
-            'course': course,
+            "form": form,
+            "course": course,
+            "students": students,
         }
-        return render(request, "Course/CourseStudent/student_assess.html", context)
-
+        return render(request, "Course/CourseTeacher/teacher_assess.html", context)
+    
     def post(self, request, course_id):
         course = Course.objects.get(id=course_id)
-        students = course.students.all()
-        for student in students:
-            form = StudentAssessmentForm(request.POST)
-            if form.is_valid():
-                assessment, created = TeacherAssessment.objects.get_or_create(student=student, course=course)
-                if created is False:
-                    assessment = form.save(commit=False)
-                    assessment.course_feedback = form.cleaned_data['course_feedback']
-                    assessment.teacher_feedback = form.cleaned_data['teacher_feedback']
-                    assessment.improvements = form.cleaned_data['improvements']
-                    assessment.save()
-                    messages.success(request, 'Your assessment was saved')
-                
-        return redirect("Assessment:StudentAssessmentView", course_id=course_id)
+        form = StudentAssessmentForm(request.POST)
+        if form.is_valid():
+            assessment = form.save(commit=False)
+            assessment.course = course
+            assessment.save()
+            return redirect("Assessment:StudentAssessmentView", course_id=course_id)
+        return render(request, "Course/CourseTeacher/student_assess.html",  {'formset': form, 'course': course})
     
 #Hien trang de giao vien coi danh gia tu sinh vien
 class TeacherAssessView(RoleRequiredMixin, View):
