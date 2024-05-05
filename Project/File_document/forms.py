@@ -5,7 +5,7 @@ from django.forms import modelformset_factory
 class DocumentForm(forms.ModelForm):
     class Meta:
         model = Document
-        fields = ['description', 'syllabus', 'course_file']
+        fields = ['description', 'course_file']
         
 DocumentFormSet = modelformset_factory(
     Document,

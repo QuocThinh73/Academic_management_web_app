@@ -30,7 +30,6 @@
                         <div font-family="Arial">
                             <h2 class="h2_text">Mô tả</h2>
                             {{ form.description }}
-                            {{ form.syllabus }}
                         </div>
                         {{ form.course_file }}
                         {% if form.DELETE %}
@@ -39,8 +38,8 @@
                     </div>
                 </div>
             {% endfor %}
+            <button type="submit">Upload</button>
         </form>
-        <button type="submit">Upload</button>
     </div>
     
 </body>
