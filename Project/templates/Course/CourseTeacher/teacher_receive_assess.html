@@ -33,15 +33,15 @@
 		<a href="{% url 'Logout:logout' %}" class="menu_right">Đăng xuất</a>
 	</nav>
     
-    <h1 class="menu_text">Teacher Assessment</h1>
+    <h1 class="menu_text">Đánh Giá Khóa Học</h1>
     <div class="center_form">
         <div class="list_form">
             {% if assessment %}
-                <p>Course Feedback: {{ assessment.course_feedback }}</p>
-                <p>Teacher Feedback: {{ assessment.teacher_feedback }}</p>
-                <p>Improvements: {{ assessment.improvements }}
+                <p>Phản Hồi Khóa Học: {{ assessment.course_feedback }}</p>
+                <p>Phản Hồi Giáo Viên: {{ assessment.teacher_feedback }}</p>
+                <p>Điều Cần Cải Thiện: {{ assessment.improvements }}
             {% else %}
-                <p>No assessment has been given yet.</p>
+                <p>Không Có Đánh Giá Nào.</p>
             {% endif %}
         </div>
     </div>
